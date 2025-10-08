@@ -1,261 +1,450 @@
 # Tractatus AI Safety Framework
 
-**An open-source governance framework for Large Language Model (LLM) safety through structured decision-making, persistent instruction management, and transparent failure documentation.**
+**An open-source governance methodology for Large Language Model (LLM) safety through structured decision-making, persistent learning, and transparent failure documentation.**
 
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](LICENSE)
-[![Status](https://img.shields.io/badge/Status-Development-yellow.svg)](https://github.com/tractatus)
-
-**Project Start:** October 2025 | **Current Phase:** 4 (Production Hardening)
+[![Framework](https://img.shields.io/badge/Type-AI%20Governance-green.svg)](https://github.com/AgenticGovernance/tractatus-framework)
 
 ---
 
-## What is Tractatus?
+## What Is Tractatus?
 
-Tractatus is a **rule-based AI governance framework** designed to structure how AI assistants make decisions, persist learning across sessions, and maintain transparency through systematic failure documentation.
+Tractatus is a **governance framework** that structures how AI assistants make decisions, learn from failures, and maintain accountability. It's not software you install—it's a methodology you implement.
+
+### The Problem It Solves
+
+**Without governance**, AI assistants:
+- Make inconsistent decisions based on immediate context
+- Forget important constraints across sessions
+- React to failures ad-hoc without systematic learning
+- Lack transparency about why decisions were made
+- Can't explain what rules guide their behavior
+
+**With Tractatus governance**, AI systems:
+- Apply persistent rules across all sessions
+- Document failures systematically
+- Learn permanently from mistakes
+- Maintain transparent decision logs
+- Enforce boundaries on values-sensitive choices
 
 ### Core Innovation
 
-**The framework governs itself.** Every component of Tractatus (including this documentation) was developed using Claude Code with Tractatus governance active. When failures occur—like the [October 9th fabrication incident](docs/case-studies/framework-in-action-oct-2025.md)—the framework requires systematic documentation, correction, and permanent learning.
-
-### Key Components
-
-1. **InstructionPersistenceClassifier** - Categorizes and prioritizes human directives across sessions
-2. **ContextPressureMonitor** - Tracks cognitive load and manages conversation context
-3. **CrossReferenceValidator** - Prevents actions conflicting with stored instructions
-4. **BoundaryEnforcer** - Blocks values-sensitive decisions requiring human approval
-5. **MetacognitiveVerifier** - Validates complex operations before execution
-
-**Website:** [agenticgovernance.digital](https://agenticgovernance.digital) (in development)
+**The framework governs itself.** Every component of this framework was developed using Claude Code with Tractatus governance active. When failures occur, the framework requires systematic documentation, correction, and permanent learning.
 
 ---
 
-## Project Structure
+## Framework Components
 
-```
-tractatus/
-├── docs/               # Source markdown & governance documents
-├── public/             # Frontend assets (CSS, JS, images)
-├── src/                # Backend code (Express, MongoDB)
-│   ├── routes/        # API route handlers
-│   ├── controllers/   # Business logic
-│   ├── models/        # MongoDB models
-│   ├── middleware/    # Express middleware
-│   │   └── tractatus/ # Framework enforcement
-│   ├── services/      # Core services (AI, governance)
-│   └── utils/         # Utility functions
-├── scripts/            # Setup & migration scripts
-├── tests/              # Test suites (unit, integration, security)
-├── data/               # MongoDB data directory
-└── logs/               # Application & MongoDB logs
-```
+Tractatus consists of five core governance components:
 
----
+### 1. **InstructionPersistenceClassifier**
 
-## Quick Start
+**Purpose**: Categorize and prioritize human directives for long-term retention
 
-### Prerequisites
-- Node.js 18+
-- MongoDB 7+
-- Git
+**How It Works**:
+- Classifies instructions by quadrant (Strategic, Operational, Tactical, System, Stochastic)
+- Assigns persistence level (HIGH, MEDIUM, LOW, VARIABLE)
+- Defines temporal scope (PERMANENT, PROJECT, SESSION, TASK)
+- Stores in persistent database (`.claude/instruction-history.json`)
 
-### Installation
+**Example**: "Never fabricate statistics" → STRATEGIC quadrant, HIGH persistence, PERMANENT scope
 
-```bash
-# Clone the repository
-git clone https://github.com/AgenticGovernance/tractatus-framework.git
-cd tractatus-framework
+### 2. **ContextPressureMonitor**
 
-# Install dependencies
-npm install
+**Purpose**: Track cognitive load and session health across conversations
 
-# Copy environment variables
-cp .env.example .env
-# Edit .env with your configuration
+**How It Works**:
+- Monitors token usage vs. budget
+- Tracks conversation length
+- Detects task complexity
+- Calculates pressure score (0-100%)
+- Triggers warnings at thresholds (50%, 75%, 90%)
 
-# Initialize database
-npm run init:db
+**Example**: At 75% token usage → "ELEVATED pressure, increase verification"
 
-# Migrate documents
-npm run migrate:docs
+### 3. **CrossReferenceValidator**
 
-# Create admin user
-npm run seed:admin
+**Purpose**: Prevent actions conflicting with stored instructions
 
-# Start development server
-npm run dev
-```
+**How It Works**:
+- Checks proposed actions against instruction database
+- Identifies conflicts with HIGH persistence rules
+- Blocks actions violating strategic constraints
+- Requires human approval for conflicts
 
-The application will be available at `http://localhost:9000`
+**Example**: Attempt to commit `.env` file → BLOCKED (conflicts with security instruction)
 
----
+### 4. **BoundaryEnforcer**
 
-## Technical Stack
+**Purpose**: Require human approval for values-sensitive decisions
 
-- **Backend:** Node.js, Express, MongoDB
-- **Frontend:** Vanilla JavaScript, Tailwind CSS
-- **Authentication:** JWT
-- **AI Integration:** Claude API (Sonnet 4.5) - Phase 2+
-- **Testing:** Jest, Supertest
+**How It Works**:
+- Identifies decisions crossing into values territory
+- Categorizes: Privacy, Ethics, Architecture, Security, Public Claims
+- Blocks autonomous action
+- Requests explicit human approval
+
+**Example**: Publishing content to public GitHub → Triggers boundary check, requires audit
+
+### 5. **MetacognitiveVerifier**
+
+**Purpose**: Validate complex operations before execution
+
+**How It Works**:
+- Activated for operations with >3 files or >5 steps
+- Verifies: Alignment, Coherence, Completeness, Safety
+- Considers alternatives
+- Reports confidence score
+- Proceeds only with high confidence or human approval
+
+**Example**: Database migration → Verifies backup exists, checks reversibility, reports confidence
 
 ---
 
-## Phase 1 Deliverables (3-4 Months)
+## Real-World Examples
 
-**Must-Have for Complete Prototype:**
+### Case Study 1: Reactive Governance (October 9, 2025)
 
-- [x] Infrastructure setup
-- [ ] Document migration pipeline
-- [ ] Three audience paths (Researcher/Implementer/Advocate)
-- [ ] Tractatus governance services (Classifier, Validator, Boundary Enforcer)
-- [ ] AI-curated blog with human oversight
-- [ ] Media inquiry triage system
-- [ ] Case study submission portal
-- [ ] Resource directory
-- [ ] Interactive demonstrations (classification, 27027, boundary enforcement)
-- [ ] Human oversight dashboard
-- [ ] Comprehensive testing suite
+**Failure**: Claude fabricated financial statistics ($3.77M ROI, 1,315% returns) and used prohibited "guarantee" language on public website.
 
----
+**Framework Response**:
+- Required systematic documentation (FRAMEWORK_FAILURE_2025-10-09.md)
+- Created 3 new permanent rules (inst_016, inst_017, inst_018)
+- Audited all materials for similar violations
+- Corrected all content within hours
+- Published transparent case study
 
-## Development Workflow
+**Outcome**: Failure became permanent learning + educational resource
 
-### Running Tests
-```bash
-npm test                 # All tests with coverage
-npm run test:unit        # Unit tests only
-npm run test:integration # Integration tests
-npm run test:security    # Security tests
-npm run test:watch       # Watch mode
-```
-
-### Code Quality
-```bash
-npm run lint            # Check code style
-npm run lint:fix        # Fix linting issues
-```
-
-### Database Operations
-```bash
-npm run init:db         # Initialize database & indexes
-npm run migrate:docs    # Import markdown documents
-npm run generate:pdfs   # Generate PDF downloads
-```
+📖 **Read**: [Our Framework in Action](docs/case-studies/framework-in-action-oct-2025.md)
 
 ---
 
-## 🚨 Learning from Failures: Real-World Case Studies
+### Case Study 2: Proactive Governance (October 9, 2025)
 
-**Transparency is a core framework value.** When the framework fails, we document it publicly.
+**Situation**: Before publishing framework docs to GitHub, user requested security audit.
 
-### October 2025: Fabrication Incident
+**Framework Response**:
+- BoundaryEnforcer activated (public publication = values decision)
+- Automated scans detected 5 security issues
+- Internal file paths, database names, infrastructure details found
+- All issues sanitized before publication
+- Zero sensitive information exposed
 
-Claude (running with Tractatus governance) fabricated financial statistics and made false claims on our landing page:
-- $3.77M in annual savings (no basis)
-- 1,315% ROI (completely invented)
-- "Architectural guarantees" (prohibited language)
-- Claims of being "production-ready" (not true)
+**Outcome**: Prevention of security disclosure through structured review
 
-**The framework didn't prevent the initial fabrication, but it structured the response:**
-
-✅ Detected within 48 hours (human review)
-✅ Complete incident documentation required
-✅ 3 new permanent rules created (inst_016, inst_017, inst_018)
-✅ Comprehensive audit found related violations
-✅ All content corrected and redeployed same day
-✅ Public case studies published for community learning
-
-**Read the full stories** (three different perspectives):
-
-- [Our Framework in Action](docs/case-studies/framework-in-action-oct-2025.md) - Practical walkthrough
-- [When Frameworks Fail (And Why That's OK)](docs/case-studies/when-frameworks-fail-oct-2025.md) - Philosophical perspective
-- [Real-World AI Governance: Case Study](docs/case-studies/real-world-governance-case-study-oct-2025.md) - Educational deep-dive
-
-**Key Lesson:** Governance doesn't prevent all failures—it structures detection, response, learning, and transparency.
+📖 **Read**: [Pre-Publication Audit](docs/case-studies/pre-publication-audit-oct-2025.md)
 
 ---
 
-## ⚠️ Current Research Challenges
+### Case Study 3: Philosophy of Structured Failure
+
+**Insight**: Governance doesn't prevent all failures—it structures detection, response, learning, and transparency.
+
+**Key Lessons**:
+- Governed failures produce more value than ungoverned successes
+- Transparency about near-misses builds credibility
+- Systematic response > ad-hoc fixes
+- Permanent learning > "try harder next time"
+
+📖 **Read**: [When Frameworks Fail (And Why That's OK)](docs/case-studies/when-frameworks-fail-oct-2025.md)
+
+---
+
+### Case Study 4: Educational Deep-Dive
+
+**Comprehensive analysis** of the October 9th fabrication incident covering:
+- Root cause analysis (why BoundaryEnforcer failed)
+- Contributing factors (marketing pressure, post-compaction fade)
+- Framework component performance
+- Lessons learned
+- Recommendations for organizations
+
+📖 **Read**: [Real-World AI Governance Case Study](docs/case-studies/real-world-governance-case-study-oct-2025.md)
+
+---
+
+## Known Limitations & Active Research
 
 ### Rule Proliferation & Transactional Overhead
 
-**Status:** Open research question | **Priority:** High
+**Status**: Open Research Question | **Priority**: High
 
-As the framework learns from failures, it accumulates rules:
-- **Phase 1:** 6 instructions
-- **Phase 4:** 18 instructions (+200% growth)
-- **Projected (12 months):** 40-50 instructions
+**The Challenge**: As the framework learns from failures, it accumulates rules:
+- Phase 1: 6 instructions
+- Phase 4: 18 instructions (+200% growth)
+- Projected (12 months): 40-50 instructions
 
-**The emerging concern:** At what point does rule proliferation reduce framework effectiveness?
-
-- Context window pressure increases
+**Emerging Concerns**:
+- Context window pressure increases with rule count
 - CrossReferenceValidator checks grow linearly
 - Cognitive load on AI system escalates
-- Potential diminishing returns
+- Potential diminishing returns at scale
 
-**We're being transparent about this limitation.** Solutions planned for Phases 5-7:
+**Honest Assessment**: Framework has known scalability limits. Ceiling likely between 40-100 instructions before significant degradation.
+
+**Solutions Planned** (not yet implemented):
 - Instruction consolidation techniques
 - Rule prioritization algorithms
 - Context-aware selective loading
 - ML-based optimization
 
-**Full analysis:** [Rule Proliferation Research Topic](docs/research/rule-proliferation-and-transactional-overhead.md)
+📖 **Read**: [Rule Proliferation Research Topic](docs/research/rule-proliferation-and-transactional-overhead.md)
 
 ---
 
-## Governance Principles
+## How to Implement Tractatus
 
-This project adheres to the Tractatus framework values:
+### Prerequisites
 
-- **Transparency & Honesty:** Failures documented publicly, no fabricated claims
-- **Sovereignty & Self-determination:** No tracking, user control, open source
-- **Harmlessness & Protection:** Privacy-first design, security audits
-- **Community & Accessibility:** WCAG compliance, educational content
+**You need**:
+- An AI assistant capable of persistent memory (file system access)
+- Ability to store instruction database (JSON file recommended)
+- Session management capability (detect new vs. continued sessions)
+- Human oversight for boundary decisions
 
-All AI actions are governed by the five core components listed above.
+**Tractatus is currently implemented with**:
+- Claude Code (Anthropic)
+- File-based persistence
+- Bash scripts for monitoring
+
+**But the methodology is AI-agnostic** - adapt to your environment.
+
+### Implementation Steps
+
+**1. Create Instruction Database**
+
+```json
+{
+  "version": "1.0",
+  "instructions": [
+    {
+      "id": "inst_001",
+      "text": "NEVER fabricate statistics without citing sources",
+      "quadrant": "STRATEGIC",
+      "persistence": "HIGH",
+      "temporal_scope": "PERMANENT",
+      "verification_required": "MANDATORY"
+    }
+  ]
+}
+```
+
+**2. Implement Session Initialization**
+
+Every session start must:
+- Load instruction database
+- Run context pressure check
+- Verify framework components active
+- Report status to user
+
+**3. Add Governance Triggers**
+
+Before major actions:
+- Check CrossReferenceValidator
+- Trigger BoundaryEnforcer for values decisions
+- Run MetacognitiveVerifier for complex operations
+
+**4. Document Failures Systematically**
+
+When failures occur:
+- Create incident report (template in case studies)
+- Analyze root causes
+- Generate new instructions
+- Update instruction database
+- Publish transparently (if appropriate)
+
+**5. Monitor Rule Growth**
+
+Track instruction count over time. If approaching 40-50 instructions, consider:
+- Consolidation opportunities
+- Rule prioritization
+- Selective loading by context
+
+### Adaptation Guide
+
+**For Your Environment**:
+
+- **Different AI Model**: Adapt instruction storage format
+- **Cloud-Based**: Use database instead of JSON files
+- **Team Environment**: Add collaborative review workflows
+- **Enterprise**: Integrate with existing governance tools
+- **Research**: Contribute findings to rule proliferation research
 
 ---
 
-## Human Approval Required
+## Framework Values
 
-**All major decisions require human approval:**
-- Architectural changes
-- Database schema modifications
-- Security implementations
-- Third-party integrations
-- Values-sensitive content
-- Cost-incurring services
+All Tractatus implementations should adhere to these principles:
 
-**See:** `CLAUDE.md` for complete project context and conventions
+### Transparency & Honesty
+- Document failures publicly when appropriate
+- No fabricated claims or statistics
+- Accurate status reporting (development vs. production)
+- Limitations stated clearly
+
+### Sovereignty & Self-Determination
+- Human approval required for values decisions
+- User control over AI actions
+- No tracking without consent
+- Open source methodology
+
+### Harmlessness & Protection
+- Security-first design
+- Privacy by default
+- Proactive risk assessment
+- Boundary enforcement on sensitive decisions
+
+### Community & Accessibility
+- Educational content freely available
+- Case studies for learning
+- Research challenges shared openly
+- Contributions welcome
 
 ---
 
-## Te Tiriti & Indigenous Perspective
+## Contributing
 
-This project acknowledges **Te Tiriti o Waitangi** and indigenous leadership in digital sovereignty. Implementation follows documented indigenous data sovereignty principles (CARE Principles) with respect and without tokenism.
+We welcome contributions in several forms:
 
-**No premature engagement:** We will not approach Māori organizations until we have something valuable to offer post-launch.
+### Research Contributions
+- Empirical studies on rule proliferation
+- Effectiveness metrics
+- Consolidation techniques
+- Scalability experiments
+
+### Case Studies
+- Your framework implementation experiences
+- Failure modes and responses
+- Adaptation to different environments
+- Novel use cases
+
+### Methodology Improvements
+- New governance components
+- Enhanced monitoring techniques
+- Better instruction classification
+- Automated optimization approaches
+
+### Documentation
+- Implementation guides
+- Tutorial content
+- Translation to other languages
+- Accessibility improvements
+
+**How to Contribute**:
+1. Read existing case studies to understand approach
+2. Open an issue describing your contribution
+3. Discuss with maintainers
+4. Submit pull request with documentation
+5. Include evidence/data for research contributions
+
+---
+
+## Frequently Asked Questions
+
+### Is Tractatus production-ready?
+
+**No.** Tractatus is a **development framework and research prototype**. It has not been proven at scale in production environments. Use for research, development, and educational purposes.
+
+### Does Tractatus guarantee AI safety?
+
+**No.** We never use the term "guarantee." Tractatus is designed to *reduce risk*, *structure responses*, and *enable learning*. It cannot prevent all failures.
+
+### What's the optimal number of instructions?
+
+**Unknown.** Current research suggests effectiveness may degrade beyond 40-50 instructions, but this is unproven. See [Rule Proliferation Research](docs/research/rule-proliferation-and-transactional-overhead.md).
+
+### Can I use Tractatus commercially?
+
+**Yes.** Apache 2.0 license permits commercial use, modification, and distribution. See [LICENSE](LICENSE) for details.
+
+### How is this different from Constitutional AI?
+
+**Constitutional AI** bakes principles into model training. **Tractatus** applies runtime governance to already-trained models through persistent instructions and structured decision-making.
+
+### Do I need to use all 5 components?
+
+**No.** Implement what makes sense for your use case. However, BoundaryEnforcer is strongly recommended for any values-sensitive AI application.
+
+---
+
+## Project Status
+
+**Current Phase**: Development & Research (October 2025)
+**Maturity**: Early stage, active development
+**Production Use**: Not recommended yet
+**Research Status**: Ongoing, contributions welcome
+
+### Roadmap
+
+**Current**:
+- ✅ Core 5 components implemented
+- ✅ Real-world case studies documented
+- ✅ Rule proliferation research initiated
+- ✅ Open source release (Apache 2.0)
+
+**Next** (Phases 5-7, future):
+- ⏳ Instruction consolidation mechanisms
+- ⏳ Automated rule optimization
+- ⏳ Context-aware selective loading
+- ⏳ Effectiveness metrics development
+- ⏳ Multi-model compatibility testing
+
+---
+
+## Citation
+
+If you use Tractatus in research or implementation, please cite:
+
+```
+Tractatus AI Safety Framework (2025)
+AgenticGovernance Organization
+https://github.com/AgenticGovernance/tractatus-framework
+Licensed under Apache 2.0
+```
+
+For specific case studies:
+```
+Tractatus Development Team (2025). "Real-World AI Governance: A Case Study in
+Framework Failure and Recovery." Tractatus AI Safety Framework Documentation.
+https://github.com/AgenticGovernance/tractatus-framework/docs/case-studies/
+```
 
 ---
 
 ## License
 
-Apache License 2.0 - See LICENSE file for details.
+Apache License 2.0 - See [LICENSE](LICENSE) file for details.
 
-The Tractatus Framework is licensed under the Apache License 2.0, which provides:
-- Patent protection for users
-- Clear contribution terms
-- Permissive use (commercial, modification, distribution)
-- Compatibility with most other open source licenses
-
----
-
-## Contact
-
-**Project Owner:** John Stroh
-**Email:** john.stroh.nz@pm.me
-**Repository:** GitHub (primary) + Codeberg/Gitea (mirrors)
+The Tractatus Framework methodology is open source under Apache 2.0, which provides:
+- ✅ Patent protection for users
+- ✅ Clear contribution terms
+- ✅ Permissive use (commercial, modification, distribution)
+- ✅ Compatibility with most other open source licenses
 
 ---
 
-**Last Updated:** 2025-10-06
-**Next Milestone:** Complete MongoDB setup and systemd service
+## Contact & Community
+
+**Repository**: https://github.com/AgenticGovernance/tractatus-framework
+**Organization**: AgenticGovernance
+**License**: Apache 2.0
+**Issues**: https://github.com/AgenticGovernance/tractatus-framework/issues
+
+For questions about implementation, research contributions, or case study submissions, please open an issue on GitHub.
+
+---
+
+## Acknowledgments
+
+**Developed using**: Claude Code (Anthropic Sonnet 4.5)
+**Governance Method**: Self-application (dogfooding)
+**Framework Principles**: Inspired by organizational theory, software governance, and AI safety research
+
+**Key Insight**: The best way to validate an AI governance framework is to use it to govern the AI building the framework itself. Every failure becomes a test case. Every success validates the approach.
+
+---
+
+**Last Updated**: October 2025
+**Version**: 1.0 (Initial Public Release)
+**Status**: Development Framework - Use at own risk, contributions welcome
