@@ -85,7 +85,7 @@ grep -n "/var/www\|/home/[username]"
 
 **3. Database Names** (inst_013)
 ```bash
-grep -n "tractatus_dev\|tractatus_prod"
+grep -n "[project]_dev\|[project]_prod"
 ```
 **Result**: ⚠️ WARN - 3 instances found (generic but internal)
 
@@ -177,8 +177,8 @@ cd tractatus-framework
 
 **Original Content**:
 ```markdown
-- Deleted old business case from `tractatus_dev` database
-- Deleted old business case from `tractatus_prod` database
+- Deleted old business case from `[PROJECT]_dev` database
+- Deleted old business case from `[PROJECT]_prod` database
 ```
 
 **Risk**: LOW (generic names) but reveals naming convention
@@ -265,7 +265,7 @@ infrastructure plans, progress reports, and cover letters are CONFIDENTIAL.
 **Command**:
 ```bash
 # Re-scan all files for sensitive patterns
-grep -rn "vps-\|/home/\|/var/www\|tractatus_dev\|tractatus_prod" \
+grep -rn "vps-\|/home/\|/var/www\|[project]_dev\|[project]_prod" \
   docs/case-studies/ docs/research/ README.md
 ```
 
