@@ -6,7 +6,7 @@ The world's first production implementation of architectural AI safety guarantee
 
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 [![Framework](https://img.shields.io/badge/Framework-Production-green.svg)](https://agenticgovernance.digital)
-[![Tests](https://img.shields.io/badge/Tests-192%20passing-brightgreen.svg)](https://github.com/AgenticGovernance/tractatus-framework)
+[![Tests](https://img.shields.io/badge/Tests-637%20passing-brightgreen.svg)](https://github.com/AgenticGovernance/tractatus-framework)
 
 ---
 
@@ -230,7 +230,7 @@ npm run test:security
 npm run test:watch
 ```
 
-**Test Coverage**: 192 tests, 100% coverage of core services
+**Test Coverage**: 637 tests across 22 test files, 100% coverage of core services
 
 ---
 
@@ -264,8 +264,8 @@ tractatus/
 
 As the framework learns from failures, instruction count grows:
 - **Phase 1:** 6 instructions
-- **Current:** 18 instructions (+200%)
-- **Projected (12 months):** 40-50 instructions
+- **Current:** 28 instructions (+367%)
+- **Projected (12 months):** 50-60 instructions
 
 **The concern:** At what point does rule proliferation reduce framework effectiveness?
 
@@ -310,7 +310,7 @@ We welcome contributions in several areas:
 
 **Phase 1**: ✅ Complete (October 2025)
 - All 5 core services implemented
-- 192 unit tests (100% coverage)
+- 637 tests across 22 test files (100% coverage of core services)
 - Production deployment active
 - This website built using Tractatus governance
 
