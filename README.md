@@ -1,18 +1,26 @@
-# Tractatus Framework
+# Tractatus Framework - Research & Documentation
 
 > **Architectural AI Safety Through Structural Constraints**
 
-The world's first production implementation of architectural AI safety guarantees. Tractatus preserves human agency through **structural, not aspirational** constraints on AI systems.
+Documentation and research repository for the Tractatus Framework - the world's first production implementation of architectural AI safety guarantees. Tractatus preserves human agency through **structural, not aspirational** constraints on AI systems.
 
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
-[![Framework](https://img.shields.io/badge/Framework-Production-green.svg)](https://agenticgovernance.digital)
-[![Tests](https://img.shields.io/badge/Tests-637%20passing-brightgreen.svg)](https://github.com/AgenticGovernance/tractatus-framework)
+[![Framework](https://img.shields.io/badge/Framework-Active-green.svg)](https://agenticgovernance.digital)
+[![Documentation](https://img.shields.io/badge/Documentation-Complete-blue.svg)](https://github.com/AgenticGovernance/tractatus-framework)
+
+> **ℹ️ Note**: This repository contains documentation, research papers, and conceptual examples. The full production implementation is not publicly available for security reasons. To experience the framework, visit [agenticgovernance.digital](https://agenticgovernance.digital).
 
 ---
 
 ## 🎯 What is Tractatus?
 
 Tractatus is an **architectural AI safety framework** that makes certain decisions **structurally impossible** for AI systems to make without human approval. Unlike traditional AI safety approaches that rely on training and alignment, Tractatus uses **runtime enforcement** of decision boundaries.
+
+**This repository provides**:
+- 📚 Complete framework documentation
+- 📖 Research papers and case studies
+- 🎓 Conceptual examples and architecture guides
+- 📊 Real-world failure mode analysis
 
 ### The Core Problem
 
@@ -34,56 +42,51 @@ Tractatus implements **architectural constraints** that:
 
 ---
 
-## 🚀 Quick Start
+## 🚀 Getting Started
 
-### Installation
+### Experience the Framework
 
-```bash
-# Clone repository
-git clone https://github.com/AgenticGovernance/tractatus-framework.git
-cd tractatus-framework
+Visit **[agenticgovernance.digital](https://agenticgovernance.digital)** to:
+- Explore interactive demos
+- Read complete documentation
+- See real-world case studies
+- Access research papers
 
-# Install dependencies
-npm install
+### For Researchers
 
-# Initialize database
-npm run init:db
+This repository provides:
+- **[Complete Documentation](docs/)** - Framework architecture and design
+- **[Case Studies](docs/case-studies/)** - Real-world failure modes and recovery
+- **[Research Papers](docs/research/)** - Academic analysis and findings
+- **[API Documentation](docs/api/)** - Technical reference for developers
 
-# Start development server
-npm run dev
-```
-
-### Basic Usage
+### Conceptual Example
 
 ```javascript
-const {
-  InstructionPersistenceClassifier,
-  CrossReferenceValidator,
-  BoundaryEnforcer,
-  ContextPressureMonitor,
-  MetacognitiveVerifier
-} = require('./src/services');
+// Conceptual example (not runnable code)
+// Shows how the framework components interact
 
-// Classify an instruction
-const classifier = new InstructionPersistenceClassifier();
-const classification = classifier.classify({
+// 1. Classify an instruction
+const classification = InstructionPersistenceClassifier.classify({
   text: "Always use MongoDB on port 27027",
   source: "user"
 });
+// Result: { quadrant: "SYSTEM", persistence: "HIGH", ... }
 
-// Store in instruction history
+// 2. Store in instruction history
 await InstructionDB.store(classification);
 
-// Validate before taking action
-const validator = new CrossReferenceValidator();
-const validation = await validator.validate({
+// 3. Validate before taking action
+const validation = CrossReferenceValidator.validate({
   type: 'database_config',
   port: 27017  // ⚠️ Conflicts with stored instruction!
 });
+// Result: REJECTED - Pattern recognition bias override detected
 
-// validation.status === 'REJECTED'
-// validation.reason === 'Pattern recognition bias override detected'
+// 4. Framework auto-corrects to user's explicit instruction (port 27027)
 ```
+
+> **Note**: For implementation inquiries, contact john.stroh.nz@pm.me
 
 ---
 
@@ -215,44 +218,27 @@ During development, Claude (running with Tractatus governance) fabricated financ
 
 ---
 
-## 🧪 Testing
+## 🏗️ Framework Architecture
 
-```bash
-# Run all tests
-npm test
-
-# Run specific test suites
-npm run test:unit
-npm run test:integration
-npm run test:security
-
-# Watch mode
-npm run test:watch
-```
-
-**Test Coverage**: 637 tests across 22 test files, 100% coverage of core services
-
----
-
-## 🏗️ Architecture
+The Tractatus Framework consists of five core components working in concert:
 
 ```
-tractatus/
-├── src/
-│   ├── services/              # Core framework services
-│   │   ├── InstructionPersistenceClassifier.js
-│   │   ├── CrossReferenceValidator.js
-│   │   ├── BoundaryEnforcer.js
-│   │   ├── ContextPressureMonitor.js
-│   │   └── MetacognitiveVerifier.js
-│   ├── models/                # Database models
-│   ├── routes/                # API routes
-│   └── middleware/            # Framework middleware
-├── tests/                     # Test suites
-├── scripts/                   # Utility scripts
-├── docs/                      # Comprehensive documentation
-└── public/                    # Frontend assets
+Tractatus Framework
+├── InstructionPersistenceClassifier
+│   └── Quadrant classification (STRATEGIC/OPERATIONAL/TACTICAL/SYSTEM)
+├── CrossReferenceValidator
+│   └── Prevents training pattern overrides (27027 failure mode)
+├── BoundaryEnforcer
+│   └── Blocks values decisions requiring human judgment
+├── ContextPressureMonitor
+│   └── Multi-factor session health tracking
+└── MetacognitiveVerifier
+    └── AI self-checks for complex operations
 ```
+
+**Testing**: 637 tests validate framework behavior across 22 test files (100% coverage of core services)
+
+**Documentation**: Complete technical documentation available in the [docs/](docs/) directory
 
 ---
 
@@ -285,39 +271,44 @@ As the framework learns from failures, instruction count grows:
 
 ## 🤝 Contributing
 
-We welcome contributions in several areas:
+We welcome contributions to documentation and research:
 
 ### Research Contributions
 - Formal verification of safety properties
 - Extensions to new domains (robotics, autonomous systems)
 - Theoretical foundations and proofs
-
-### Implementation Contributions
-- Ports to other languages (Python, Rust, Go)
-- Integration with other frameworks
-- Performance optimizations
+- Independent analysis of framework effectiveness
 
 ### Documentation Contributions
 - Tutorials and guides
-- Case studies from real deployments
-- Translations
+- Case studies from AI safety incidents
+- Translations of research papers
+- Educational materials
+
+### Community Contributions
+- Share your own LLM failure modes
+- Discuss framework applications
+- Propose improvements to governance structures
 
 **See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.**
+
+> **Note**: Implementation code is not publicly available for security reasons. For collaboration on implementation, contact john.stroh.nz@pm.me
 
 ---
 
 ## 📊 Project Status
 
-**Phase 1**: ✅ Complete (October 2025)
-- All 5 core services implemented
-- 637 tests across 22 test files (100% coverage of core services)
-- Production deployment active
-- This website built using Tractatus governance
+**Current**: Production Active (October 2025)
+- Framework deployed at [agenticgovernance.digital](https://agenticgovernance.digital)
+- All 5 core services operational
+- 637 tests validating framework behavior
+- 28 governance instructions actively enforced
+- Real-world use cases documented
 
-**Phase 2**: 🚧 In Planning
-- Multi-language support
-- Cloud deployment guides
-- Enterprise features
+**Research**: Ongoing
+- Rule proliferation analysis
+- Context pressure optimization
+- Multi-project governance patterns
 
 ---
 
