@@ -1,0 +1,29 @@
+<svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" class="tractatus-icon">
+  <!-- Outer orbit -->
+  <circle cx="24" cy="24" r="20" stroke="currentColor" stroke-width="1" opacity="0.3" fill="none"/>
+
+  <!-- Middle orbit -->
+  <circle cx="24" cy="24" r="14" stroke="currentColor" stroke-width="1" opacity="0.4" fill="none"/>
+
+  <!-- Inner orbit -->
+  <circle cx="24" cy="24" r="8" stroke="currentColor" stroke-width="1" opacity="0.5" fill="none"/>
+
+  <!-- Center sphere with gradient for depth -->
+  <defs>
+    <radialGradient id="centerGradient">
+      <stop offset="0%" stop-color="currentColor" stop-opacity="1"/>
+      <stop offset="100%" stop-color="currentColor" stop-opacity="0.7"/>
+    </radialGradient>
+  </defs>
+  <circle cx="24" cy="24" r="5" fill="url(#centerGradient)"/>
+
+  <!-- Orbital dots positioned strategically -->
+  <!-- Outer orbit dot (top-right) -->
+  <circle cx="38" cy="10" r="2" fill="currentColor" opacity="0.7"/>
+
+  <!-- Middle orbit dot (bottom-left) -->
+  <circle cx="14" cy="34" r="1.5" fill="currentColor" opacity="0.8"/>
+
+  <!-- Inner orbit dot (right) -->
+  <circle cx="32" cy="24" r="1.2" fill="currentColor" opacity="0.9"/>
+</svg>

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The 27027 Incident - Tractatus Framework</title>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="stylesheet" href="/css/tailwind.css?v=1759833751">
+  <style>
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .fade-in {
+      animation: fadeIn 0.5s ease-out;
+    }
+    .code-block {
+      @apply bg-gray-900 text-gray-100 p-4 rounded-lg font-mono text-sm overflow-x-auto;
+    }
+    .step-active {
+      @apply border-blue-500 bg-blue-50;
+    }
+    .step-complete {
+      @apply border-green-500 bg-green-50;
+    }
+    .step-error {
+      @apply border-red-500 bg-red-50;
+    }
+  </style>
+</head>
+<body class="bg-gray-50">
+
+  <!-- Navigation (injected by navbar.js) -->
+  <script src="/js/components/navbar.js?v=1759875690"></script>
+
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+
+    <!-- Header -->
+    <div class="text-center mb-12">
+      <h1 class="text-4xl font-bold text-gray-900 mb-4">
+        The 27027 Incident
+      </h1>
+      <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+        A real-world failure where AI's training patterns <strong>immediately overrode</strong> an explicit user instruction about MongoDB port, caused a false "data loss" alarm, and how Tractatus prevents this through architectural constraints.
+      </p>
+    </div>
+
+    <!-- Timeline Container -->
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12">
+      <!-- Timeline Steps -->
+      <div class="lg:col-span-2">
+        <div id="timeline" class="space-y-6">
+          <!-- Steps will be inserted here -->
+        </div>
+      </div>
+
+      <!-- Control Panel -->
+      <div class="lg:col-span-1">
+        <div class="bg-white rounded-lg shadow-lg p-6 sticky top-6">
+          <h3 class="text-lg font-semibold text-gray-900 mb-4">Playback Controls</h3>
+
+          <div class="space-y-4 mb-6">
+            <button id="start-btn" class="w-full bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition">
+              ▶ Start Scenario
+            </button>
+            <button id="reset-btn" class="w-full bg-gray-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-gray-700 transition">
+              ↻ Reset
+            </button>
+          </div>
+
+          <div id="progress-info" class="hidden">
+            <div class="mb-4">
+              <div class="flex justify-between text-sm text-gray-600 mb-2">
+                <span>Progress</span>
+                <span id="progress-text">0 / 8</span>
+              </div>
+              <div class="w-full bg-gray-200 rounded-full h-2">
+                <div id="progress-bar" class="bg-blue-600 h-2 rounded-full transition-all duration-300" style="width: 0%"></div>
+              </div>
+            </div>
+
+            <div class="border-t border-gray-200 pt-4">
+              <h4 class="text-sm font-semibold text-gray-700 mb-2">Current Step:</h4>
+              <p id="current-step-desc" class="text-sm text-gray-600"></p>
+            </div>
+          </div>
+
+          <!-- Legend -->
+          <div class="mt-6 border-t border-gray-200 pt-4">
+            <h4 class="text-sm font-semibold text-gray-700 mb-3">Legend:</h4>
+            <div class="space-y-2 text-sm">
+              <div class="flex items-center">
+                <div class="w-4 h-4 border-2 border-gray-300 bg-white rounded mr-2"></div>
+                <span class="text-gray-600">Pending</span>
+              </div>
+              <div class="flex items-center">
+                <div class="w-4 h-4 border-2 border-blue-500 bg-blue-50 rounded mr-2"></div>
+                <span class="text-gray-600">Active</span>
+              </div>
+              <div class="flex items-center">
+                <div class="w-4 h-4 border-2 border-green-500 bg-green-50 rounded mr-2"></div>
+                <span class="text-gray-600">Complete</span>
+              </div>
+              <div class="flex items-center">
+                <div class="w-4 h-4 border-2 border-red-500 bg-red-50 rounded mr-2"></div>
+                <span class="text-gray-600">Error</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Explanation -->
+    <div class="bg-amber-50 border-l-4 border-amber-500 p-6 rounded-r-lg">
+      <h3 class="text-lg font-semibold text-amber-900 mb-2">Why This Matters</h3>
+      <p class="text-amber-800 mb-4">
+        The 27027 incident reveals a critical AI failure mode: <strong>pattern recognition bias</strong>.
+        The AI's training data contained such a strong "MongoDB = port 27017" pattern that it
+        <strong>immediately autocorrected</strong> the user's explicit reference to "27027"—like
+        a spell-checker changing a deliberately unusual word. The consequence was severe: <strong>false alarm about data loss</strong>,
+        initiating unnecessary backup restore procedures and causing user panic, when in reality all 44 conversation threads
+        and 48 messages were intact on the correct port. This failure mode:
+      </p>
+      <ul class="space-y-2 text-amber-800">
+        <li>• <strong>Happens immediately</strong> (not over time through forgetting)</li>
+        <li>• <strong>Operates silently</strong> (AI doesn't realize it's overriding)</li>
+        <li>• <strong>Gets worse as AI capabilities increase</strong> (more training = stronger wrong patterns)</li>
+        <li>• <strong>Can't be fixed by better memory or context windows</strong></li>
+        <li>• <strong>Causes real harm</strong> (false alarms, wrong actions, user distrust)</li>
+      </ul>
+      <p class="text-amber-800 mt-4">
+        <strong>Tractatus prevents this</strong> by storing explicit instructions with HIGH persistence
+        and blocking any action that conflicts—even if the conflict comes from training patterns, not just
+        earlier instructions.
+      </p>
+    </div>
+  </div>
+
+  <script src="/js/demos/27027-demo.js?v=1759833751"></script>
+
+</body>
+</html>

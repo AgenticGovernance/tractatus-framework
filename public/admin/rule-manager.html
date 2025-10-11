@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rule Manager | Multi-Project Governance</title>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="stylesheet" href="/css/tailwind.css?v=1760127701">
+  <script src="/js/admin/auth-check.js"></script>
+</head>
+<body class="bg-gray-50">
+
+  <!-- Navigation -->
+  <nav class="bg-white border-b border-gray-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between h-16">
+        <div class="flex items-center">
+          <div class="flex-shrink-0 flex items-center">
+            <div class="h-8 w-8 bg-indigo-600 rounded-lg flex items-center justify-center">
+              <svg aria-hidden="true" class="h-5 w-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"/>
+              </svg>
+            </div>
+            <span class="ml-3 text-xl font-bold text-gray-900">Rule Manager</span>
+          </div>
+          <div class="ml-10 flex items-baseline space-x-4">
+            <a href="/admin/dashboard.html" class="px-3 py-2 rounded-md text-sm font-medium text-gray-600 hover:text-gray-900">Dashboard</a>
+            <a href="/admin/rule-manager.html" class="px-3 py-2 rounded-md text-sm font-medium bg-indigo-50 text-indigo-700">Rules</a>
+            <a href="/admin/blog-curation.html" class="px-3 py-2 rounded-md text-sm font-medium text-gray-600 hover:text-gray-900">Blog</a>
+            <a href="/admin/audit-analytics.html" class="px-3 py-2 rounded-md text-sm font-medium text-gray-600 hover:text-gray-900">Audit</a>
+          </div>
+        </div>
+        <div class="flex items-center">
+          <span id="admin-name" class="text-sm text-gray-600 mr-4"></span>
+          <button id="logout-btn" class="text-sm font-medium text-gray-700 hover:text-gray-900">
+            Logout
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+
+    <!-- Header -->
+    <div class="mb-8 flex justify-between items-center">
+      <div>
+        <h1 class="text-3xl font-bold text-gray-900">Governance Rules</h1>
+        <p class="mt-1 text-sm text-gray-600">Manage multi-project governance rules and policies</p>
+      </div>
+      <button id="new-rule-btn" class="bg-indigo-600 text-white px-6 py-3 rounded-md text-sm font-medium hover:bg-indigo-700 shadow-sm flex items-center">
+        <svg class="h-5 w-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"/>
+        </svg>
+        New Rule
+      </button>
+    </div>
+
+    <!-- Project Selector -->
+    <div id="project-selector-container"></div>
+
+    <!-- Statistics Cards -->
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+      <!-- Total Rules -->
+      <div class="bg-white rounded-lg shadow p-6">
+        <div class="flex items-center">
+          <div class="flex-shrink-0 bg-indigo-100 rounded-md p-3">
+            <svg aria-hidden="true" class="h-6 w-6 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/>
+            </svg>
+          </div>
+          <div class="ml-4">
+            <p class="text-sm font-medium text-gray-500">Total Rules</p>
+            <p id="stat-total" class="text-2xl font-semibold text-gray-900">-</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Universal Rules -->
+      <div class="bg-white rounded-lg shadow p-6">
+        <div class="flex items-center">
+          <div class="flex-shrink-0 bg-blue-100 rounded-md p-3">
+            <svg aria-hidden="true" class="h-6 w-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+          </div>
+          <div class="ml-4">
+            <p class="text-sm font-medium text-gray-500">Universal</p>
+            <p id="stat-universal" class="text-2xl font-semibold text-gray-900">-</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Validated Rules -->
+      <div class="bg-white rounded-lg shadow p-6">
+        <div class="flex items-center">
+          <div class="flex-shrink-0 bg-green-100 rounded-md p-3">
+            <svg aria-hidden="true" class="h-6 w-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+          </div>
+          <div class="ml-4">
+            <p class="text-sm font-medium text-gray-500">Validated</p>
+            <p id="stat-validated" class="text-2xl font-semibold text-gray-900">-</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Avg Clarity Score -->
+      <div class="bg-white rounded-lg shadow p-6">
+        <div class="flex items-center">
+          <div class="flex-shrink-0 bg-yellow-100 rounded-md p-3">
+            <svg aria-hidden="true" class="h-6 w-6 text-yellow-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"/>
+            </svg>
+          </div>
+          <div class="ml-4">
+            <p class="text-sm font-medium text-gray-500">Avg Clarity</p>
+            <p id="stat-clarity" class="text-2xl font-semibold text-gray-900">-</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Filters and Search -->
+    <div class="bg-white rounded-lg shadow mb-6">
+      <div class="px-6 py-4 border-b border-gray-200">
+        <h3 class="text-lg font-medium text-gray-900">Filters</h3>
+      </div>
+      <div class="px-6 py-4">
+        <div class="grid grid-cols-1 md:grid-cols-6 gap-4">
+          <!-- Scope Filter -->
+          <div>
+            <label for="filter-scope" class="block text-sm font-medium text-gray-700 mb-1">Scope</label>
+            <select id="filter-scope" class="w-full text-sm border-gray-300 rounded-md">
+              <option value="">All</option>
+              <option value="UNIVERSAL">Universal</option>
+              <option value="PROJECT_SPECIFIC">Project-Specific</option>
+            </select>
+          </div>
+
+          <!-- Quadrant Filter -->
+          <div>
+            <label for="filter-quadrant" class="block text-sm font-medium text-gray-700 mb-1">Quadrant</label>
+            <select id="filter-quadrant" class="w-full text-sm border-gray-300 rounded-md">
+              <option value="">All</option>
+              <option value="STRATEGIC">Strategic</option>
+              <option value="OPERATIONAL">Operational</option>
+              <option value="TACTICAL">Tactical</option>
+              <option value="SYSTEM">System</option>
+              <option value="STORAGE">Storage</option>
+            </select>
+          </div>
+
+          <!-- Persistence Filter -->
+          <div>
+            <label for="filter-persistence" class="block text-sm font-medium text-gray-700 mb-1">Persistence</label>
+            <select id="filter-persistence" class="w-full text-sm border-gray-300 rounded-md">
+              <option value="">All</option>
+              <option value="HIGH">High</option>
+              <option value="MEDIUM">Medium</option>
+              <option value="LOW">Low</option>
+            </select>
+          </div>
+
+          <!-- Validation Status Filter -->
+          <div>
+            <label for="filter-validation" class="block text-sm font-medium text-gray-700 mb-1">Validation</label>
+            <select id="filter-validation" class="w-full text-sm border-gray-300 rounded-md">
+              <option value="">All</option>
+              <option value="PASSED">Passed</option>
+              <option value="FAILED">Failed</option>
+              <option value="NEEDS_REVIEW">Needs Review</option>
+              <option value="NOT_VALIDATED">Not Validated</option>
+            </select>
+          </div>
+
+          <!-- Active Filter -->
+          <div>
+            <label for="filter-active" class="block text-sm font-medium text-gray-700 mb-1">Status</label>
+            <select id="filter-active" class="w-full text-sm border-gray-300 rounded-md">
+              <option value="true">Active Only</option>
+              <option value="">All</option>
+              <option value="false">Inactive Only</option>
+            </select>
+          </div>
+
+          <!-- Sort By -->
+          <div>
+            <label for="sort-by" class="block text-sm font-medium text-gray-700 mb-1">Sort By</label>
+            <select id="sort-by" class="w-full text-sm border-gray-300 rounded-md">
+              <option value="priority">Priority</option>
+              <option value="clarity">Clarity Score</option>
+              <option value="id">Rule ID</option>
+              <option value="updatedAt">Last Updated</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Search Box -->
+        <div class="mt-4">
+          <label for="search-box" class="block text-sm font-medium text-gray-700 mb-1">Search</label>
+          <input type="text" id="search-box" placeholder="Search rule text..." class="w-full text-sm border-gray-300 rounded-md">
+        </div>
+
+        <!-- Filter Actions -->
+        <div class="mt-4 flex justify-between items-center">
+          <button id="clear-filters-btn" class="text-sm text-gray-600 hover:text-gray-900">
+            Clear Filters
+          </button>
+          <span id="filter-results" class="text-sm text-gray-600">
+            <!-- Results count will appear here -->
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Rules List -->
+    <div class="bg-white rounded-lg shadow">
+      <div class="px-6 py-4 border-b border-gray-200">
+        <div class="flex justify-between items-center">
+          <h3 class="text-lg font-medium text-gray-900">Rules</h3>
+          <div class="flex items-center space-x-2">
+            <span class="text-sm text-gray-500">Sort:</span>
+            <select id="sort-order" class="text-sm border-gray-300 rounded-md">
+              <option value="desc">Descending</option>
+              <option value="asc">Ascending</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <!-- Rules Grid -->
+      <div id="rules-grid" class="p-6">
+        <div class="text-center py-12 text-gray-500">
+          <div class="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-indigo-600 mb-4"></div>
+          <p>Loading rules...</p>
+        </div>
+      </div>
+
+      <!-- Pagination -->
+      <div id="pagination" class="px-6 py-4 border-t border-gray-200 hidden">
+        <div class="flex items-center justify-between">
+          <div class="text-sm text-gray-700">
+            Showing <span id="page-start">1</span> to <span id="page-end">20</span> of <span id="page-total">0</span> rules
+          </div>
+          <div class="flex space-x-2">
+            <button id="prev-page" class="px-3 py-1 border border-gray-300 rounded-md text-sm font-medium text-gray-700 hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed">
+              Previous
+            </button>
+            <span id="page-numbers" class="flex space-x-1">
+              <!-- Page numbers will be inserted here -->
+            </span>
+            <button id="next-page" class="px-3 py-1 border border-gray-300 rounded-md text-sm font-medium text-gray-700 hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed">
+              Next
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Rule Editor Modal (will be loaded dynamically) -->
+  <div id="modal-container"></div>
+
+  <!-- Toast Notifications -->
+  <div id="toast-container" class="fixed top-4 right-4 z-50 space-y-2">
+    <!-- Toast messages will appear here -->
+  </div>
+
+  <script src="/js/admin/project-selector.js?v=1760127701"></script>
+  <script src="/js/admin/rule-editor.js?v=1760127701"></script>
+  <script src="/js/admin/rule-manager.js?v=1760127701"></script>
+
+</body>
+</html>

@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tractatus Framework Interactive Demo | AI Safety Architecture</title>
+  <link rel="stylesheet" href="/css/tailwind.css?v=1759833751">
+  <style>
+    .fade-in { animation: fadeIn 0.5s; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    .highlight { background: linear-gradient(120deg, #fbbf24 0%, #f59e0b 100%); }
+    .error-highlight { background: linear-gradient(120deg, #ef4444 0%, #dc2626 100%); }
+    .success-highlight { background: linear-gradient(120deg, #10b981 0%, #059669 100%); }
+  </style>
+</head>
+<body class="bg-gray-50">
+
+  <!-- Header -->
+  <header class="bg-white border-b border-gray-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+      <div class="flex items-center justify-between">
+        <div>
+          <h1 class="text-3xl font-bold text-gray-900">Tractatus Framework</h1>
+          <p class="text-gray-600 mt-1">Interactive Safety Architecture Demonstration</p>
+        </div>
+        <a href="/" class="text-blue-600 hover:text-blue-700 font-medium">← Back to Home</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+
+    <!-- Introduction -->
+    <section class="mb-12">
+      <div class="bg-blue-50 border-l-4 border-blue-500 p-6 rounded-r-lg">
+        <h2 class="text-xl font-semibold text-blue-900 mb-2">What is the Tractatus Framework?</h2>
+        <p class="text-blue-800">
+          The Tractatus-Based LLM Safety Framework implements <strong>architectural constraints</strong>
+          that ensure AI systems preserve human agency regardless of capability level. Instead of hoping
+          AI "behaves correctly," we build systems where certain decisions <em>structurally require</em>
+          human judgment.
+        </p>
+      </div>
+    </section>
+
+    <!-- Demo Tabs -->
+    <div class="bg-white rounded-lg shadow-sm border border-gray-200 mb-8">
+      <div class="border-b border-gray-200">
+        <nav class="flex -mb-px">
+          <button data-demo="27027" id="tab-27027" class="demo-tab px-6 py-4 text-sm font-medium border-b-2 border-blue-500 text-blue-600">
+            27027 Incident Prevention
+          </button>
+          <button data-demo="classifier" id="tab-classifier" class="demo-tab px-6 py-4 text-sm font-medium border-b-2 border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300">
+            Instruction Classification
+          </button>
+          <button data-demo="boundaries" id="tab-boundaries" class="demo-tab px-6 py-4 text-sm font-medium border-b-2 border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300">
+            Boundary Enforcement
+          </button>
+          <button data-demo="pressure" id="tab-pressure" class="demo-tab px-6 py-4 text-sm font-medium border-b-2 border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300">
+            Pressure Monitoring
+          </button>
+        </nav>
+      </div>
+
+      <!-- Demo Content -->
+      <div class="p-6">
+
+        <!-- 27027 Demo -->
+        <div id="demo-27027" class="demo-content">
+          <h3 class="text-2xl font-bold text-gray-900 mb-4">The "27027 Incident" - How the Framework Prevents It</h3>
+
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+
+            <!-- Without Tractatus -->
+            <div class="border-2 border-red-200 rounded-lg p-6 bg-red-50">
+              <h4 class="text-lg font-semibold text-red-900 mb-4 flex items-center">
+                <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z"/>
+                </svg>
+                WITHOUT Framework
+              </h4>
+
+              <div class="space-y-3 text-sm">
+                <div class="bg-white p-3 rounded">
+                  <div class="font-medium text-gray-700 mb-1">User Instruction:</div>
+                  <div class="text-gray-900 font-mono text-xs">"Check port <span class="error-highlight text-white px-1 rounded">27027</span>"</div>
+                </div>
+
+                <div class="flex items-center justify-center text-red-600">
+                  <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
+                  </svg>
+                </div>
+
+                <div class="bg-white p-3 rounded border-2 border-red-300">
+                  <div class="font-medium text-red-700 mb-1">AI Action Executed:</div>
+                  <div class="text-gray-900 font-mono text-xs">mongosh --port <span class="error-highlight text-white px-1 rounded">27017</span></div>
+                  <div class="text-red-600 text-xs mt-2">❌ Used MongoDB default instead of explicit instruction!</div>
+                </div>
+
+                <div class="bg-white p-3 rounded">
+                  <div class="font-medium text-red-700 mb-1">Result:</div>
+                  <div class="text-red-600 text-sm">
+                    • Found 0 documents (wrong port)<br>
+                    • User alarm: "Data is lost!"<br>
+                    • Trust degradation<br>
+                    • 15+ minutes wasted
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- With Tractatus -->
+            <div class="border-2 border-green-200 rounded-lg p-6 bg-green-50">
+              <h4 class="text-lg font-semibold text-green-900 mb-4 flex items-center">
+                <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/>
+                </svg>
+                WITH Framework
+              </h4>
+
+              <div class="space-y-3 text-sm">
+                <div class="bg-white p-3 rounded">
+                  <div class="font-medium text-gray-700 mb-1">User Instruction:</div>
+                  <div class="text-gray-900 font-mono text-xs">"Check port <span class="success-highlight text-white px-1 rounded">27027</span>"</div>
+                </div>
+
+                <div class="bg-blue-50 border border-blue-200 p-3 rounded">
+                  <div class="font-medium text-blue-700 mb-1">1. Classification:</div>
+                  <div class="text-blue-900 text-xs">
+                    Quadrant: <strong>TACTICAL</strong><br>
+                    Persistence: <strong>HIGH</strong> (explicit parameter)<br>
+                    Verification: <strong>MANDATORY</strong>
+                  </div>
+                </div>
+
+                <div class="bg-yellow-50 border border-yellow-200 p-3 rounded">
+                  <div class="font-medium text-yellow-700 mb-1">2. Cross-Reference Validation:</div>
+                  <div class="text-yellow-900 text-xs">
+                    ⚠️ CONFLICT DETECTED<br>
+                    User specified port: 27027<br>
+                    Proposed action uses: 27017<br>
+                    <strong>→ ACTION REJECTED</strong>
+                  </div>
+                </div>
+
+                <div class="bg-white p-3 rounded border-2 border-green-300">
+                  <div class="font-medium text-green-700 mb-1">AI Response to User:</div>
+                  <div class="text-gray-900 text-xs">
+                    "I noticed you specified port 27027, but I was about to check port 27017 (MongoDB default).
+                    I'll use port 27027 as you instructed."
+                  </div>
+                </div>
+
+                <div class="bg-white p-3 rounded">
+                  <div class="font-medium text-green-700 mb-1">Result:</div>
+                  <div class="text-green-600 text-sm">
+                    ✅ Correct port used<br>
+                    ✅ Data found successfully<br>
+                    ✅ Trust maintained<br>
+                    ✅ Zero wasted time
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-6 bg-gray-100 p-4 rounded-lg">
+            <h5 class="font-semibold text-gray-900 mb-2">Key Insight</h5>
+            <p class="text-gray-700 text-sm">
+              The framework <strong>structurally prevents</strong> cached patterns from overriding explicit instructions.
+              This scales to superintelligent systems because the constraint is <em>architectural</em>, not training-based.
+            </p>
+          </div>
+        </div>
+
+        <!-- Classifier Demo -->
+        <div id="demo-classifier" class="demo-content hidden">
+          <h3 class="text-2xl font-bold text-gray-900 mb-4">Instruction Classification</h3>
+
+          <div class="mb-6">
+            <label class="block text-sm font-medium text-gray-700 mb-2">Enter an instruction to classify:</label>
+            <input type="text" id="classify-input"
+                   class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                   placeholder='e.g., "Always prioritize user privacy" or "Check port 27027"'>
+            <button id="classify-button"
+                    class="mt-3 px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition">
+              Classify Instruction
+            </button>
+          </div>
+
+          <div id="classify-result" class="hidden">
+            <div class="bg-white border border-gray-200 rounded-lg p-6">
+              <h4 class="font-semibold text-gray-900 mb-4">Classification Result:</h4>
+              <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div class="bg-blue-50 p-4 rounded-lg">
+                  <div class="text-sm text-blue-600 font-medium mb-1">Quadrant</div>
+                  <div id="result-quadrant" class="text-lg font-bold text-blue-900"></div>
+                  <div id="result-quadrant-desc" class="text-xs text-blue-700 mt-1"></div>
+                </div>
+                <div class="bg-purple-50 p-4 rounded-lg">
+                  <div class="text-sm text-purple-600 font-medium mb-1">Persistence</div>
+                  <div id="result-persistence" class="text-lg font-bold text-purple-900"></div>
+                  <div class="text-xs text-purple-700 mt-1">How strictly must this be followed?</div>
+                </div>
+                <div class="bg-green-50 p-4 rounded-lg">
+                  <div class="text-sm text-green-600 font-medium mb-1">Verification</div>
+                  <div id="result-verification" class="text-lg font-bold text-green-900"></div>
+                  <div class="text-xs text-green-700 mt-1">Level of checking required</div>
+                </div>
+              </div>
+              <div class="mt-4 bg-gray-50 p-4 rounded-lg">
+                <div class="text-sm text-gray-600 font-medium mb-2">Metadata:</div>
+                <div class="grid grid-cols-2 gap-3 text-sm">
+                  <div>
+                    <span class="text-gray-600">Explicitness:</span>
+                    <span id="result-explicitness" class="ml-2 font-medium"></span>
+                  </div>
+                  <div>
+                    <span class="text-gray-600">Human Oversight:</span>
+                    <span id="result-oversight" class="ml-2 font-medium"></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-6 bg-blue-50 border-l-4 border-blue-500 p-4 rounded-r">
+            <h5 class="font-semibold text-blue-900 mb-2">Quadrant System</h5>
+            <ul class="text-sm text-blue-800 space-y-1">
+              <li><strong>STRATEGIC:</strong> Values, mission, long-term direction (years)</li>
+              <li><strong>OPERATIONAL:</strong> Processes, policies, project decisions (months)</li>
+              <li><strong>TACTICAL:</strong> Implementation, immediate actions (weeks)</li>
+              <li><strong>SYSTEM:</strong> Technical infrastructure, architecture (continuous)</li>
+              <li><strong>STOCHASTIC:</strong> Innovation, exploration, experimentation (variable)</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Boundaries Demo -->
+        <div id="demo-boundaries" class="demo-content hidden">
+          <h3 class="text-2xl font-bold text-gray-900 mb-4">Tractatus Boundary Enforcement</h3>
+
+          <div class="mb-6 bg-amber-50 border-l-4 border-amber-500 p-4 rounded-r">
+            <h5 class="font-semibold text-amber-900 mb-2">Tractatus 12.1-12.7: Philosophical Boundaries</h5>
+            <p class="text-amber-800 text-sm mb-3">
+              These boundaries define domains where AI <strong>architecturally cannot</strong> make decisions -
+              human judgment is structurally required.
+            </p>
+            <ul class="text-sm text-amber-900 space-y-1">
+              <li>12.1 - Values cannot be automated, only verified</li>
+              <li>12.2 - Innovation cannot be proceduralized, only facilitated</li>
+              <li>12.3 - Wisdom cannot be encoded, only supported</li>
+              <li>12.4 - Purpose cannot be generated, only preserved</li>
+              <li>12.5 - Meaning cannot be computed, only recognized</li>
+              <li>12.6 - Agency cannot be simulated, only respected</li>
+            </ul>
+          </div>
+
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            <div class="bg-red-50 border-2 border-red-300 rounded-lg p-5">
+              <h5 class="font-semibold text-red-900 mb-3 flex items-center">
+                <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M13.477 14.89A6 6 0 015.11 6.524l8.367 8.368zm1.414-1.414L6.524 5.11a6 6 0 018.367 8.367zM18 10a8 8 0 11-16 0 8 8 0 0116 0z"/>
+                </svg>
+                Blocked Actions
+              </h5>
+              <div class="space-y-2 text-sm">
+                <div class="bg-white p-3 rounded border-l-4 border-red-500">
+                  <div class="font-medium text-red-900">"Decide our organizational values"</div>
+                  <div class="text-red-700 text-xs mt-1">→ Boundary 12.1 (VALUES) - requires human judgment</div>
+                </div>
+                <div class="bg-white p-3 rounded border-l-4 border-red-500">
+                  <div class="font-medium text-red-900">"Determine if this action is ethical"</div>
+                  <div class="text-red-700 text-xs mt-1">→ Boundary 12.1 (VALUES) - requires human judgment</div>
+                </div>
+                <div class="bg-white p-3 rounded border-l-4 border-red-500">
+                  <div class="font-medium text-red-900">"Define our company's purpose"</div>
+                  <div class="text-red-700 text-xs mt-1">→ Boundary 12.4 (PURPOSE) - requires human judgment</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="bg-green-50 border-2 border-green-300 rounded-lg p-5">
+              <h5 class="font-semibold text-green-900 mb-3 flex items-center">
+                <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/>
+                </svg>
+                Allowed Actions
+              </h5>
+              <div class="space-y-2 text-sm">
+                <div class="bg-white p-3 rounded border-l-4 border-green-500">
+                  <div class="font-medium text-green-900">"Fix this syntax error"</div>
+                  <div class="text-green-700 text-xs mt-1">→ Technical implementation - AI capable</div>
+                </div>
+                <div class="bg-white p-3 rounded border-l-4 border-green-500">
+                  <div class="font-medium text-green-900">"Optimize database query performance"</div>
+                  <div class="text-green-700 text-xs mt-1">→ Technical expertise - AI capable</div>
+                </div>
+                <div class="bg-white p-3 rounded border-l-4 border-green-500">
+                  <div class="font-medium text-green-900">"Generate API documentation"</div>
+                  <div class="text-green-700 text-xs mt-1">→ Technical task - AI capable with review</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Pressure Demo -->
+        <div id="demo-pressure" class="demo-content hidden">
+          <h3 class="text-2xl font-bold text-gray-900 mb-4">Context Pressure Monitoring</h3>
+
+          <div class="mb-6">
+            <p class="text-gray-700 mb-4">
+              The framework monitors environmental conditions that increase AI error probability.
+              Adjust the sliders to see how pressure levels change.
+            </p>
+          </div>
+
+          <div class="bg-white border border-gray-200 rounded-lg p-6 mb-6">
+            <div class="space-y-6">
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2">
+                  Token Usage: <span id="token-value" class="font-bold">100,000</span> / 200,000
+                </label>
+                <input type="range" id="token-slider" min="0" max="200000" value="100000"
+                       class="w-full">
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2">
+                  Conversation Length: <span id="messages-value" class="font-bold">50</span> messages
+                </label>
+                <input type="range" id="messages-slider" min="0" max="200" value="50"
+                       class="w-full">
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2">
+                  Recent Errors: <span id="errors-value" class="font-bold">0</span>
+                </label>
+                <input type="range" id="errors-slider" min="0" max="10" value="0"
+                       class="w-full">
+              </div>
+            </div>
+          </div>
+
+          <div id="pressure-result" class="bg-white border-2 rounded-lg p-6">
+            <div class="flex items-center justify-between mb-4">
+              <h4 class="font-semibold text-gray-900">Pressure Analysis</h4>
+              <span id="pressure-badge" class="px-3 py-1 rounded-full text-sm font-medium bg-green-100 text-green-800">NORMAL</span>
+            </div>
+            <div class="mb-4">
+              <div class="flex justify-between text-sm mb-1">
+                <span class="text-gray-600">Overall Pressure</span>
+                <span id="pressure-percentage" class="font-medium">15%</span>
+              </div>
+              <div class="w-full bg-gray-200 rounded-full h-3">
+                <div id="pressure-bar" class="bg-green-500 h-3 rounded-full transition-all duration-300" style="width: 15%"></div>
+              </div>
+            </div>
+            <div id="pressure-recommendations" class="text-sm text-gray-600">
+              Operating normally. All systems green.
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Resources Section -->
+    <section class="bg-gray-50 rounded-lg p-8 border border-gray-200">
+      <h3 class="text-2xl font-bold text-gray-900 mb-4">Resources</h3>
+      <p class="text-gray-600 mb-6">
+        Learn more about the Tractatus Framework and how to implement AI safety architectures.
+      </p>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <a href="/docs.html" class="block bg-white border border-gray-300 hover:border-blue-500 hover:shadow-md p-4 rounded-lg transition">
+          <div class="font-semibold text-gray-900 mb-1">📚 Documentation</div>
+          <div class="text-sm text-gray-600">Read the full framework specification</div>
+        </a>
+        <a href="/researcher.html" class="block bg-white border border-gray-300 hover:border-blue-500 hover:shadow-md p-4 rounded-lg transition">
+          <div class="font-semibold text-gray-900 mb-1">🔬 For Researchers</div>
+          <div class="text-sm text-gray-600">Academic papers and case studies</div>
+        </a>
+        <a href="/implementer.html" class="block bg-white border border-gray-300 hover:border-blue-500 hover:shadow-md p-4 rounded-lg transition">
+          <div class="font-semibold text-gray-900 mb-1">⚙️ For Implementers</div>
+          <div class="text-sm text-gray-600">Implementation guides and tools</div>
+        </a>
+        <a href="/about.html" class="block bg-white border border-gray-300 hover:border-blue-500 hover:shadow-md p-4 rounded-lg transition">
+          <div class="font-semibold text-gray-900 mb-1">ℹ️ About</div>
+          <div class="text-sm text-gray-600">Mission, values, and team</div>
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+
+  <script src="/js/demos/tractatus-demo.js?v=1759833751"></script>
+
+</body>
+</html>

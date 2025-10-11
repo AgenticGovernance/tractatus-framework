@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Frequently Asked Questions | Tractatus AI Safety Framework</title>
+  <meta name="description" content="Common questions about Tractatus framework: implementation, performance, relationship to Claude Code, and governance architecture.">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="stylesheet" href="/css/tailwind.css?v=1.0.3">
+  <style>
+    /* Accessibility: Skip link */
+    .skip-link { position: absolute; left: -9999px; top: 0; }
+    .skip-link:focus { left: 0; z-index: 100; background: white; padding: 1rem; border: 2px solid #3b82f6; }
+
+    /* Accessibility: Focus indicators */
+    a:focus, button:focus, input:focus { outline: 3px solid #3b82f6; outline-offset: 2px; }
+    a:focus:not(:focus-visible) { outline: none; }
+    a:focus-visible { outline: 3px solid #3b82f6; outline-offset: 2px; }
+
+    /* FAQ expandable sections */
+    .faq-item { transition: all 0.2s ease; }
+    .faq-question { cursor: pointer; user-select: none; }
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease-out;
+    }
+    .faq-item.open .faq-answer { max-height: 2000px; }
+    .faq-arrow {
+      transition: transform 0.2s ease;
+      display: inline-block;
+    }
+    .faq-item.open .faq-arrow { transform: rotate(180deg); }
+
+    /* Search highlighting */
+    .highlight { background-color: #fef08a; padding: 0 2px; }
+
+    /* Audience filter pills */
+    .filter-pill {
+      transition: all 0.2s ease;
+      cursor: pointer;
+    }
+    .filter-pill.active {
+      background-color: #3b82f6;
+      color: white;
+    }
+  </style>
+</head>
+<body class="bg-gray-50">
+
+  <!-- Skip Link -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- Navigation -->
+  <script src="/js/components/navbar.js?v=1.0.3"></script>
+
+  <!-- Hero -->
+  <div class="bg-gradient-to-br from-blue-50 to-indigo-50 py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center">
+        <h1 class="text-5xl font-bold text-gray-900 mb-4">Frequently Asked Questions</h1>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+          Common questions about Tractatus framework implementation, performance, and architecture
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Search & Filters -->
+  <div class="bg-white border-b border-gray-200 sticky top-0 z-10 shadow-sm">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+      <!-- Search -->
+      <div class="mb-4">
+        <div class="relative">
+          <input
+            type="text"
+            id="faq-search"
+            placeholder="Search questions..."
+            class="w-full px-4 py-3 pl-11 pr-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
+            aria-label="Search FAQ"
+          />
+          <svg class="absolute left-3 top-3.5 h-5 w-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+          </svg>
+        </div>
+      </div>
+
+      <!-- Audience Filters -->
+      <div class="flex flex-wrap gap-2">
+        <button class="filter-pill active px-4 py-2 rounded-full text-sm font-medium bg-gray-100 text-gray-700 hover:bg-gray-200 transition" data-filter="all">
+          All Questions
+        </button>
+        <button class="filter-pill px-4 py-2 rounded-full text-sm font-medium bg-gray-100 text-gray-700 hover:bg-gray-200 transition" data-filter="researcher">
+          For Researchers
+        </button>
+        <button class="filter-pill px-4 py-2 rounded-full text-sm font-medium bg-gray-100 text-gray-700 hover:bg-gray-200 transition" data-filter="implementer">
+          For Implementers
+        </button>
+        <button class="filter-pill px-4 py-2 rounded-full text-sm font-medium bg-gray-100 text-gray-700 hover:bg-gray-200 transition" data-filter="leader">
+          For Leaders
+        </button>
+      </div>
+
+      <!-- Results count -->
+      <div id="results-count" class="mt-4 text-sm text-gray-600"></div>
+    </div>
+  </div>
+
+  <!-- FAQ Content -->
+  <main id="main-content" class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+
+    <!-- Quick Actions -->
+    <div class="bg-blue-50 rounded-lg p-6 mb-8">
+      <h2 class="text-lg font-bold text-gray-900 mb-3">Quick Actions</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <a href="/downloads/tractatus-quickstart.tar.gz" class="flex items-center gap-2 text-blue-700 hover:text-blue-900 font-medium">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+          </svg>
+          Deployment Quickstart
+        </a>
+        <a href="/docs.html" class="flex items-center gap-2 text-blue-700 hover:text-blue-900 font-medium">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+          </svg>
+          Full Documentation
+        </a>
+        <a href="/demos/classification-demo.html" class="flex items-center gap-2 text-blue-700 hover:text-blue-900 font-medium">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 10l-2 1m0 0l-2-1m2 1v2.5M20 7l-2 1m2-1l-2-1m2 1v2.5M14 4l-2-1-2 1M4 7l2-1M4 7l2 1M4 7v2.5M12 21l-2-1m2 1l2-1m-2 1v-2.5M6 18l-2-1v-2.5M18 18l2-1v-2.5"/>
+          </svg>
+          Interactive Demos
+        </a>
+      </div>
+    </div>
+
+    <!-- FAQ Sections -->
+    <div id="faq-container">
+      <!-- Section will be populated by JavaScript -->
+    </div>
+
+    <!-- No results message -->
+    <div id="no-results" class="hidden text-center py-12">
+      <svg class="mx-auto h-12 w-12 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+      </svg>
+      <h3 class="mt-2 text-lg font-medium text-gray-900">No questions found</h3>
+      <p class="mt-1 text-sm text-gray-500">Try adjusting your search or filter</p>
+    </div>
+
+    <!-- Still have questions? -->
+    <div class="mt-12 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-xl p-8 text-center text-white">
+      <h2 class="text-2xl font-bold mb-3">Still Have Questions?</h2>
+      <p class="text-lg mb-6 opacity-90">
+        Can't find what you're looking for? We're here to help.
+      </p>
+      <div class="flex flex-wrap justify-center gap-4">
+        <a href="/media-inquiry.html" class="bg-white text-blue-600 px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition">
+          Contact Us
+        </a>
+        <a href="https://github.com/AgenticGovernance/tractatus-framework/issues" target="_blank" rel="noopener noreferrer" class="bg-blue-700 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-800 transition border-2 border-white">
+          GitHub Discussions
+        </a>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-gray-400 py-12 mt-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div>
+          <h3 class="text-white font-bold mb-4">Tractatus Framework</h3>
+          <p class="text-sm">Safety Through Structure, Not Aspiration</p>
+        </div>
+        <div>
+          <h3 class="text-white font-bold mb-4">Audience Paths</h3>
+          <ul class="space-y-2 text-sm">
+            <li><a href="/researcher.html" class="hover:text-white transition">Researchers</a></li>
+            <li><a href="/implementer.html" class="hover:text-white transition">Implementers</a></li>
+            <li><a href="/leader.html" class="hover:text-white transition">Leaders</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="text-white font-bold mb-4">Resources</h3>
+          <ul class="space-y-2 text-sm">
+            <li><a href="/docs.html" class="hover:text-white transition">Documentation</a></li>
+            <li><a href="/demos/classification-demo.html" class="hover:text-white transition">Interactive Demos</a></li>
+            <li><a href="/faq.html" class="hover:text-white transition">FAQ</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="text-white font-bold mb-4">Community</h3>
+          <ul class="space-y-2 text-sm">
+            <li><a href="/media-inquiry.html" class="hover:text-white transition">Media Inquiries</a></li>
+            <li><a href="/case-submission.html" class="hover:text-white transition">Submit Case Study</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="mt-8 pt-8 border-t border-gray-800 text-center text-sm space-y-2">
+        <p class="text-gray-300">Built with <a href="https://claude.ai/claude-code" class="text-blue-400 hover:text-blue-300 transition" target="_blank" rel="noopener">Claude Code</a></p>
+        <p>© 2025 Tractatus AI Safety Framework. Licensed under <a href="https://www.apache.org/licenses/LICENSE-2.0" class="text-blue-400 hover:text-blue-300 transition" target="_blank" rel="noopener">Apache License 2.0</a>.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/js/faq.js?v=1.0.3"></script>
+
+</body>
+</html>

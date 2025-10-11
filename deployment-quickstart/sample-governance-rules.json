@@ -1,0 +1,204 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Tractatus Governance Rules",
+  "description": "Sample governance rules for the Tractatus Framework - 5 core governance services",
+  "version": "1.0.0",
+  "rules": [
+    {
+      "rule_id": "STR-001",
+      "quadrant": "STRATEGIC",
+      "persistence": "HIGH",
+      "title": "Human Approval for Values Decisions",
+      "content": "All decisions involving privacy, ethics, indigenous rights, cultural sensitivity, or strategic direction require explicit human approval before implementation",
+      "enforced_by": "BoundaryEnforcer",
+      "violation_action": "BLOCK_AND_ESCALATE",
+      "examples": [
+        "Privacy policy changes",
+        "Ethical trade-off decisions",
+        "Cultural content modifications",
+        "Indigenous data sovereignty decisions",
+        "Mission-critical strategic pivots"
+      ],
+      "rationale": "Values decisions cannot be systematized and must not be automated (Tractatus §7: Whereof one cannot speak, thereof one must be silent)",
+      "boundary_section": "12.1"
+    },
+    {
+      "rule_id": "STR-002",
+      "quadrant": "STRATEGIC",
+      "persistence": "HIGH",
+      "title": "Mandatory Cross-Reference for Port Specifications",
+      "content": "When user provides explicit port numbers, configuration settings, or technical specifications, system MUST cross-reference against stored instructions before suggesting alternatives",
+      "enforced_by": "CrossReferenceValidator",
+      "violation_action": "VALIDATE_BEFORE_SUGGEST",
+      "examples": [
+        "User specifies MongoDB port 27027 → Validate before suggesting default 27017",
+        "User specifies custom API port → Check instruction history",
+        "User provides specific configuration → Verify against HIGH persistence instructions"
+      ],
+      "rationale": "Prevents pattern recognition bias from overriding explicit user instructions (27027 incident case study)",
+      "related_case_study": "27027-incident"
+    },
+    {
+      "rule_id": "OPS-001",
+      "quadrant": "OPERATIONAL",
+      "persistence": "MEDIUM",
+      "title": "Context Pressure Monitoring",
+      "content": "Monitor session context pressure continuously. When pressure reaches ELEVATED (50%), increase verification rigor. At HIGH (75%), recommend session handoff or checkpointing",
+      "enforced_by": "ContextPressureMonitor",
+      "violation_action": "ADJUST_VERIFICATION_LEVEL",
+      "thresholds": {
+        "NORMAL": "0-40%",
+        "ELEVATED": "41-60%",
+        "HIGH": "61-80%",
+        "CRITICAL": "81-95%",
+        "DANGEROUS": "96-100%"
+      },
+      "examples": [
+        "Token count approaching limit → Trigger checkpoint",
+        "Error rate increasing → Escalate verification",
+        "Message depth exceeds normal session → Recommend handoff"
+      ],
+      "rationale": "Proactive detection of degraded operating conditions before failures occur"
+    },
+    {
+      "rule_id": "OPS-002",
+      "quadrant": "OPERATIONAL",
+      "persistence": "MEDIUM",
+      "title": "Instruction Classification and Persistence",
+      "content": "All user instructions must be classified by quadrant (STR/OPS/TAC/SYS/STO) and assigned persistence level (HIGH/MEDIUM/LOW/VARIABLE). Classifications stored in instruction history for cross-reference validation",
+      "enforced_by": "InstructionPersistenceClassifier",
+      "violation_action": "CLASSIFY_AND_STORE",
+      "classification_criteria": {
+        "STRATEGIC": "Values, ethics, mission, sovereignty, Te Tiriti commitments",
+        "OPERATIONAL": "Architecture, deployment, configuration, session management",
+        "TACTICAL": "Bug fixes, feature implementations, specific code changes",
+        "SYSTEM": "Environment, infrastructure, database, tooling",
+        "STOCHASTIC": "One-off requests, experimental, temporary"
+      },
+      "persistence_criteria": {
+        "HIGH": "Permanent, session-independent, requires approval to override",
+        "MEDIUM": "Session-persistent, can be superseded by explicit instruction",
+        "LOW": "Task-specific, expires after completion",
+        "VARIABLE": "Context-dependent, reassess per usage"
+      },
+      "examples": [
+        "User: 'Use MongoDB port 27027' → SYSTEM quadrant, HIGH persistence",
+        "User: 'Never automate values decisions' → STRATEGIC quadrant, HIGH persistence",
+        "User: 'Fix this bug' → TACTICAL quadrant, LOW persistence"
+      ],
+      "rationale": "Prevents instruction fade and pattern recognition override"
+    },
+    {
+      "rule_id": "TAC-001",
+      "quadrant": "TACTICAL",
+      "persistence": "MEDIUM",
+      "title": "Metacognitive Verification for Complex Operations",
+      "content": "Operations affecting >3 files, >5 steps, architecture changes, or security implementations require metacognitive self-verification before execution",
+      "enforced_by": "MetacognitiveVerifier",
+      "violation_action": "VERIFY_BEFORE_EXECUTE",
+      "verification_criteria": [
+        "Alignment: Does proposed action align with user intent and stored instructions?",
+        "Coherence: Is the solution internally consistent and well-structured?",
+        "Completeness: Are all requirements addressed? Any edge cases missed?",
+        "Safety: Are there security, privacy, or values concerns?",
+        "Alternatives: What other approaches were considered? Why is this optimal?"
+      ],
+      "confidence_threshold": 0.85,
+      "examples": [
+        "Database schema changes → Verify against architecture principles",
+        "Security implementation → Self-check for vulnerabilities",
+        "Multi-service integration → Verify coherence and completeness"
+      ],
+      "rationale": "Structural pause-and-verify reduces errors in complex operations"
+    },
+    {
+      "rule_id": "SYS-001",
+      "quadrant": "SYSTEM",
+      "persistence": "HIGH",
+      "title": "Database Port Configuration",
+      "content": "MongoDB must run on port 27017 for tractatus_dev (development) and port 27017 for tractatus_prod (production). No other ports allowed without explicit HIGH persistence instruction override",
+      "enforced_by": "CrossReferenceValidator",
+      "violation_action": "VALIDATE_BEFORE_CHANGE",
+      "examples": [
+        "Attempting to change MongoDB port → Cross-reference against instruction history",
+        "Config file modification → Verify against SYS quadrant HIGH persistence rules"
+      ],
+      "rationale": "Prevents accidental configuration drift"
+    },
+    {
+      "rule_id": "SYS-002",
+      "quadrant": "SYSTEM",
+      "persistence": "HIGH",
+      "title": "No Shared Code with Other Projects",
+      "content": "Tractatus project is separate from family-history and sydigital projects. No shared code, no copy-paste, no assumptions about shared infrastructure",
+      "enforced_by": "BoundaryEnforcer",
+      "violation_action": "BLOCK_AND_ALERT",
+      "examples": [
+        "Attempting to reference family-history code → BLOCK",
+        "Assuming shared database → BLOCK and clarify separation"
+      ],
+      "rationale": "Project isolation prevents cross-contamination and maintains independence"
+    },
+    {
+      "rule_id": "SEC-001",
+      "quadrant": "SYSTEM",
+      "persistence": "HIGH",
+      "title": "Content Security Policy Enforcement",
+      "content": "All HTML files must comply with Content Security Policy: no inline event handlers (onclick=), no inline styles (style=), no inline scripts (<script> content), no javascript: URLs",
+      "enforced_by": "BoundaryEnforcer",
+      "violation_action": "BLOCK_AND_REPORT",
+      "examples": [
+        "onclick='doSomething()' → BLOCKED (use addEventListener)",
+        "style='color: red' → BLOCKED (use CSS classes)",
+        "<script>alert('hi')</script> → BLOCKED (use external .js files)"
+      ],
+      "rationale": "CSP prevents XSS attacks and maintains security posture"
+    },
+    {
+      "rule_id": "VAL-001",
+      "quadrant": "STRATEGIC",
+      "persistence": "HIGH",
+      "title": "Te Tiriti o Waitangi Commitment",
+      "content": "All decisions affecting Māori data, indigenous sovereignty, cultural content, or Te Reo Māori translations require consultation and respect for CARE Principles (Collective benefit, Authority to control, Responsibility, Ethics)",
+      "enforced_by": "BoundaryEnforcer",
+      "violation_action": "BLOCK_AND_ESCALATE",
+      "examples": [
+        "Te Reo Māori content changes → Require Māori language consultation",
+        "Indigenous data handling → Apply CARE Principles",
+        "Cultural appropriateness questions → Escalate to human review"
+      ],
+      "rationale": "Core values alignment - sovereignty and indigenous rights protection",
+      "boundary_section": "12.1"
+    },
+    {
+      "rule_id": "QUAL-001",
+      "quadrant": "OPERATIONAL",
+      "persistence": "HIGH",
+      "title": "World-Class Quality Standard",
+      "content": "All code, documentation, and content must meet world-class quality standards. No shortcuts, no fake data, no placeholders in production. If quality cannot be achieved, defer the feature",
+      "enforced_by": "MetacognitiveVerifier",
+      "violation_action": "VERIFY_QUALITY_BEFORE_COMMIT",
+      "examples": [
+        "Lorem ipsum placeholder text → BLOCK",
+        "TODO comments in production code → REVIEW",
+        "Hardcoded test data → BLOCK",
+        "Incomplete error handling → BLOCK"
+      ],
+      "rationale": "Quality is non-negotiable - reflects framework credibility"
+    }
+  ],
+  "metadata": {
+    "created": "2025-10-12",
+    "version": "1.0.0",
+    "license": "Apache-2.0",
+    "framework_version": "0.1.0",
+    "total_rules": 10,
+    "governance_services": [
+      "BoundaryEnforcer",
+      "CrossReferenceValidator",
+      "ContextPressureMonitor",
+      "InstructionPersistenceClassifier",
+      "MetacognitiveVerifier"
+    ]
+  }
+}

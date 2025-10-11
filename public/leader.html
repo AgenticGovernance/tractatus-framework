@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>For AI Leaders | Tractatus AI Safety Framework</title>
+  <meta name="description" content="Strategic AI governance for executives and research directors. Structural approach to AI safety, compliance, and risk mitigation.">
+  <link rel="stylesheet" href="/css/tailwind.css?v=1.0.5">
+  <style>
+    .gradient-text {
+      background: linear-gradient(120deg, #d97706 0%, #f59e0b 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .hover-lift { transition: all 0.3s ease; }
+    .hover-lift:hover { transform: translateY(-4px); box-shadow: 0 12px 24px rgba(0,0,0,0.15); }
+
+    /* Skip link & focus */
+    .skip-link { position: absolute; left: -9999px; }
+    .skip-link:focus { left: 0; z-index: 100; background: white; padding: 1rem; }
+    a:focus, button:focus {
+      outline: 3px solid #f59e0b;
+      outline-offset: 2px;
+    }
+    a:focus:not(:focus-visible) { outline: none; }
+    a:focus-visible { outline: 3px solid #f59e0b; outline-offset: 2px; }
+  </style>
+</head>
+<body class="bg-white">
+
+  <!-- Skip Link for Keyboard Navigation -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- Navigation -->
+  <script src="/js/components/navbar.js?v=1.0.5"></script>
+
+  <!-- Hero Section -->
+  <div class="bg-gradient-to-br from-gray-50 to-amber-50 pt-20 pb-24">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-4xl mx-auto">
+        <div class="inline-flex items-center bg-amber-100 text-amber-800 px-4 py-2 rounded-full text-sm font-semibold mb-6">
+          <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/>
+          </svg>
+          Research Framework for AI Safety Governance
+        </div>
+
+        <h1 class="text-5xl md:text-6xl font-extrabold text-gray-900 mb-6 leading-tight">
+          Structural AI Safety<br>for <span class="gradient-text">Strategic Leaders</span>
+        </h1>
+
+        <p class="text-xl text-gray-600 mb-8 leading-relaxed">
+          A governance framework designed to help organizations navigate AI risks,<br class="hidden md:inline">
+          compliance requirements, and safety challenges through architectural controls.
+        </p>
+
+        <div class="flex justify-center gap-4 mb-12">
+          <a href="#readiness-assessment" class="bg-amber-700 text-white px-8 py-4 rounded-lg font-semibold hover:bg-amber-800 transition shadow-lg inline-flex items-center">
+            <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/>
+            </svg>
+            Assess Your Organization
+          </a>
+          <a href="/docs.html" class="bg-white text-gray-800 px-8 py-4 rounded-lg font-semibold border-2 border-gray-300 hover:border-amber-600 hover:text-amber-800 transition">
+            Read Documentation
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Strategic Challenges Section -->
+  <div id="main-content" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+    <div class="text-center mb-16">
+      <h2 class="text-4xl font-bold text-gray-900 mb-4">Strategic Challenges Tractatus Addresses</h2>
+      <p class="text-gray-600 text-lg max-w-2xl mx-auto">
+        Organizations deploying AI systems face regulatory, technical, and reputational risks.<br>Tractatus offers a structural approach to mitigation.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <!-- Regulatory Compliance -->
+      <div class="bg-white rounded-2xl border-2 border-gray-200 p-8 hover-lift">
+        <div class="w-16 h-16 bg-red-100 rounded-xl flex items-center justify-center mb-6">
+          <svg class="w-8 h-8 text-red-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+          </svg>
+        </div>
+        <h3 class="text-2xl font-bold text-gray-900 mb-4">Regulatory Compliance</h3>
+        <div class="bg-red-50 rounded-lg p-4 mb-4">
+          <div class="text-3xl font-bold text-red-700">€35M</div>
+          <div class="text-sm text-red-700">EU AI Act Maximum Fine</div>
+        </div>
+        <ul class="space-y-3 text-gray-700">
+          <li class="flex items-start">
+            <svg class="w-5 h-5 text-red-700 mr-2 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/></svg>
+            <span>Designed to align with EU AI Act requirements</span>
+          </li>
+          <li class="flex items-start">
+            <svg class="w-5 h-5 text-red-700 mr-2 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/></svg>
+            <span>Architectural controls for risk management</span>
+          </li>
+          <li class="flex items-start">
+            <svg class="w-5 h-5 text-red-700 mr-2 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/></svg>
+            <span>Auditable decision-making processes</span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Technical Risk Mitigation -->
+      <div class="bg-white rounded-2xl border-2 border-amber-500 p-8 hover-lift relative">
+        <div class="absolute top-0 right-0 bg-amber-500 text-white px-3 py-1 rounded-bl-lg rounded-tr-xl text-xs font-bold">
+          CORE VALUE
+        </div>
+        <div class="w-16 h-16 bg-green-100 rounded-xl flex items-center justify-center mb-6">
+          <svg class="w-8 h-8 text-green-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+          </svg>
+        </div>
+        <h3 class="text-2xl font-bold text-gray-900 mb-4">Technical Risk Mitigation</h3>
+        <div class="bg-green-50 rounded-lg p-4 mb-4">
+          <div class="text-3xl font-bold text-green-700">5 Agents</div>
+          <div class="text-sm text-green-700">Governance Components</div>
+        </div>
+        <ul class="space-y-3 text-gray-700">
+          <li class="flex items-start">
+            <svg class="w-5 h-5 text-green-700 mr-2 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/></svg>
+            <span>BoundaryEnforcer for values alignment</span>
+          </li>
+          <li class="flex items-start">
+            <svg class="w-5 h-5 text-green-700 mr-2 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/></svg>
+            <span>CrossReferenceValidator for consistency</span>
+          </li>
+          <li class="flex items-start">
+            <svg class="w-5 h-5 text-green-700 mr-2 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/></svg>
+            <span>ContextPressureMonitor for session management</span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Strategic Positioning -->
+      <div class="bg-white rounded-2xl border-2 border-gray-200 p-8 hover-lift">
+        <div class="w-16 h-16 bg-blue-100 rounded-xl flex items-center justify-center mb-6">
+          <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+          </svg>
+        </div>
+        <h3 class="text-2xl font-bold text-gray-900 mb-4">Early-Stage Research</h3>
+        <div class="bg-blue-50 rounded-lg p-4 mb-4">
+          <div class="text-3xl font-bold text-blue-700">Open</div>
+          <div class="text-sm text-blue-600">Research Framework</div>
+        </div>
+        <ul class="space-y-3 text-gray-700">
+          <li class="flex items-start">
+            <svg class="w-5 h-5 text-blue-600 mr-2 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/></svg>
+            <span>Development framework for AI governance</span>
+          </li>
+          <li class="flex items-start">
+            <svg class="w-5 h-5 text-blue-600 mr-2 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/></svg>
+            <span>Proof-of-concept for LLM safety patterns</span>
+          </li>
+          <li class="flex items-start">
+            <svg class="w-5 h-5 text-blue-600 mr-2 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/></svg>
+            <span>Foundation for future governance systems</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Strategic Readiness Assessment -->
+  <div id="readiness-assessment" class="bg-white py-20 border-t border-gray-200">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-4xl font-bold text-gray-900 mb-4">AI Governance Readiness Assessment</h2>
+        <p class="text-gray-600 text-lg max-w-3xl mx-auto">
+          Before implementing governance frameworks, organizations need honest answers to difficult questions.<br>
+          This assessment helps identify gaps, risks, and organizational readiness challenges.
+        </p>
+      </div>
+
+      <!-- Assessment Categories -->
+      <div class="space-y-12">
+
+        <!-- Category 1: Current AI Usage -->
+        <div class="bg-gray-50 rounded-xl p-8">
+          <div class="flex items-start gap-4 mb-6">
+            <div class="flex-shrink-0 w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
+              <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/>
+              </svg>
+            </div>
+            <div class="flex-1">
+              <h3 class="text-2xl font-bold text-gray-900 mb-4">Current AI Tool Inventory</h3>
+              <p class="text-gray-600 mb-6">Do you have clear visibility into what AI systems are already in use?</p>
+              <ul class="space-y-3 text-gray-700">
+                <li class="flex items-start">
+                  <span class="text-blue-600 mr-3 font-bold">□</span>
+                  <span>Have you catalogued all AI tools currently used across departments (ChatGPT, Claude, Copilot, internal LLMs, etc.)?</span>
+                </li>
+                <li class="flex items-start">
+                  <span class="text-blue-600 mr-3 font-bold">□</span>
+                  <span>Do you know which employees are using AI tools for customer-facing communications, code generation, or decision support?</span>
+                </li>
+                <li class="flex items-start">
+                  <span class="text-blue-600 mr-3 font-bold">□</span>
+                  <span>Can you identify which AI interactions involve proprietary data, customer information, or confidential business intelligence?</span>
+                </li>
+                <li class="flex items-start">
+                  <span class="text-blue-600 mr-3 font-bold">□</span>
+                  <span>Do you have visibility into shadow AI usage (employees using personal accounts for work tasks)?</span>
+                </li>
+                <li class="flex items-start">
+                  <span class="text-blue-600 mr-3 font-bold">□</span>
+                  <span>Have you documented which third-party vendors are using AI in services they provide to you?</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Category 2: Planned Deployment -->
+        <div class="bg-gray-50 rounded-xl p-8">
+          <div class="flex items-start gap-4 mb-6">
+            <div class="flex-shrink-0 w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center">
+              <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
+              </svg>
+            </div>
+            <div class="flex-1">
+              <h3 class="text-2xl font-bold text-gray-900 mb-4">Strategic AI Deployment Plans</h3>
+              <p class="text-gray-600 mb-6">What are you planning to build, and have you assessed the governance implications?</p>
+              <ul class="space-y-3 text-gray-700">
+                <li class="flex items-start">
+                  <span class="text-purple-600 mr-3 font-bold">□</span>
+                  <span>Have you prioritized AI initiatives by risk level (customer-facing vs. internal, high-stakes vs. low-stakes)?</span>
+                </li>
+                <li class="flex items-start">
+                  <span class="text-purple-600 mr-3 font-bold">□</span>
+                  <span>For each planned AI system, have you identified who is accountable when it makes a mistake or causes harm?</span>
+                </li>
+                <li class="flex items-start">
+                  <span class="text-purple-600 mr-3 font-bold">□</span>
+                  <span>Do you have criteria for determining which decisions should remain human-controlled vs. AI-assisted vs. fully automated?</span>
+                </li>
+                <li class="flex items-start">
+                  <span class="text-purple-600 mr-3 font-bold">□</span>
+                  <span>Have you evaluated whether your planned AI deployments fall under EU AI Act "high-risk" categories?</span>
+                </li>
+                <li class="flex items-start">
+                  <span class="text-purple-600 mr-3 font-bold">□</span>
+                  <span>Can you articulate what "safe failure" looks like for each planned AI system?</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Category 3: Workflow Integration -->
+        <div class="bg-gray-50 rounded-xl p-8">
+          <div class="flex items-start gap-4 mb-6">
+            <div class="flex-shrink-0 w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center">
+              <svg class="w-6 h-6 text-green-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+              </svg>
+            </div>
+            <div class="flex-1">
+              <h3 class="text-2xl font-bold text-gray-900 mb-4">Workflow & Process Integration</h3>
+              <p class="text-gray-600 mb-6">How will AI fit into existing processes, and what breaks when it fails?</p>
+              <ul class="space-y-3 text-gray-700">
+                <li class="flex items-start">
+                  <span class="text-green-700 mr-3 font-bold">□</span>
+                  <span>Have you mapped out which human roles will shift from "doer" to "reviewer/validator" of AI output?</span>
+                </li>
+                <li class="flex items-start">
+                  <span class="text-green-700 mr-3 font-bold">□</span>
+                  <span>Do you have processes to detect when employees are blindly accepting AI recommendations without validation?</span>
+                </li>
+                <li class="flex items-start">
+                  <span class="text-green-700 mr-3 font-bold">□</span>
+                  <span>Can your organization sustain critical operations if AI systems become unavailable for hours or days?</span>
+                </li>
+                <li class="flex items-start">
+                  <span class="text-green-700 mr-3 font-bold">□</span>
+                  <span>Have you considered the handoff points between AI-generated work and human-controlled processes (e.g., draft→review→approval)?</span>
+                </li>
+                <li class="flex items-start">
+                  <span class="text-green-700 mr-3 font-bold">□</span>
+                  <span>Do you know which workflows will require sequential AI operations, and how errors compound across multiple AI steps?</span>
+                </li>
+                <li class="flex items-start">
+                  <span class="text-green-700 mr-3 font-bold">□</span>
+                  <span>Have you assessed whether introducing AI will create new bottlenecks (e.g., senior staff spending all day reviewing AI output)?</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Category 4: Governance & Accountability -->
+        <div class="bg-gray-50 rounded-xl p-8">
+          <div class="flex items-start gap-4 mb-6">
+            <div class="flex-shrink-0 w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center">
+              <svg class="w-6 h-6 text-red-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
+              </svg>
+            </div>
+            <div class="flex-1">
+              <h3 class="text-2xl font-bold text-gray-900 mb-4">Decision Authority & Boundaries</h3>
+              <p class="text-gray-600 mb-6">Who decides what AI can and cannot do, and how are those boundaries enforced?</p>
+              <ul class="space-y-3 text-gray-700">
+                <li class="flex items-start">
+                  <span class="text-red-700 mr-3 font-bold">□</span>
+                  <span>Have you defined which types of decisions AI systems are prohibited from making (even with human oversight)?</span>
+                </li>
+                <li class="flex items-start">
+                  <span class="text-red-700 mr-3 font-bold">□</span>
+                  <span>Do you have a governance board or designated owner responsible for AI safety and compliance decisions?</span>
+                </li>
+                <li class="flex items-start">
+                  <span class="text-red-700 mr-3 font-bold">□</span>
+                  <span>Can you enforce AI usage policies technically (not just via policy documents employees may ignore)?</span>
+                </li>
+                <li class="flex items-start">
+                  <span class="text-red-700 mr-3 font-bold">□</span>
+                  <span>Have you established clear escalation paths when AI systems encounter edge cases or ambiguous situations?</span>
+                </li>
+                <li class="flex items-start">
+                  <span class="text-red-700 mr-3 font-bold">□</span>
+                  <span>Do you have audit mechanisms to detect policy violations or unauthorized AI usage patterns?</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Category 5: Risk & Incident Response -->
+        <div class="bg-gray-50 rounded-xl p-8">
+          <div class="flex items-start gap-4 mb-6">
+            <div class="flex-shrink-0 w-12 h-12 bg-amber-100 rounded-lg flex items-center justify-center">
+              <svg class="w-6 h-6 text-amber-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
+              </svg>
+            </div>
+            <div class="flex-1">
+              <h3 class="text-2xl font-bold text-gray-900 mb-4">Incident Preparedness</h3>
+              <p class="text-gray-600 mb-6">What happens when AI systems fail, hallucinate, or cause harm?</p>
+              <ul class="space-y-3 text-gray-700">
+                <li class="flex items-start">
+                  <span class="text-amber-700 mr-3 font-bold">□</span>
+                  <span>Do you have incident response procedures specifically for AI failures (separate from general IT incidents)?</span>
+                </li>
+                <li class="flex items-start">
+                  <span class="text-amber-700 mr-3 font-bold">□</span>
+                  <span>Can you trace AI-generated content or decisions back to specific prompts, model versions, and responsible parties?</span>
+                </li>
+                <li class="flex items-start">
+                  <span class="text-amber-700 mr-3 font-bold">□</span>
+                  <span>Have you war-gamed scenarios where AI provides plausible-sounding but incorrect information that leads to business harm?</span>
+                </li>
+                <li class="flex items-start">
+                  <span class="text-amber-700 mr-3 font-bold">□</span>
+                  <span>Do you have kill switches or rollback procedures to disable AI systems that are behaving unpredictably?</span>
+                </li>
+                <li class="flex items-start">
+                  <span class="text-amber-700 mr-3 font-bold">□</span>
+                  <span>Have you assessed your liability exposure if AI systems discriminate, leak data, or violate regulations?</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Category 6: Organizational Culture -->
+        <div class="bg-gray-50 rounded-xl p-8">
+          <div class="flex items-start gap-4 mb-6">
+            <div class="flex-shrink-0 w-12 h-12 bg-indigo-100 rounded-lg flex items-center justify-center">
+              <svg class="w-6 h-6 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/>
+              </svg>
+            </div>
+            <div class="flex-1">
+              <h3 class="text-2xl font-bold text-gray-900 mb-4">Human & Cultural Readiness</h3>
+              <p class="text-gray-600 mb-6">Is your organization culturally prepared for the messy reality of AI governance?</p>
+              <ul class="space-y-3 text-gray-700">
+                <li class="flex items-start">
+                  <span class="text-indigo-600 mr-3 font-bold">□</span>
+                  <span>Have you addressed employee fears about job displacement or skill obsolescence honestly?</span>
+                </li>
+                <li class="flex items-start">
+                  <span class="text-indigo-600 mr-3 font-bold">□</span>
+                  <span>Do your teams have the skills to critically evaluate AI output, or do they lack domain expertise to spot errors?</span>
+                </li>
+                <li class="flex items-start">
+                  <span class="text-indigo-600 mr-3 font-bold">□</span>
+                  <span>Are employees empowered to challenge or override AI recommendations without career risk?</span>
+                </li>
+                <li class="flex items-start">
+                  <span class="text-indigo-600 mr-3 font-bold">□</span>
+                  <span>Have you created incentives that reward thoughtful AI use over speed or cost savings alone?</span>
+                </li>
+                <li class="flex items-start">
+                  <span class="text-indigo-600 mr-3 font-bold">□</span>
+                  <span>Does your organization have realistic expectations about AI limitations, or is there pressure to treat it as infallible?</span>
+                </li>
+                <li class="flex items-start">
+                  <span class="text-indigo-600 mr-3 font-bold">□</span>
+                  <span>Have you allocated time and resources for governance work, or is it expected "on top of" existing responsibilities?</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Assessment Conclusion -->
+      <div class="mt-12 bg-gradient-to-r from-amber-50 to-orange-50 rounded-xl p-8 border-l-4 border-amber-500">
+        <h3 class="text-xl font-bold text-gray-900 mb-4">What Your Answers Reveal</h3>
+        <div class="space-y-4 text-gray-700">
+          <p>
+            <strong>If you checked most boxes:</strong> You're ahead of most organizations but likely uncovering how complex AI governance truly is. The hard work is implementation and cultural change.
+          </p>
+          <p>
+            <strong>If you checked some boxes:</strong> You have awareness but significant gaps. These gaps represent risk, but also clarity about where to focus governance efforts.
+          </p>
+          <p>
+            <strong>If you checked few boxes:</strong> You're in good company—most organizations are here. The challenge is building governance capability while AI deployment accelerates around you.
+          </p>
+          <p class="text-sm text-gray-600 italic pt-4 border-t border-amber-200">
+            Note: This assessment is designed to provoke strategic thinking, not to sell you a solution. Effective AI governance requires organizational commitment, not just technology purchases. Tractatus is a research framework exploring architectural approaches to some of these challenges—it is not a comprehensive answer to all the questions above.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Framework Overview -->
+  <div id="framework-overview" class="bg-gradient-to-br from-gray-50 to-white py-20">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-4xl font-bold text-gray-900 mb-4">How Tractatus Works</h2>
+        <p class="text-gray-600 text-lg">
+          Five integrated components work together to provide structural AI governance
+        </p>
+      </div>
+
+      <div class="space-y-8">
+        <!-- Component 1 -->
+        <div class="bg-white rounded-xl border border-gray-200 p-6 hover-lift">
+          <div class="flex items-start gap-4">
+            <div class="flex-shrink-0 w-12 h-12 bg-amber-100 rounded-lg flex items-center justify-center">
+              <svg class="w-6 h-6 text-amber-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
+              </svg>
+            </div>
+            <div class="flex-1">
+              <h3 class="text-xl font-bold text-gray-900 mb-2">BoundaryEnforcer</h3>
+              <p class="text-gray-600">Prevents AI systems from making values decisions without human approval. Ensures critical decisions remain under human control.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Component 2 -->
+        <div class="bg-white rounded-xl border border-gray-200 p-6 hover-lift">
+          <div class="flex items-start gap-4">
+            <div class="flex-shrink-0 w-12 h-12 bg-amber-100 rounded-lg flex items-center justify-center">
+              <svg class="w-6 h-6 text-amber-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/>
+              </svg>
+            </div>
+            <div class="flex-1">
+              <h3 class="text-xl font-bold text-gray-900 mb-2">InstructionPersistenceClassifier</h3>
+              <p class="text-gray-600">Maintains organizational directives across AI interactions. Helps reduce instruction drift and inconsistency over time.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Component 3 -->
+        <div class="bg-white rounded-xl border border-gray-200 p-6 hover-lift">
+          <div class="flex items-start gap-4">
+            <div class="flex-shrink-0 w-12 h-12 bg-amber-100 rounded-lg flex items-center justify-center">
+              <svg class="w-6 h-6 text-amber-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+              </svg>
+            </div>
+            <div class="flex-1">
+              <h3 class="text-xl font-bold text-gray-900 mb-2">CrossReferenceValidator</h3>
+              <p class="text-gray-600">Validates AI decisions against established policies. Designed to detect potential conflicts before they occur.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Component 4 -->
+        <div class="bg-white rounded-xl border border-gray-200 p-6 hover-lift">
+          <div class="flex items-start gap-4">
+            <div class="flex-shrink-0 w-12 h-12 bg-amber-100 rounded-lg flex items-center justify-center">
+              <svg class="w-6 h-6 text-amber-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
+              </svg>
+            </div>
+            <div class="flex-1">
+              <h3 class="text-xl font-bold text-gray-900 mb-2">ContextPressureMonitor</h3>
+              <p class="text-gray-600">Tracks AI session complexity and token usage. Helps prevent context degradation and maintains decision quality.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Component 5 -->
+        <div class="bg-white rounded-xl border border-gray-200 p-6 hover-lift">
+          <div class="flex items-start gap-4">
+            <div class="flex-shrink-0 w-12 h-12 bg-amber-100 rounded-lg flex items-center justify-center">
+              <svg class="w-6 h-6 text-amber-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
+              </svg>
+            </div>
+            <div class="flex-1">
+              <h3 class="text-xl font-bold text-gray-900 mb-2">MetacognitiveVerifier</h3>
+              <p class="text-gray-600">Validates reasoning quality for complex operations. Designed to improve decision coherence and reduce errors.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Executive Stakeholder Impact -->
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+    <div class="text-center mb-12">
+      <h2 class="text-4xl font-bold text-gray-900 mb-4">Stakeholder Considerations</h2>
+      <p class="text-gray-600 text-lg">How different leadership roles may evaluate Tractatus</p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <!-- CEO -->
+      <div class="bg-white rounded-xl border border-gray-200 p-6">
+        <div class="flex items-center gap-3 mb-4">
+          <div class="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center">
+            <svg class="w-5 h-5 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+            </svg>
+          </div>
+          <h3 class="text-lg font-bold text-gray-900">CEO / Founder</h3>
+        </div>
+        <ul class="space-y-2 text-sm text-gray-600">
+          <li class="flex items-start">
+            <span class="text-purple-600 mr-2">•</span>
+            <span>Structural approach to AI risk management</span>
+          </li>
+          <li class="flex items-start">
+            <span class="text-purple-600 mr-2">•</span>
+            <span>Potential competitive differentiation through governance</span>
+          </li>
+          <li class="flex items-start">
+            <span class="text-purple-600 mr-2">•</span>
+            <span>Framework for responsible AI deployment</span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- CFO -->
+      <div class="bg-white rounded-xl border border-gray-200 p-6">
+        <div class="flex items-center gap-3 mb-4">
+          <div class="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center">
+            <svg class="w-5 h-5 text-green-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+          </div>
+          <h3 class="text-lg font-bold text-gray-900">CFO</h3>
+        </div>
+        <ul class="space-y-2 text-sm text-gray-600">
+          <li class="flex items-start">
+            <span class="text-green-700 mr-2">•</span>
+            <span>Designed to help reduce regulatory fine risk (€35M max)</span>
+          </li>
+          <li class="flex items-start">
+            <span class="text-green-700 mr-2">•</span>
+            <span>May reduce AI project failure costs (42% industry avg)</span>
+          </li>
+          <li class="flex items-start">
+            <span class="text-green-700 mr-2">•</span>
+            <span>Research-stage framework (ROI not yet established)</span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- CTO -->
+      <div class="bg-white rounded-xl border border-gray-200 p-6">
+        <div class="flex items-center gap-3 mb-4">
+          <div class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
+            <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/>
+            </svg>
+          </div>
+          <h3 class="text-lg font-bold text-gray-900">CTO / Engineering</h3>
+        </div>
+        <ul class="space-y-2 text-sm text-gray-600">
+          <li class="flex items-start">
+            <span class="text-blue-600 mr-2">•</span>
+            <span>Architectural patterns for LLM safety controls</span>
+          </li>
+          <li class="flex items-start">
+            <span class="text-blue-600 mr-2">•</span>
+            <span>Reference implementation for governance agents</span>
+          </li>
+          <li class="flex items-start">
+            <span class="text-blue-600 mr-2">•</span>
+            <span>Adaptable to organizational tech stacks</span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- CISO -->
+      <div class="bg-white rounded-xl border border-gray-200 p-6">
+        <div class="flex items-center gap-3 mb-4">
+          <div class="w-10 h-10 bg-red-100 rounded-lg flex items-center justify-center">
+            <svg class="w-5 h-5 text-red-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
+            </svg>
+          </div>
+          <h3 class="text-lg font-bold text-gray-900">CISO / Security</h3>
+        </div>
+        <ul class="space-y-2 text-sm text-gray-600">
+          <li class="flex items-start">
+            <span class="text-red-700 mr-2">•</span>
+            <span>Controls for AI decision boundaries</span>
+          </li>
+          <li class="flex items-start">
+            <span class="text-red-700 mr-2">•</span>
+            <span>Audit trails for AI actions</span>
+          </li>
+          <li class="flex items-start">
+            <span class="text-red-700 mr-2">•</span>
+            <span>Risk mitigation through architectural controls</span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Legal / Compliance -->
+      <div class="bg-white rounded-xl border border-gray-200 p-6">
+        <div class="flex items-center gap-3 mb-4">
+          <div class="w-10 h-10 bg-amber-100 rounded-lg flex items-center justify-center">
+            <svg class="w-5 h-5 text-amber-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3"/>
+            </svg>
+          </div>
+          <h3 class="text-lg font-bold text-gray-900">Legal / Compliance</h3>
+        </div>
+        <ul class="space-y-2 text-sm text-gray-600">
+          <li class="flex items-start">
+            <span class="text-amber-700 mr-2">•</span>
+            <span>Designed for EU AI Act alignment</span>
+          </li>
+          <li class="flex items-start">
+            <span class="text-amber-700 mr-2">•</span>
+            <span>Auditable decision-making framework</span>
+          </li>
+          <li class="flex items-start">
+            <span class="text-amber-700 mr-2">•</span>
+            <span>Documented governance processes</span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Product / AI -->
+      <div class="bg-white rounded-xl border border-gray-200 p-6">
+        <div class="flex items-center gap-3 mb-4">
+          <div class="w-10 h-10 bg-indigo-100 rounded-lg flex items-center justify-center">
+            <svg class="w-5 h-5 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
+            </svg>
+          </div>
+          <h3 class="text-lg font-bold text-gray-900">Product / AI Teams</h3>
+        </div>
+        <ul class="space-y-2 text-sm text-gray-600">
+          <li class="flex items-start">
+            <span class="text-indigo-600 mr-2">•</span>
+            <span>Framework for safer AI feature deployment</span>
+          </li>
+          <li class="flex items-start">
+            <span class="text-indigo-600 mr-2">•</span>
+            <span>Designed to reduce failure modes</span>
+          </li>
+          <li class="flex items-start">
+            <span class="text-indigo-600 mr-2">•</span>
+            <span>Patterns for responsible AI innovation</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Resources & Documentation -->
+  <div class="bg-gray-50 py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-4xl font-bold text-gray-900 mb-4">Explore the Framework</h2>
+        <p class="text-gray-600 text-lg">Technical documentation and implementation resources</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <a href="/docs.html" class="bg-white rounded-xl border-2 border-gray-200 p-8 hover-lift block">
+          <div class="flex items-start gap-4">
+            <div class="w-12 h-12 bg-amber-100 rounded-lg flex items-center justify-center flex-shrink-0">
+              <svg class="w-6 h-6 text-amber-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
+              </svg>
+            </div>
+            <div class="flex-1">
+              <h3 class="text-xl font-bold text-gray-900 mb-2">Framework Documentation</h3>
+              <p class="text-gray-600">Complete technical specifications, architecture guides, and implementation patterns</p>
+            </div>
+          </div>
+        </a>
+
+        <a href="/implementer.html" class="bg-white rounded-xl border-2 border-gray-200 p-8 hover-lift block">
+          <div class="flex items-start gap-4">
+            <div class="w-12 h-12 bg-amber-100 rounded-lg flex items-center justify-center flex-shrink-0">
+              <svg class="w-6 h-6 text-amber-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/>
+              </svg>
+            </div>
+            <div class="flex-1">
+              <h3 class="text-xl font-bold text-gray-900 mb-2">Implementation Guide</h3>
+              <p class="text-gray-600">Step-by-step integration guide for developers and technical teams</p>
+            </div>
+          </div>
+        </a>
+
+        <a href="/researcher.html" class="bg-white rounded-xl border-2 border-gray-200 p-8 hover-lift block">
+          <div class="flex items-start gap-4">
+            <div class="w-12 h-12 bg-amber-100 rounded-lg flex items-center justify-center flex-shrink-0">
+              <svg class="w-6 h-6 text-amber-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+              </svg>
+            </div>
+            <div class="flex-1">
+              <h3 class="text-xl font-bold text-gray-900 mb-2">Research & Case Studies</h3>
+              <p class="text-gray-600">Academic foundations, failure mode analysis, and governance research</p>
+            </div>
+          </div>
+        </a>
+
+        <a href="/about.html" class="bg-white rounded-xl border-2 border-gray-200 p-8 hover-lift block">
+          <div class="flex items-start gap-4">
+            <div class="w-12 h-12 bg-amber-100 rounded-lg flex items-center justify-center flex-shrink-0">
+              <svg class="w-6 h-6 text-amber-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+              </svg>
+            </div>
+            <div class="flex-1">
+              <h3 class="text-xl font-bold text-gray-900 mb-2">About Tractatus</h3>
+              <p class="text-gray-600">Core values, principles, and the philosophy behind the framework</p>
+            </div>
+          </div>
+        </a>
+
+        <a href="/downloads/ai-governance-business-case-template.pdf" target="_blank" class="bg-gradient-to-br from-amber-50 to-orange-50 rounded-xl border-2 border-amber-300 p-8 hover-lift block">
+          <div class="flex items-start gap-4">
+            <div class="w-12 h-12 bg-amber-500 rounded-lg flex items-center justify-center flex-shrink-0">
+              <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+              </svg>
+            </div>
+            <div class="flex-1">
+              <h3 class="text-xl font-bold text-gray-900 mb-2">Business Case Template</h3>
+              <p class="text-gray-700 font-medium">Structured assessment template for evaluating AI governance needs with your organization's data</p>
+              <div class="mt-3 inline-flex items-center text-sm font-semibold text-amber-700">
+                <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"/>
+                </svg>
+                Download PDF Template
+              </div>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA Section -->
+  <div class="bg-gradient-to-br from-amber-700 to-orange-600 py-16">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">
+        Questions About Your Organization?
+      </h2>
+      <p class="text-xl text-amber-50 mb-8">
+        Start with honest assessment of where you are, not aspirational visions of where you want to be
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="#readiness-assessment" class="bg-white text-amber-700 px-8 py-4 rounded-lg font-semibold hover:bg-amber-50 transition shadow-lg inline-flex items-center justify-center">
+          <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/>
+          </svg>
+          Review Assessment Questions
+        </a>
+        <a href="/about.html" class="bg-transparent border-2 border-white text-white px-8 py-4 rounded-lg font-semibold hover:bg-white hover:text-amber-800 transition">
+          Our Approach & Values
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-gray-300 py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div>
+          <h3 class="text-white font-bold mb-4">Tractatus Framework</h3>
+          <p class="text-sm text-gray-400">
+            Research framework for AI safety governance and LLM risk mitigation
+          </p>
+        </div>
+        <div>
+          <h3 class="text-white font-bold mb-4">Resources</h3>
+          <ul class="space-y-2 text-sm">
+            <li><a href="/docs.html" class="hover:text-amber-400 transition">Documentation</a></li>
+            <li><a href="/implementer.html" class="hover:text-amber-400 transition">Implementation</a></li>
+            <li><a href="/researcher.html" class="hover:text-amber-400 transition">Research</a></li>
+            <li><a href="/about.html" class="hover:text-amber-400 transition">About</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="text-white font-bold mb-4">Framework Status</h3>
+          <p class="text-sm text-gray-400">
+            Development/Research Stage<br>
+            Open for evaluation and feedback
+          </p>
+        </div>
+      </div>
+      <div class="border-t border-gray-800 mt-8 pt-8 text-center text-sm text-gray-500">
+        <p>Tractatus AI Safety Framework - Research Project</p>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About | Tractatus AI Safety Framework</title>
+  <meta name="description" content="Learn about the Tractatus Framework: our mission, values, team, and commitment to preserving human agency through structural AI safety.">
+  <link rel="stylesheet" href="/css/tailwind.css?v=1759833751">
+  <style>
+    /* Accessibility: Skip link */
+    .skip-link { position: absolute; left: -9999px; top: 0; }
+    .skip-link:focus { left: 0; z-index: 100; background: white; padding: 1rem; border: 2px solid #3b82f6; }
+
+    /* Accessibility: Focus indicators (WCAG 2.4.7) */
+    a:focus, button:focus, input:focus, select:focus, textarea:focus {
+      outline: 3px solid #3b82f6;
+      outline-offset: 2px;
+    }
+    a:focus:not(:focus-visible) { outline: none; }
+    a:focus-visible { outline: 3px solid #3b82f6; outline-offset: 2px; }
+  </style>
+</head>
+<body class="bg-gray-50">
+
+  <!-- Skip Link for Keyboard Navigation -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- Navigation (injected by navbar.js) -->
+  <script src="/js/components/navbar.js?v=1759875690"></script>
+
+  <!-- Hero Section -->
+  <div class="bg-gradient-to-br from-blue-50 to-purple-50 py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center">
+        <h1 class="text-5xl font-bold text-gray-900 mb-6">
+          About Tractatus
+        </h1>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+          A framework for AI safety through architectural constraints, preserving human agency where it matters most.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mission Section -->
+  <main id="main-content" class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+    <section class="mb-16">
+      <h2 class="text-3xl font-bold text-gray-900 mb-6">Our Mission</h2>
+      <div class="prose prose-lg text-gray-600">
+        <p class="mb-6">
+          The Tractatus Framework exists to address a fundamental problem in AI safety: current approaches rely on training, fine-tuning, and corporate governance—all of which can fail, drift, or be overridden. We propose <strong>safety through architecture</strong>.
+        </p>
+        <p class="mb-6">
+          Inspired by Ludwig Wittgenstein's <em>Tractatus Logico-Philosophicus</em>, our framework recognizes that some domains—values, ethics, cultural context, human agency—cannot be systematized. What cannot be systematized must not be automated. AI systems should have structural constraints that prevent them from crossing these boundaries.
+        </p>
+        <blockquote class="border-l-4 border-blue-600 pl-6 italic text-gray-700 my-6">
+          "Whereof one cannot speak, thereof one must be silent."<br>
+          — Ludwig Wittgenstein, <em>Tractatus</em> (§7)
+        </blockquote>
+        <p class="mb-4">
+          Applied to AI: <strong>"What cannot be systematized must not be automated."</strong>
+        </p>
+      </div>
+    </section>
+
+    <!-- Core Values -->
+    <section class="mb-16">
+      <h2 class="text-3xl font-bold text-gray-900 mb-6">Core Values</h2>
+      <div class="space-y-6">
+        <div class="bg-white rounded-lg shadow-sm p-6 border-l-4 border-green-600">
+          <h3 class="text-xl font-bold text-gray-900 mb-3">Sovereignty</h3>
+          <p class="text-gray-600">
+            Individuals and communities must maintain control over decisions affecting their data, privacy, and values. AI systems must preserve human agency, not erode it.
+          </p>
+        </div>
+
+        <div class="bg-white rounded-lg shadow-sm p-6 border-l-4 border-blue-600">
+          <h3 class="text-xl font-bold text-gray-900 mb-3">Transparency</h3>
+          <p class="text-gray-600">
+            All AI decisions must be explainable, auditable, and reversible. No black boxes. Users deserve to understand how and why systems make choices, and have power to override them.
+          </p>
+        </div>
+
+        <div class="bg-white rounded-lg shadow-sm p-6 border-l-4 border-purple-600">
+          <h3 class="text-xl font-bold text-gray-900 mb-3">Harmlessness</h3>
+          <p class="text-gray-600">
+            AI systems must not cause harm through action or inaction. This includes preventing drift, detecting degradation, and enforcing boundaries against values erosion.
+          </p>
+        </div>
+
+        <div class="bg-white rounded-lg shadow-sm p-6 border-l-4 border-orange-600">
+          <h3 class="text-xl font-bold text-gray-900 mb-3">Community</h3>
+          <p class="text-gray-600">
+            AI safety is a collective endeavor. We are committed to open collaboration, knowledge sharing, and empowering communities to shape the AI systems that affect their lives.
+          </p>
+        </div>
+      </div>
+
+      <div class="mt-8 text-center">
+        <a href="/about/values.html" class="inline-block bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition">
+          Read Our Complete Values Statement →
+        </a>
+      </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="mb-16">
+      <h2 class="text-3xl font-bold text-gray-900 mb-6">How It Works</h2>
+      <div class="prose prose-lg text-gray-600">
+        <p class="mb-6">
+          The Tractatus Framework consists of five integrated components that work together to enforce structural safety:
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
+        <div class="bg-gray-50 rounded-lg p-6">
+          <h3 class="text-lg font-bold text-gray-900 mb-2">InstructionPersistenceClassifier</h3>
+          <p class="text-sm text-gray-600">
+            Classifies instructions by quadrant (Strategic, Operational, Tactical, System, Stochastic) and determines persistence level (HIGH/MEDIUM/LOW/VARIABLE).
+          </p>
+        </div>
+
+        <div class="bg-gray-50 rounded-lg p-6">
+          <h3 class="text-lg font-bold text-gray-900 mb-2">CrossReferenceValidator</h3>
+          <p class="text-sm text-gray-600">
+            Validates AI actions against stored instructions to prevent pattern recognition bias (like the 27027 incident where AI's training patterns immediately overrode user's explicit "port 27027" instruction).
+          </p>
+        </div>
+
+        <div class="bg-gray-50 rounded-lg p-6">
+          <h3 class="text-lg font-bold text-gray-900 mb-2">BoundaryEnforcer</h3>
+          <p class="text-sm text-gray-600">
+            Ensures AI never makes values decisions without human approval. Privacy trade-offs, user agency, cultural context—these require human judgment.
+          </p>
+        </div>
+
+        <div class="bg-gray-50 rounded-lg p-6">
+          <h3 class="text-lg font-bold text-gray-900 mb-2">ContextPressureMonitor</h3>
+          <p class="text-sm text-gray-600">
+            Detects when session conditions increase error probability (token pressure, message length, task complexity) and adjusts behavior or suggests handoff.
+          </p>
+        </div>
+
+        <div class="bg-gray-50 rounded-lg p-6">
+          <h3 class="text-lg font-bold text-gray-900 mb-2">MetacognitiveVerifier</h3>
+          <p class="text-sm text-gray-600">
+            AI self-checks complex reasoning before proposing actions. Evaluates alignment, coherence, completeness, safety, and alternatives.
+          </p>
+        </div>
+      </div>
+
+      <div class="mt-8 text-center">
+        <a href="/implementer.html" class="inline-block bg-purple-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-purple-700 transition">
+          Read Technical Documentation & Implementation Guide →
+        </a>
+      </div>
+    </section>
+
+    <!-- Origin Story -->
+    <section class="mb-16">
+      <h2 class="text-3xl font-bold text-gray-900 mb-6">Origin Story</h2>
+      <div class="prose prose-lg text-gray-600">
+        <p class="mb-6">
+          The Tractatus Framework emerged from real-world AI failures experienced during extended Claude Code sessions. The "27027 incident"—where AI's training patterns immediately overrode an explicit instruction (user said "port 27027", AI used "port 27017")—revealed that traditional safety approaches were insufficient. This wasn't forgetting; it was pattern recognition bias autocorrecting the user.
+        </p>
+        <p class="mb-6">
+          After documenting multiple failure modes (pattern recognition bias, values drift, silent degradation), we recognized a pattern: AI systems lacked structural constraints. They could theoretically "learn" safety, but in practice their training patterns overrode explicit instructions, and the problem gets worse as capabilities increase.
+        </p>
+        <p class="mb-4">
+          The solution wasn't better training—it was architecture. Drawing inspiration from Wittgenstein's insight that some things lie beyond the limits of language (and thus systematization), we built a framework that enforces boundaries through structure, not aspiration.
+        </p>
+      </div>
+    </section>
+
+    <!-- License & Contribution -->
+    <section class="mb-16">
+      <h2 class="text-3xl font-bold text-gray-900 mb-6">License & Contribution</h2>
+      <div class="prose prose-lg text-gray-600">
+        <p class="mb-4">
+          The Tractatus Framework is open source under the <strong>Apache License 2.0</strong>. We encourage:
+        </p>
+        <ul class="mb-6">
+          <li>Academic research and validation studies</li>
+          <li>Implementation in production AI systems</li>
+          <li>Submission of failure case studies</li>
+          <li>Theoretical extensions and improvements</li>
+          <li>Community collaboration and knowledge sharing</li>
+        </ul>
+        <p class="mb-8">
+          The framework is intentionally permissive because AI safety benefits from transparency and collective improvement, not proprietary control.
+        </p>
+        <h3 class="text-xl font-bold text-gray-900 mt-8 mb-4">Why Apache 2.0?</h3>
+        <p class="mb-4">
+          We chose Apache 2.0 over MIT because it provides:
+        </p>
+        <ul class="mb-6">
+          <li><strong>Patent Protection:</strong> Explicit patent grant protects users from patent litigation by contributors</li>
+          <li><strong>Contributor Clarity:</strong> Clear terms for how contributions are licensed</li>
+          <li><strong>Permissive Use:</strong> Like MIT, allows commercial use and inclusion in proprietary products</li>
+          <li><strong>Community Standard:</strong> Widely used in AI/ML projects (TensorFlow, PyTorch, Apache Spark)</li>
+        </ul>
+        <p class="mt-4">
+          <a href="/LICENSE" class="text-blue-600 hover:text-blue-700 font-medium">View full Apache 2.0 License →</a>
+        </p>
+      </div>
+    </section>
+  </div>
+
+  <!-- CTA Section -->
+  <div class="bg-gradient-to-r from-blue-600 to-purple-600 py-16">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white">
+      <h2 class="text-3xl font-bold mb-4">Join the Movement</h2>
+      <p class="text-xl mb-8 opacity-90">
+        Help build AI systems that preserve human agency through architectural guarantees.
+      </p>
+      <div class="flex justify-center space-x-4">
+        <a href="/researcher.html" class="bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition">
+          For Researchers
+        </a>
+        <a href="/implementer.html" class="bg-blue-700 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-800 transition border-2 border-white">
+          For Implementers
+        </a>
+        <a href="/leader.html" class="bg-blue-700 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-800 transition border-2 border-white">
+          For Leaders
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer with Te Tiriti Acknowledgment -->
+  <footer class="bg-gray-900 text-gray-400 py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div>
+          <h3 class="text-white font-bold mb-4">Tractatus Framework</h3>
+          <p class="text-sm mb-3">
+            Preserving human agency through architectural constraints, not aspirational goals.
+          </p>
+          <p class="text-sm">
+            <a href="mailto:research@agenticgovernance.digital" class="text-blue-400 hover:text-blue-300 transition">research@agenticgovernance.digital</a>
+          </p>
+        </div>
+        <div>
+          <h3 class="text-white font-bold mb-4">Audience Paths</h3>
+          <ul class="space-y-2 text-sm">
+            <li><a href="/researcher.html" class="hover:text-white transition">Researchers</a></li>
+            <li><a href="/implementer.html" class="hover:text-white transition">Implementers</a></li>
+            <li><a href="/leader.html" class="hover:text-white transition">Leaders</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="text-white font-bold mb-4">Resources</h3>
+          <ul class="space-y-2 text-sm">
+            <li><a href="/docs.html" class="hover:text-white transition">Documentation</a></li>
+            <li><a href="/demos/classification-demo.html" class="hover:text-white transition">Interactive Demos</a></li>
+            <li><a href="/about.html" class="hover:text-white transition">About</a></li>
+            <li><a href="/about/values.html" class="hover:text-white transition">Values</a></li>
+            <li><a href="/media-inquiry.html" class="hover:text-white transition">Media Inquiries</a></li>
+            <li><a href="/case-submission.html" class="hover:text-white transition">Submit Case Study</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="text-white font-bold mb-4">Te Tiriti o Waitangi</h3>
+          <p class="text-sm">
+            This framework is developed in Aotearoa New Zealand. We acknowledge <a href="/about/values.html#te-tiriti" class="text-blue-400 hover:text-blue-300 transition">Te Tiriti o Waitangi</a> and indigenous data sovereignty principles.
+          </p>
+        </div>
+      </div>
+      <div class="mt-8 pt-8 border-t border-gray-800 text-center text-sm space-y-2">
+        <p class="text-gray-300">Safety Through Structure, Not Aspiration | Built with <a href="https://claude.ai/claude-code" class="text-blue-400 hover:text-blue-300 transition" target="_blank" rel="noopener">Claude Code</a></p>
+        <p>© 2025 Tractatus AI Safety Framework. Licensed under <a href="https://www.apache.org/licenses/LICENSE-2.0" class="text-blue-400 hover:text-blue-300 transition" target="_blank" rel="noopener">Apache License 2.0</a>. <a href="/about/values.html" class="text-blue-400 hover:text-blue-300 transition">Read our values</a>.</p>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

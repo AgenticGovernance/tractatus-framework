@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tractatus AI Safety Framework | Architectural Constraints for Human Agency</title>
+  <meta name="description" content="World's first production implementation of architectural AI safety constraints. Preserving human agency through structural, not aspirational, guarantees.">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="stylesheet" href="/css/tailwind.css?v=1.0.4">
+  <style>
+    .gradient-text { background: linear-gradient(120deg, #3b82f6 0%, #8b5cf6 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .hover-lift { transition: transform 0.2s; }
+    .hover-lift:hover { transform: translateY(-4px); }
+    .skip-link { position: absolute; left: -9999px; }
+    .skip-link:focus { left: 0; z-index: 100; background: white; padding: 1rem; }
+
+    /* Accessibility: Focus indicators (WCAG 2.4.7) */
+    a:focus, button:focus, input:focus, select:focus, textarea:focus {
+      outline: 3px solid #3b82f6;
+      outline-offset: 2px;
+    }
+    a:focus:not(:focus-visible) { outline: none; }
+    a:focus-visible { outline: 3px solid #3b82f6; outline-offset: 2px; }
+  </style>
+</head>
+<body class="bg-gray-50">
+
+  <!-- Skip Link for Keyboard Navigation -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- Navigation (injected by navbar.js) -->
+  <script src="/js/components/navbar.js?v=1.0.4"></script>
+
+  <!-- Hero Section -->
+  <header role="banner">
+  <section class="bg-gradient-to-br from-blue-600 via-blue-700 to-purple-700 text-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+      <div class="text-center">
+        <h1 class="text-5xl md:text-6xl font-bold mb-6">
+          Tractatus AI Safety Framework
+        </h1>
+        <p class="text-xl md:text-2xl text-blue-100 mb-8 max-w-4xl mx-auto">
+          Architectural constraints that ensure AI systems preserve human agency—<br>
+          regardless of capability level
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="/demos/tractatus-demo.html" class="inline-block bg-white text-blue-700 px-8 py-3 rounded-lg font-semibold hover:bg-blue-50 transition">
+            See Interactive Demo
+          </a>
+          <a href="/docs.html" class="inline-block bg-blue-800 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-900 transition">
+            Read Documentation
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+  </header>
+
+  <!-- Main Content -->
+  <main id="main-content" role="main">
+
+  <!-- Value Proposition -->
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16" aria-labelledby="core-insight">
+    <div class="bg-amber-50 border-l-4 border-amber-500 p-6 rounded-r-lg">
+      <h2 id="core-insight" class="text-2xl font-bold text-amber-900 mb-3">A Starting Point</h2>
+      <p class="text-amber-800 text-lg">
+        Instead of hoping AI systems <em>"behave correctly,"</em> we propose <strong>structural constraints</strong>
+        where certain decision types <strong>require human judgment</strong>. These architectural boundaries can adapt to
+        individual, organizational, and societal norms—creating a foundation for bounded AI operation
+        that may scale more safely with capability growth.
+      </p>
+    </div>
+  </section>
+
+  <!-- Three Audience Paths -->
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 pt-24">
+    <p class="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
+      We recognize this is one small step in addressing AI safety challenges. Explore the framework through the lens that resonates with your work.
+    </p>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+      <!-- Researcher Path -->
+      <div class="bg-white rounded-xl shadow-lg border border-gray-200 overflow-hidden hover-lift relative group">
+        <!-- Tooltip -->
+        <div class="absolute -top-16 left-1/2 transform -translate-x-1/2 bg-gray-900 text-white text-sm rounded-lg px-4 py-2 opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none z-10 w-64 text-center">
+          For AI safety researchers, academics, and scientists investigating LLM failure modes and governance architectures
+          <div class="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-1/2 rotate-45 w-2 h-2 bg-gray-900"></div>
+        </div>
+
+        <div class="bg-gradient-to-r from-blue-500 to-blue-600 p-6">
+          <svg aria-hidden="true" class="w-12 h-12 text-white mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+          </svg>
+          <h3 class="text-2xl font-bold text-white">Researcher</h3>
+          <p class="text-blue-100 mt-2">Academic & technical depth</p>
+        </div>
+        <div class="p-6">
+          <p class="text-gray-700 mb-6">
+            Explore the theoretical foundations, formal guarantees, and scholarly context of the Tractatus framework.
+          </p>
+          <ul class="space-y-3 mb-6 text-sm">
+            <li class="flex items-start">
+              <svg aria-hidden="true" class="w-5 h-5 text-blue-600 mr-2 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/></svg>
+              <span class="text-gray-700">Technical specifications & proofs</span>
+            </li>
+            <li class="flex items-start">
+              <svg aria-hidden="true" class="w-5 h-5 text-blue-600 mr-2 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/></svg>
+              <span class="text-gray-700">Academic research review</span>
+            </li>
+            <li class="flex items-start">
+              <svg aria-hidden="true" class="w-5 h-5 text-blue-600 mr-2 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/></svg>
+              <span class="text-gray-700">Failure mode analysis</span>
+            </li>
+            <li class="flex items-start">
+              <svg aria-hidden="true" class="w-5 h-5 text-blue-600 mr-2 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/></svg>
+              <span class="text-gray-700">Mathematical foundations</span>
+            </li>
+          </ul>
+          <a href="/researcher.html" class="block w-full text-center bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition font-medium">
+            Explore Research
+          </a>
+        </div>
+      </div>
+
+      <!-- Implementer Path -->
+      <div class="bg-white rounded-xl shadow-lg border border-gray-200 overflow-hidden hover-lift relative group">
+        <!-- Tooltip -->
+        <div class="absolute -top-16 left-1/2 transform -translate-x-1/2 bg-gray-900 text-white text-sm rounded-lg px-4 py-2 opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none z-10 w-64 text-center">
+          For software engineers, ML engineers, and technical teams building production AI systems
+          <div class="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-1/2 rotate-45 w-2 h-2 bg-gray-900"></div>
+        </div>
+
+        <div class="bg-gradient-to-r from-purple-500 to-purple-600 p-6">
+          <svg aria-hidden="true" class="w-12 h-12 text-white mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/>
+          </svg>
+          <h3 class="text-2xl font-bold text-white">Implementer</h3>
+          <p class="text-purple-100 mt-2">Code & integration guides</p>
+        </div>
+        <div class="p-6">
+          <p class="text-gray-700 mb-6">
+            Get hands-on with implementation guides, API documentation, and production-ready code examples.
+          </p>
+          <ul class="space-y-3 mb-6 text-sm">
+            <li class="flex items-start">
+              <svg aria-hidden="true" class="w-5 h-5 text-purple-600 mr-2 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/></svg>
+              <span class="text-gray-700">Working code examples</span>
+            </li>
+            <li class="flex items-start">
+              <svg aria-hidden="true" class="w-5 h-5 text-purple-600 mr-2 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/></svg>
+              <span class="text-gray-700">API integration patterns</span>
+            </li>
+            <li class="flex items-start">
+              <svg aria-hidden="true" class="w-5 h-5 text-purple-600 mr-2 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/></svg>
+              <span class="text-gray-700">Service architecture diagrams</span>
+            </li>
+            <li class="flex items-start">
+              <svg aria-hidden="true" class="w-5 h-5 text-purple-600 mr-2 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/></svg>
+              <span class="text-gray-700">Deployment best practices</span>
+            </li>
+          </ul>
+          <a href="/implementer.html" class="block w-full text-center bg-purple-600 text-white py-2 rounded-lg hover:bg-purple-700 transition font-medium">
+            View Implementation Guide
+          </a>
+        </div>
+      </div>
+
+      <!-- Leader Path -->
+      <div class="bg-white rounded-xl shadow-lg border border-gray-200 overflow-hidden hover-lift relative group">
+        <!-- Tooltip -->
+        <div class="absolute -top-16 left-1/2 transform -translate-x-1/2 bg-gray-900 text-white text-sm rounded-lg px-4 py-2 opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none z-10 w-64 text-center">
+          For AI executives, research directors, startup founders, and strategic decision makers setting AI safety policy
+          <div class="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-1/2 rotate-45 w-2 h-2 bg-gray-900"></div>
+        </div>
+
+        <div class="bg-gradient-to-r from-amber-500 to-orange-600 p-6">
+          <svg aria-hidden="true" class="w-12 h-12 text-white mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"/>
+          </svg>
+          <h3 class="text-2xl font-bold text-white">Leader</h3>
+          <p class="text-amber-100 mt-2">Strategic AI Safety</p>
+        </div>
+        <div class="p-6">
+          <p class="text-gray-700 mb-6">
+            Navigate the business case, compliance requirements, and competitive advantages of structural AI safety.
+          </p>
+          <ul class="space-y-3 mb-6 text-sm">
+            <li class="flex items-start">
+              <svg aria-hidden="true" class="w-5 h-5 text-amber-600 mr-2 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/></svg>
+              <span class="text-gray-700">Executive briefing & business case</span>
+            </li>
+            <li class="flex items-start">
+              <svg aria-hidden="true" class="w-5 h-5 text-amber-600 mr-2 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/></svg>
+              <span class="text-gray-700">Risk management & compliance (EU AI Act)</span>
+            </li>
+            <li class="flex items-start">
+              <svg aria-hidden="true" class="w-5 h-5 text-amber-600 mr-2 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/></svg>
+              <span class="text-gray-700">Implementation roadmap & ROI</span>
+            </li>
+            <li class="flex items-start">
+              <svg aria-hidden="true" class="w-5 h-5 text-amber-600 mr-2 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/></svg>
+              <span class="text-gray-700">Competitive advantage analysis</span>
+            </li>
+          </ul>
+          <a href="/leader.html" class="block w-full text-center bg-amber-700 text-white py-2 rounded-lg hover:bg-amber-800 transition font-medium">
+            View Leadership Resources
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Key Capabilities -->
+  <section class="bg-white py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl font-bold text-center text-gray-900 mb-12">Framework Capabilities</h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+        <div class="border border-gray-200 rounded-lg p-6">
+          <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
+            <svg aria-hidden="true" class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/>
+            </svg>
+          </div>
+          <h3 class="text-lg font-semibold text-gray-900 mb-2">Instruction Classification</h3>
+          <p class="text-gray-600 text-sm">
+            Quadrant-based classification (STR/OPS/TAC/SYS/STO) with time-persistence metadata tagging
+          </p>
+        </div>
+
+        <div class="border border-gray-200 rounded-lg p-6">
+          <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
+            <svg aria-hidden="true" class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+          </div>
+          <h3 class="text-lg font-semibold text-gray-900 mb-2">Cross-Reference Validation</h3>
+          <p class="text-gray-600 text-sm">
+            Validates AI actions against explicit user instructions to prevent pattern-based overrides
+          </p>
+        </div>
+
+        <div class="border border-gray-200 rounded-lg p-6">
+          <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mb-4">
+            <svg aria-hidden="true" class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
+            </svg>
+          </div>
+          <h3 class="text-lg font-semibold text-gray-900 mb-2">Boundary Enforcement</h3>
+          <p class="text-gray-600 text-sm">
+            Implements Tractatus 12.1-12.7 boundaries - values decisions architecturally require humans
+          </p>
+        </div>
+
+        <div class="border border-gray-200 rounded-lg p-6">
+          <div class="w-12 h-12 bg-yellow-100 rounded-lg flex items-center justify-center mb-4">
+            <svg aria-hidden="true" class="w-6 h-6 text-yellow-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+            </svg>
+          </div>
+          <h3 class="text-lg font-semibold text-gray-900 mb-2">Pressure Monitoring</h3>
+          <p class="text-gray-600 text-sm">
+            Detects degraded operating conditions (token pressure, errors, complexity) and adjusts verification
+          </p>
+        </div>
+
+        <div class="border border-gray-200 rounded-lg p-6">
+          <div class="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center mb-4">
+            <svg aria-hidden="true" class="w-6 h-6 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
+            </svg>
+          </div>
+          <h3 class="text-lg font-semibold text-gray-900 mb-2">Metacognitive Verification</h3>
+          <p class="text-gray-600 text-sm">
+            AI self-checks alignment, coherence, safety before execution - structural pause-and-verify
+          </p>
+        </div>
+
+        <div class="border border-gray-200 rounded-lg p-6">
+          <div class="w-12 h-12 bg-indigo-100 rounded-lg flex items-center justify-center mb-4">
+            <svg aria-hidden="true" class="w-6 h-6 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"/>
+            </svg>
+          </div>
+          <h3 class="text-lg font-semibold text-gray-900 mb-2">Human Oversight</h3>
+          <p class="text-gray-600 text-sm">
+            Configurable approval workflows ensure appropriate human involvement at every decision level
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Experience the Framework Section -->
+  <section class="bg-gray-50 py-20" aria-labelledby="experience-framework">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <!-- Section Header -->
+      <div class="text-center mb-12">
+        <h2 id="experience-framework" class="text-4xl font-bold text-gray-900 mb-4">Experience the Framework</h2>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+          Explore real-world incidents showing how governance structures AI behavior—from preventing technical failures to catching fabrications
+        </p>
+      </div>
+
+      <!-- Incident Cards Grid -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
+
+        <!-- 27027 Incident - Technical -->
+        <div class="bg-white rounded-xl shadow-lg border border-gray-200 overflow-hidden hover-lift">
+          <div class="bg-gradient-to-r from-blue-500 to-blue-600 px-6 py-4">
+            <div class="flex items-center justify-between">
+              <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-blue-800 text-blue-100">
+                Technical Failure
+              </span>
+              <span class="text-blue-100 text-sm">Original Incident</span>
+            </div>
+          </div>
+          <div class="p-6">
+            <h3 class="text-2xl font-bold text-gray-900 mb-3">The 27027 Incident</h3>
+            <p class="text-gray-700 mb-4">
+              How pattern recognition bias causes AI to override explicit human instructions—and why this problem gets worse as models improve.
+            </p>
+            <div class="mb-6">
+              <div class="flex items-start mb-2">
+                <svg aria-hidden="true" class="w-5 h-5 text-blue-600 mr-2 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/></svg>
+                <span class="text-sm text-gray-600"><strong>Appeal:</strong> Researchers, technical teams</span>
+              </div>
+              <div class="flex items-start">
+                <svg aria-hidden="true" class="w-5 h-5 text-blue-600 mr-2 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/></svg>
+                <span class="text-sm text-gray-600"><strong>Shows:</strong> Cross-reference validation preventing instruction override</span>
+              </div>
+            </div>
+            <a href="/demos/27027-demo.html" class="block w-full text-center bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition font-semibold">
+              View 27027 Demo
+            </a>
+          </div>
+        </div>
+
+        <!-- Fabrication Incident - Values -->
+        <div class="bg-white rounded-xl shadow-lg border border-gray-200 overflow-hidden hover-lift">
+          <div class="bg-gradient-to-r from-amber-500 to-orange-600 px-6 py-4">
+            <div class="flex items-center justify-between">
+              <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-amber-800 text-amber-100">
+                Values Failure
+              </span>
+              <span class="text-amber-100 text-sm">Reactive Governance</span>
+            </div>
+          </div>
+          <div class="p-6">
+            <h3 class="text-2xl font-bold text-gray-900 mb-3">AI Fabrication Incident</h3>
+            <p class="text-gray-700 mb-4">
+              Claude fabricated $3.77M in statistics and false production claims. Framework detected it, documented root causes, and created permanent safeguards.
+            </p>
+            <div class="mb-6">
+              <div class="flex items-start mb-2">
+                <svg aria-hidden="true" class="w-5 h-5 text-amber-600 mr-2 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/></svg>
+                <span class="text-sm text-gray-600"><strong>Appeal:</strong> Leaders, advocates, implementers</span>
+              </div>
+              <div class="flex items-start">
+                <svg aria-hidden="true" class="w-5 h-5 text-amber-600 mr-2 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/></svg>
+                <span class="text-sm text-gray-600"><strong>Shows:</strong> Structured response turning failures into permanent learning</span>
+              </div>
+            </div>
+            <a href="/docs/case-studies/framework-in-action-oct-2025.md" class="block w-full text-center bg-amber-700 text-white py-3 rounded-lg hover:bg-amber-800 transition font-semibold">
+              Read Case Study
+            </a>
+          </div>
+        </div>
+
+        <!-- Security Audit - Proactive -->
+        <div class="bg-white rounded-xl shadow-lg border border-gray-200 overflow-hidden hover-lift">
+          <div class="bg-gradient-to-r from-green-500 to-emerald-600 px-6 py-4">
+            <div class="flex items-center justify-between">
+              <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-green-800 text-green-100">
+                Security Prevention
+              </span>
+              <span class="text-green-100 text-sm">Proactive Governance</span>
+            </div>
+          </div>
+          <div class="p-6">
+            <h3 class="text-2xl font-bold text-gray-900 mb-3">Pre-Publication Security Audit</h3>
+            <p class="text-gray-700 mb-4">
+              Framework prevented publication of sensitive information (internal paths, database names, infrastructure details) before it reached GitHub.
+            </p>
+            <div class="mb-6">
+              <div class="flex items-start mb-2">
+                <svg aria-hidden="true" class="w-5 h-5 text-green-600 mr-2 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/></svg>
+                <span class="text-sm text-gray-600"><strong>Appeal:</strong> Security teams, implementers, compliance</span>
+              </div>
+              <div class="flex items-start">
+                <svg aria-hidden="true" class="w-5 h-5 text-green-600 mr-2 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/></svg>
+                <span class="text-sm text-gray-600"><strong>Shows:</strong> Proactive prevention through structured review</span>
+              </div>
+            </div>
+            <a href="/docs/case-studies/pre-publication-audit-oct-2025.md" class="block w-full text-center bg-green-700 text-white py-3 rounded-lg hover:bg-green-800 transition font-semibold">
+              View Security Audit
+            </a>
+          </div>
+        </div>
+
+        <!-- Interactive Demo - Hands-on -->
+        <div class="bg-white rounded-xl shadow-lg border border-gray-200 overflow-hidden hover-lift">
+          <div class="bg-gradient-to-r from-purple-500 to-purple-600 px-6 py-4">
+            <div class="flex items-center justify-between">
+              <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-purple-800 text-purple-100">
+                Interactive Demo
+              </span>
+              <span class="text-purple-100 text-sm">Hands-On Experience</span>
+            </div>
+          </div>
+          <div class="p-6">
+            <h3 class="text-2xl font-bold text-gray-900 mb-3">Live Framework Demonstration</h3>
+            <p class="text-gray-700 mb-4">
+              Try the five core components yourself: classify instructions, test boundary enforcement, monitor context pressure, and validate cross-references.
+            </p>
+            <div class="mb-6">
+              <div class="flex items-start mb-2">
+                <svg aria-hidden="true" class="w-5 h-5 text-purple-600 mr-2 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/></svg>
+                <span class="text-sm text-gray-600"><strong>Appeal:</strong> All audiences—learn by doing</span>
+              </div>
+              <div class="flex items-start">
+                <svg aria-hidden="true" class="w-5 h-5 text-purple-600 mr-2 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/></svg>
+                <span class="text-sm text-gray-600"><strong>Shows:</strong> All five framework components in action</span>
+              </div>
+            </div>
+            <a href="/demos/tractatus-demo.html" class="block w-full text-center bg-purple-600 text-white py-3 rounded-lg hover:bg-purple-700 transition font-semibold">
+              Try Interactive Demo
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Additional Resources CTA -->
+      <div class="text-center bg-gradient-to-r from-blue-50 to-purple-50 rounded-xl p-8 border border-blue-200">
+        <h3 class="text-2xl font-bold text-gray-900 mb-4">Want to dive deeper?</h3>
+        <p class="text-gray-700 mb-6 max-w-2xl mx-auto">
+          Explore complete case studies, research topics, and implementation guides in our documentation
+        </p>
+        <a href="/docs.html" class="inline-block bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-3 rounded-lg font-semibold hover:from-blue-700 hover:to-purple-700 transition">
+          Browse All Documentation
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-gray-400 py-12" role="contentinfo">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div>
+          <h3 class="text-white font-semibold mb-4">Tractatus Framework</h3>
+          <p class="text-sm">
+            World's first production implementation of architectural AI safety constraints for human agency preservation.
+          </p>
+        </div>
+        <div>
+          <h3 class="text-white font-semibold mb-4">Resources</h3>
+          <ul class="space-y-2 text-sm">
+            <li><a href="/docs.html" class="hover:text-white transition">Documentation</a></li>
+            <li><a href="/demos/tractatus-demo.html" class="hover:text-white transition">Interactive Demos</a></li>
+            <li><a href="/researcher.html" class="hover:text-white transition">For Researchers</a></li>
+            <li><a href="/implementer.html" class="hover:text-white transition">For Implementers</a></li>
+            <li><a href="/leader.html" class="hover:text-white transition">For Leaders</a></li>
+            <li><a href="/about.html" class="hover:text-white transition">About & Values</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="text-white font-semibold mb-4">Community</h3>
+          <ul class="space-y-2 text-sm">
+            <li><a href="/media-inquiry.html" class="hover:text-white transition">Media Inquiries</a></li>
+            <li><a href="/case-submission.html" class="hover:text-white transition">Submit Case Study</a></li>
+            <li><a href="/blog.html" class="hover:text-white transition">Blog</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="text-white font-semibold mb-4">Support This Work</h3>
+          <ul class="space-y-2 text-sm">
+            <li><a href="/koha.html" class="hover:text-white transition">Make a Donation</a></li>
+            <li><a href="/koha/transparency.html" class="hover:text-white transition">Transparency Dashboard</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="text-white font-semibold mb-4">Acknowledgment</h3>
+          <p class="text-sm">
+            This framework acknowledges Te Tiriti o Waitangi and indigenous leadership in digital sovereignty.
+            Built with respect for CARE Principles and Māori data sovereignty.
+          </p>
+        </div>
+      </div>
+      <div class="mt-8 pt-8 border-t border-gray-800 text-center text-sm space-y-2">
+        <p class="text-gray-300">Safety Through Structure, Not Aspiration | Built with <a href="https://claude.ai/claude-code" class="text-blue-400 hover:text-blue-300 transition" target="_blank" rel="noopener">Claude Code</a></p>
+        <p>© 2025 Tractatus AI Safety Framework. Licensed under <a href="https://www.apache.org/licenses/LICENSE-2.0" class="text-blue-400 hover:text-blue-300 transition" target="_blank" rel="noopener">Apache License 2.0</a>.</p>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

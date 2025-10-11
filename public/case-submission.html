@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Submit Case Study | Tractatus AI Safety</title>
+  <link rel="stylesheet" href="/css/tailwind.css?v=1759835330">
+  <style>
+    /* Accessibility: Skip link */
+    .skip-link { position: absolute; left: -9999px; top: 0; }
+    .skip-link:focus { left: 0; z-index: 100; background: white; padding: 1rem; border: 2px solid #3b82f6; }
+
+    /* Accessibility: Focus indicators (WCAG 2.4.7) */
+    a:focus, button:focus, input:focus, select:focus, textarea:focus {
+      outline: 3px solid #3b82f6;
+      outline-offset: 2px;
+    }
+    a:focus:not(:focus-visible) { outline: none; }
+    a:focus-visible { outline: 3px solid #3b82f6; outline-offset: 2px; }
+
+    .form-group { margin-bottom: 1.5rem; }
+    .form-label {
+      display: block;
+      font-weight: 600;
+      color: #374151;
+      margin-bottom: 0.5rem;
+    }
+    .form-input, .form-textarea, .form-select {
+      width: 100%;
+      padding: 0.75rem;
+      border: 1px solid #d1d5db;
+      border-radius: 0.375rem;
+      font-size: 1rem;
+      transition: border-color 0.15s;
+    }
+    .form-input:focus, .form-textarea:focus, .form-select:focus {
+      outline: none;
+      border-color: #3b82f6;
+      box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+    }
+    .form-textarea { min-height: 150px; resize: vertical; }
+    .form-help { font-size: 0.875rem; color: #6b7280; margin-top: 0.25rem; }
+    .required { color: #dc2626; }
+    .checkbox-group {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .checkbox-group input[type="checkbox"] {
+      width: 1.25rem;
+      height: 1.25rem;
+      cursor: pointer;
+    }
+    #success-message, #error-message {
+      display: none;
+      padding: 1rem;
+      border-radius: 0.5rem;
+      margin-bottom: 1.5rem;
+    }
+    #success-message {
+      background-color: #d1fae5;
+      border: 1px solid #10b981;
+      color: #065f46;
+    }
+    #error-message {
+      background-color: #fee2e2;
+      border: 1px solid #ef4444;
+      color: #991b1b;
+    }
+  </style>
+</head>
+<body class="bg-gray-50">
+
+  <!-- Skip Link for Keyboard Navigation -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- Navigation (injected by navbar.js) -->
+  <script src="/js/components/navbar.js?v=1759875690"></script>
+
+  <!-- Main Content -->
+  <main id="main-content" class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+
+    <!-- Header -->
+    <div class="mb-8">
+      <h1 class="text-3xl font-bold text-gray-900 mb-3">Submit Case Study</h1>
+      <p class="text-lg text-gray-600 mb-4">
+        Share real-world examples of AI safety failures that could have been prevented by the Tractatus Framework.
+      </p>
+      <div class="bg-blue-50 border-l-4 border-blue-500 p-4 rounded">
+        <h3 class="text-blue-900 font-semibold mb-2">What makes a good case study?</h3>
+        <ul class="text-blue-800 text-sm space-y-1">
+          <li>• <strong>Documented failure:</strong> Real incident with evidence (not hypothetical)</li>
+          <li>• <strong>Clear failure mode:</strong> Specific way the AI system went wrong</li>
+          <li>• <strong>Tractatus relevance:</strong> Shows how framework boundaries could have helped</li>
+          <li>• <strong>Public interest:</strong> Contributes to AI safety knowledge</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Messages -->
+    <div id="success-message" role="alert" aria-live="polite"></div>
+    <div id="error-message" role="alert" aria-live="assertive"></div>
+
+    <!-- Form -->
+    <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-8">
+      <form id="case-submission-form">
+
+        <!-- Submitter Information -->
+        <h2 class="text-xl font-semibold text-gray-900 mb-6">Your Information</h2>
+
+        <div class="form-group">
+          <label for="submitter-name" class="form-label">
+            Your Name <span class="required">*</span>
+          </label>
+          <input type="text" id="submitter-name" name="submitter.name" class="form-input" required aria-required="true">
+        </div>
+
+        <div class="form-group">
+          <label for="submitter-email" class="form-label">
+            Email Address <span class="required">*</span>
+          </label>
+          <input type="email" id="submitter-email" name="submitter.email" class="form-input" required aria-required="true" aria-describedby="email-help">
+          <p id="email-help" class="form-help">We'll only use this to follow up on your submission</p>
+        </div>
+
+        <div class="form-group">
+          <label for="submitter-organization" class="form-label">
+            Organization (optional)
+          </label>
+          <input type="text" id="submitter-organization" name="submitter.organization" class="form-input">
+        </div>
+
+        <div class="form-group">
+          <div class="checkbox-group">
+            <input type="checkbox" id="submitter-public" name="submitter.public">
+            <label for="submitter-public" class="text-gray-700">
+              I consent to my name being published with this case study
+            </label>
+          </div>
+          <p class="form-help ml-7">Leave unchecked to remain anonymous</p>
+        </div>
+
+        <!-- Case Study Details -->
+        <h2 class="text-xl font-semibold text-gray-900 mb-6 mt-8">Case Study Details</h2>
+
+        <div class="form-group">
+          <label for="case-title" class="form-label">
+            Case Study Title <span class="required">*</span>
+          </label>
+          <input type="text" id="case-title" name="case_study.title" class="form-input" required aria-required="true" aria-describedby="title-help">
+          <p id="title-help" class="form-help">Brief, descriptive title (e.g., "ChatGPT Port 27027 Failure")</p>
+        </div>
+
+        <div class="form-group">
+          <label for="case-description" class="form-label">
+            Detailed Description <span class="required">*</span>
+          </label>
+          <textarea id="case-description" name="case_study.description" class="form-textarea" required aria-required="true" aria-describedby="description-help"></textarea>
+          <p id="description-help" class="form-help">What happened? Provide context, timeline, and outcomes</p>
+        </div>
+
+        <div class="form-group">
+          <label for="case-failure-mode" class="form-label">
+            Failure Mode <span class="required">*</span>
+          </label>
+          <textarea id="case-failure-mode" name="case_study.failure_mode" class="form-textarea" required aria-required="true" aria-describedby="failure-help"></textarea>
+          <p id="failure-help" class="form-help">
+            How did the AI system fail? What specific behavior went wrong?
+          </p>
+        </div>
+
+        <div class="form-group">
+          <label for="case-tractatus" class="form-label">
+            Tractatus Applicability <span class="required">*</span>
+          </label>
+          <textarea id="case-tractatus" name="case_study.tractatus_applicability" class="form-textarea" required aria-required="true" aria-describedby="tractatus-help"></textarea>
+          <p id="tractatus-help" class="form-help">
+            Which Tractatus boundaries could have prevented this failure? (e.g., Section 12.1 Values, CrossReferenceValidator, etc.)
+          </p>
+        </div>
+
+        <div class="form-group">
+          <label for="case-evidence" class="form-label">
+            Evidence/Sources
+          </label>
+          <textarea id="case-evidence" name="case_study.evidence" class="form-textarea" style="min-height: 100px;"></textarea>
+          <p class="form-help">
+            Links to documentation, screenshots, articles, or other evidence (one per line)
+          </p>
+        </div>
+
+        <!-- Submit Button -->
+        <div class="mt-8">
+          <button type="submit" id="submit-button" class="w-full bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition">
+            Submit Case Study
+          </button>
+          <p class="form-help mt-3 text-center">
+            We review all submissions. High-quality case studies are published with attribution (if consented).
+          </p>
+        </div>
+
+      </form>
+    </div>
+
+    <!-- Privacy Note -->
+    <div class="mt-6 text-sm text-gray-600 text-center">
+      <p>
+        Your submission is handled according to our
+        <a href="/about/values.html" class="text-blue-600 hover:text-blue-700">privacy principles</a>.
+        All case studies undergo human review before publication.
+      </p>
+    </div>
+
+  </div>
+
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-gray-300 mt-16 py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div>
+          <h3 class="text-white font-semibold mb-4">Tractatus Framework</h3>
+          <p class="text-sm">
+            AI safety through architectural constraints and human agency preservation.
+          </p>
+        </div>
+        <div>
+          <h3 class="text-white font-semibold mb-4">Quick Links</h3>
+          <ul class="space-y-2 text-sm">
+            <li><a href="/docs.html" class="hover:text-white transition">Documentation</a></li>
+            <li><a href="/about.html" class="hover:text-white transition">About</a></li>
+            <li><a href="/about/values.html" class="hover:text-white transition">Values</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="text-white font-semibold mb-4">Contact</h3>
+          <ul class="space-y-2 text-sm">
+            <li><a href="/media-inquiry.html" class="hover:text-white transition">Media Inquiries</a></li>
+            <li><a href="/case-submission.html" class="hover:text-white transition">Submit Case Study</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="mt-8 pt-8 border-t border-gray-800 text-center text-sm space-y-2">
+        <p class="text-gray-300">Safety Through Structure, Not Aspiration | Built with <a href="https://claude.ai/claude-code" class="text-blue-400 hover:text-blue-300 transition" target="_blank" rel="noopener">Claude Code</a></p>
+        <p>© 2025 Tractatus AI Safety Framework. Licensed under <a href="https://www.apache.org/licenses/LICENSE-2.0" class="text-blue-400 hover:text-blue-300 transition" target="_blank" rel="noopener">Apache License 2.0</a>.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const form = document.getElementById('case-submission-form');
+    const submitButton = document.getElementById('submit-button');
+    const successMessage = document.getElementById('success-message');
+    const errorMessage = document.getElementById('error-message');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      // Hide previous messages
+      successMessage.style.display = 'none';
+      errorMessage.style.display = 'none';
+
+      // Disable submit button
+      submitButton.disabled = true;
+      submitButton.textContent = 'Submitting...';
+
+      // Collect form data
+      const evidenceText = document.getElementById('case-evidence').value;
+      const evidence = evidenceText
+        ? evidenceText.split('\n').filter(line => line.trim())
+        : [];
+
+      const formData = {
+        submitter: {
+          name: document.getElementById('submitter-name').value,
+          email: document.getElementById('submitter-email').value,
+          organization: document.getElementById('submitter-organization').value || null,
+          public: document.getElementById('submitter-public').checked
+        },
+        case_study: {
+          title: document.getElementById('case-title').value,
+          description: document.getElementById('case-description').value,
+          failure_mode: document.getElementById('case-failure-mode').value,
+          tractatus_applicability: document.getElementById('case-tractatus').value,
+          evidence: evidence,
+          attachments: []
+        }
+      };
+
+      try {
+        const response = await fetch('/api/cases/submit', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(formData)
+        });
+
+        const data = await response.json();
+
+        if (response.ok) {
+          // Success
+          successMessage.textContent = data.message || 'Thank you for your submission. We will review it shortly.';
+          successMessage.style.display = 'block';
+          form.reset();
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        } else {
+          // Error
+          errorMessage.textContent = data.message || 'An error occurred. Please try again.';
+          errorMessage.style.display = 'block';
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+      } catch (error) {
+        console.error('Submit error:', error);
+        errorMessage.textContent = 'Network error. Please check your connection and try again.';
+        errorMessage.style.display = 'block';
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } finally {
+        // Re-enable submit button
+        submitButton.disabled = false;
+        submitButton.textContent = 'Submit Case Study';
+      }
+    });
+  </script>
+
+</body>
+</html>

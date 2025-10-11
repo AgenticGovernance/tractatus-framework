@@ -1,0 +1,36 @@
+# Security Policy
+
+Contact: mailto:security@agenticgovernance.digital
+Expires: 2026-10-09T00:00:00.000Z
+Preferred-Languages: en
+Canonical: https://agenticgovernance.digital/.well-known/security.txt
+
+# Encryption
+# Please use PGP encryption for sensitive security reports
+# Public key available at: https://agenticgovernance.digital/.well-known/pgp-key.txt
+
+# Policy
+# We take security seriously and appreciate responsible disclosure
+# Please allow up to 48 hours for initial response
+# We aim to patch critical vulnerabilities within 7 days
+
+# Scope
+# In scope:
+# - XSS, CSRF, SQL/NoSQL injection
+# - Authentication/authorization bypass
+# - Sensitive data exposure
+# - Server-side vulnerabilities
+
+# Out of scope:
+# - Social engineering
+# - Physical security
+# - Denial of Service (DoS/DDoS)
+# - Self-XSS
+# - Clickjacking on pages without sensitive actions
+
+# Acknowledgments
+# https://agenticgovernance.digital/security-researchers
+
+# Hall of Fame
+# Security researchers who responsibly disclosed vulnerabilities:
+# (None yet - be the first!)

@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>API Reference | Tractatus Framework</title>
+  <meta name="description" content="Complete API reference for Tractatus Framework - endpoints, authentication, request/response formats, and examples.">
+  <link rel="stylesheet" href="/css/tailwind.css?v=1759833751">
+  <style>
+    .endpoint-badge {
+      @apply inline-block px-2 py-1 rounded text-xs font-mono font-semibold;
+    }
+    .method-GET { @apply bg-blue-100 text-blue-800; }
+    .method-POST { @apply bg-green-100 text-green-800; }
+    .method-PUT { @apply bg-yellow-100 text-yellow-800; }
+    .method-DELETE { @apply bg-red-100 text-red-800; }
+  </style>
+</head>
+<body class="bg-gray-50">
+
+  <!-- Navigation -->
+  <nav class="bg-white border-b border-gray-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between h-16">
+        <div class="flex items-center">
+          <a href="/" class="text-xl font-bold text-gray-900">Tractatus Framework</a>
+          <span class="ml-4 text-gray-400">|</span>
+          <span class="ml-4 text-gray-600">API Reference</span>
+        </div>
+        <div class="flex items-center space-x-4 sm:space-x-6">
+          <a href="/docs.html" class="text-gray-600 hover:text-gray-900 text-sm sm:text-base">Documentation</a>
+          <a href="/implementer.html" class="text-gray-600 hover:text-gray-900 text-sm sm:text-base">Implementation Guide</a>
+          <a href="/" class="text-gray-600 hover:text-gray-900 text-sm sm:text-base">Home</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Sidebar + Content Layout -->
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
+
+      <!-- Sidebar TOC -->
+      <aside class="lg:col-span-1">
+        <nav class="sticky top-8 space-y-1">
+          <h3 class="text-sm font-semibold text-gray-900 mb-2">Contents</h3>
+          <a href="#authentication" class="block py-2 px-3 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded">Authentication</a>
+          <a href="#documents" class="block py-2 px-3 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded">Documents</a>
+          <a href="#governance" class="block py-2 px-3 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded">Governance</a>
+          <a href="#admin" class="block py-2 px-3 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded">Admin</a>
+          <a href="#errors" class="block py-2 px-3 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded">Error Codes</a>
+        </nav>
+      </aside>
+
+      <!-- Main Content -->
+      <main class="lg:col-span-3">
+
+        <!-- Introduction -->
+        <div class="mb-12">
+          <h1 class="text-4xl font-bold text-gray-900 mb-4">API Reference</h1>
+          <p class="text-lg text-gray-600">
+            Complete reference for the Tractatus Framework REST API. All endpoints return JSON and require proper authentication where indicated.
+          </p>
+          <div class="mt-6 bg-blue-50 border-l-4 border-blue-500 p-4">
+            <p class="text-sm text-blue-800">
+              <strong>Base URL:</strong> <code class="bg-blue-100 px-2 py-1 rounded">http://localhost:9000/api</code>
+            </p>
+          </div>
+        </div>
+
+        <!-- Authentication -->
+        <section id="authentication" class="mb-12">
+          <h2 class="text-3xl font-bold text-gray-900 mb-6">Authentication</h2>
+
+          <!-- Login -->
+          <div class="bg-white rounded-lg shadow-md p-6 mb-6">
+            <div class="flex items-center mb-4">
+              <span class="endpoint-badge method-POST">POST</span>
+              <code class="ml-3 text-gray-900">/auth/login</code>
+            </div>
+            <p class="text-gray-600 mb-4">Authenticate and receive JWT token.</p>
+
+            <h4 class="text-sm font-semibold text-gray-900 mb-2">Request Body</h4>
+            <pre class="bg-gray-900 text-gray-100 p-4 rounded-lg overflow-x-auto mb-4"><code>{
+  "email": "admin@tractatus.local",
+  "password": "your_password"
+}</code></pre>
+
+            <h4 class="text-sm font-semibold text-gray-900 mb-2">Response</h4>
+            <pre class="bg-gray-900 text-gray-100 p-4 rounded-lg overflow-x-auto"><code>{
+  "success": true,
+  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
+  "user": {
+    "email": "admin@tractatus.local",
+    "role": "admin"
+  }
+}</code></pre>
+          </div>
+
+          <!-- Verify Token -->
+          <div class="bg-white rounded-lg shadow-md p-6">
+            <div class="flex items-center mb-4">
+              <span class="endpoint-badge method-GET">GET</span>
+              <code class="ml-3 text-gray-900">/auth/me</code>
+              <span class="ml-2 text-xs text-gray-500">🔒 Requires Auth</span>
+            </div>
+            <p class="text-gray-600 mb-4">Get current user information.</p>
+
+            <h4 class="text-sm font-semibold text-gray-900 mb-2">Headers</h4>
+            <pre class="bg-gray-900 text-gray-100 p-4 rounded-lg overflow-x-auto mb-4"><code>Authorization: Bearer {token}</code></pre>
+
+            <h4 class="text-sm font-semibold text-gray-900 mb-2">Response</h4>
+            <pre class="bg-gray-900 text-gray-100 p-4 rounded-lg overflow-x-auto"><code>{
+  "success": true,
+  "user": {
+    "id": "68e3a6fb21af2fd194bf4b50",
+    "email": "admin@tractatus.local",
+    "role": "admin"
+  }
+}</code></pre>
+          </div>
+        </section>
+
+        <!-- Documents -->
+        <section id="documents" class="mb-12">
+          <h2 class="text-3xl font-bold text-gray-900 mb-6">Documents</h2>
+
+          <!-- List Documents -->
+          <div class="bg-white rounded-lg shadow-md p-6 mb-6">
+            <div class="flex items-center mb-4">
+              <span class="endpoint-badge method-GET">GET</span>
+              <code class="ml-3 text-gray-900">/documents</code>
+            </div>
+            <p class="text-gray-600 mb-4">Get list of all documents.</p>
+
+            <h4 class="text-sm font-semibold text-gray-900 mb-2">Query Parameters</h4>
+            <table class="w-full text-sm mb-4">
+              <tbody>
+                <tr class="border-b">
+                  <td class="py-2 font-mono text-gray-900">limit</td>
+                  <td class="py-2 text-gray-600">Number of results (default: 50)</td>
+                </tr>
+                <tr class="border-b">
+                  <td class="py-2 font-mono text-gray-900">skip</td>
+                  <td class="py-2 text-gray-600">Pagination offset (default: 0)</td>
+                </tr>
+                <tr class="border-b">
+                  <td class="py-2 font-mono text-gray-900">quadrant</td>
+                  <td class="py-2 text-gray-600">Filter by quadrant (STRATEGIC, OPERATIONAL, etc.)</td>
+                </tr>
+              </tbody>
+            </table>
+
+            <h4 class="text-sm font-semibold text-gray-900 mb-2">Response</h4>
+            <pre class="bg-gray-900 text-gray-100 p-4 rounded-lg overflow-x-auto"><code>{
+  "success": true,
+  "documents": [
+    {
+      "_id": "672f821b6e820c0c7a0e0d55",
+      "title": "Introduction to the Tractatus Framework",
+      "slug": "introduction-to-the-tractatus-framework",
+      "quadrant": "STRATEGIC",
+      "content_html": "<h1>Introduction</h1>...",
+      "toc": [{ "level": 1, "text": "Introduction", "slug": "introduction" }],
+      "created_at": "2025-10-07T10:30:00Z"
+    }
+  ],
+  "total": 12
+}</code></pre>
+          </div>
+
+          <!-- Get Single Document -->
+          <div class="bg-white rounded-lg shadow-md p-6 mb-6">
+            <div class="flex items-center mb-4">
+              <span class="endpoint-badge method-GET">GET</span>
+              <code class="ml-3 text-gray-900">/documents/:identifier</code>
+            </div>
+            <p class="text-gray-600 mb-4">Get document by ID or slug.</p>
+
+            <h4 class="text-sm font-semibold text-gray-900 mb-2">Parameters</h4>
+            <table class="w-full text-sm mb-4">
+              <tbody>
+                <tr>
+                  <td class="py-2 font-mono text-gray-900">identifier</td>
+                  <td class="py-2 text-gray-600">Document ID or slug</td>
+                </tr>
+              </tbody>
+            </table>
+
+            <h4 class="text-sm font-semibold text-gray-900 mb-2">Response</h4>
+            <pre class="bg-gray-900 text-gray-100 p-4 rounded-lg overflow-x-auto"><code>{
+  "success": true,
+  "document": {
+    "_id": "672f821b6e820c0c7a0e0d55",
+    "title": "Introduction to the Tractatus Framework",
+    "slug": "introduction-to-the-tractatus-framework",
+    "content_html": "<h1>Introduction</h1><p>The Tractatus framework...</p>",
+    "toc": [...]
+  }
+}</code></pre>
+          </div>
+
+          <!-- Search Documents -->
+          <div class="bg-white rounded-lg shadow-md p-6">
+            <div class="flex items-center mb-4">
+              <span class="endpoint-badge method-GET">GET</span>
+              <code class="ml-3 text-gray-900">/documents/search</code>
+            </div>
+            <p class="text-gray-600 mb-4">Full-text search across documents.</p>
+
+            <h4 class="text-sm font-semibold text-gray-900 mb-2">Query Parameters</h4>
+            <table class="w-full text-sm mb-4">
+              <tbody>
+                <tr>
+                  <td class="py-2 font-mono text-gray-900">q</td>
+                  <td class="py-2 text-gray-600">Search query (required)</td>
+                </tr>
+              </tbody>
+            </table>
+
+            <h4 class="text-sm font-semibold text-gray-900 mb-2">Response</h4>
+            <pre class="bg-gray-900 text-gray-100 p-4 rounded-lg overflow-x-auto"><code>{
+  "success": true,
+  "results": [
+    {
+      "title": "Core Concepts",
+      "slug": "core-concepts",
+      "score": 0.92,
+      "excerpt": "...boundary enforcement..."
+    }
+  ]
+}</code></pre>
+          </div>
+        </section>
+
+        <!-- Governance -->
+        <section id="governance" class="mb-12">
+          <h2 class="text-3xl font-bold text-gray-900 mb-6">Governance</h2>
+
+          <div class="bg-white rounded-lg shadow-md p-6">
+            <div class="flex items-center mb-4">
+              <span class="endpoint-badge method-GET">GET</span>
+              <code class="ml-3 text-gray-900">/governance</code>
+            </div>
+            <p class="text-gray-600 mb-4">Get governance framework status.</p>
+
+            <h4 class="text-sm font-semibold text-gray-900 mb-2">Response</h4>
+            <pre class="bg-gray-900 text-gray-100 p-4 rounded-lg overflow-x-auto"><code>{
+  "success": true,
+  "governance": {
+    "active": true,
+    "services": {
+      "classifier": { "enabled": true, "status": "operational" },
+      "validator": { "enabled": true, "status": "operational" },
+      "boundary": { "enabled": true, "status": "operational" },
+      "pressure": { "enabled": true, "status": "operational" },
+      "metacognitive": { "enabled": true, "status": "selective" }
+    },
+    "instruction_count": 7,
+    "last_validation": "2025-10-07T12:00:00Z"
+  }
+}</code></pre>
+          </div>
+        </section>
+
+        <!-- Admin -->
+        <section id="admin" class="mb-12">
+          <h2 class="text-3xl font-bold text-gray-900 mb-6">Admin Endpoints</h2>
+
+          <div class="bg-amber-50 border-l-4 border-amber-500 p-4 mb-6">
+            <p class="text-sm text-amber-800">
+              All admin endpoints require authentication with admin role.
+            </p>
+          </div>
+
+          <!-- Admin Stats -->
+          <div class="bg-white rounded-lg shadow-md p-6 mb-6">
+            <div class="flex items-center mb-4">
+              <span class="endpoint-badge method-GET">GET</span>
+              <code class="ml-3 text-gray-900">/admin/stats</code>
+              <span class="ml-2 text-xs text-gray-500">🔒 Admin Only</span>
+            </div>
+            <p class="text-gray-600 mb-4">Get dashboard statistics.</p>
+
+            <h4 class="text-sm font-semibold text-gray-900 mb-2">Response</h4>
+            <pre class="bg-gray-900 text-gray-100 p-4 rounded-lg overflow-x-auto"><code>{
+  "success": true,
+  "documents": 12,
+  "pending": 3,
+  "approved": 45,
+  "users": 5
+}</code></pre>
+          </div>
+
+          <!-- Moderation Queue -->
+          <div class="bg-white rounded-lg shadow-md p-6">
+            <div class="flex items-center mb-4">
+              <span class="endpoint-badge method-GET">GET</span>
+              <code class="ml-3 text-gray-900">/admin/moderation</code>
+              <span class="ml-2 text-xs text-gray-500">🔒 Admin Only</span>
+            </div>
+            <p class="text-gray-600 mb-4">Get items in moderation queue.</p>
+
+            <h4 class="text-sm font-semibold text-gray-900 mb-2">Response</h4>
+            <pre class="bg-gray-900 text-gray-100 p-4 rounded-lg overflow-x-auto"><code>{
+  "success": true,
+  "items": [
+    {
+      "_id": "672f8xxx",
+      "type": "blog_post",
+      "title": "Understanding Boundary Enforcement",
+      "status": "pending",
+      "submitted_at": "2025-10-07T11:00:00Z"
+    }
+  ]
+}</code></pre>
+          </div>
+        </section>
+
+        <!-- Error Codes -->
+        <section id="errors" class="mb-12">
+          <h2 class="text-3xl font-bold text-gray-900 mb-6">Error Codes</h2>
+
+          <div class="bg-white rounded-lg shadow-md overflow-x-auto">
+            <table class="w-full">
+              <thead class="bg-gray-50 border-b">
+                <tr>
+                  <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Code</th>
+                  <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Description</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-gray-200">
+                <tr>
+                  <td class="px-6 py-4 font-mono text-sm text-gray-900">400</td>
+                  <td class="px-6 py-4 text-sm text-gray-600">Bad Request - Invalid parameters</td>
+                </tr>
+                <tr>
+                  <td class="px-6 py-4 font-mono text-sm text-gray-900">401</td>
+                  <td class="px-6 py-4 text-sm text-gray-600">Unauthorized - Missing or invalid token</td>
+                </tr>
+                <tr>
+                  <td class="px-6 py-4 font-mono text-sm text-gray-900">403</td>
+                  <td class="px-6 py-4 text-sm text-gray-600">Forbidden - Insufficient permissions</td>
+                </tr>
+                <tr>
+                  <td class="px-6 py-4 font-mono text-sm text-gray-900">404</td>
+                  <td class="px-6 py-4 text-sm text-gray-600">Not Found - Resource does not exist</td>
+                </tr>
+                <tr>
+                  <td class="px-6 py-4 font-mono text-sm text-gray-900">409</td>
+                  <td class="px-6 py-4 text-sm text-gray-600">Conflict - Duplicate resource (e.g., slug)</td>
+                </tr>
+                <tr>
+                  <td class="px-6 py-4 font-mono text-sm text-gray-900">500</td>
+                  <td class="px-6 py-4 text-sm text-gray-600">Internal Server Error</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="mt-6 bg-gray-50 border-l-4 border-gray-400 p-4">
+            <h4 class="text-sm font-semibold text-gray-900 mb-2">Error Response Format</h4>
+            <pre class="bg-gray-900 text-gray-100 p-4 rounded-lg overflow-x-auto"><code>{
+  "success": false,
+  "message": "Error description",
+  "error": "ERROR_CODE"
+}</code></pre>
+          </div>
+        </section>
+
+      </main>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-gray-400 py-12 mt-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div>
+          <h3 class="text-white font-bold mb-4">Tractatus Framework</h3>
+          <p class="text-sm">Preserving human agency through architectural constraints.</p>
+        </div>
+        <div>
+          <h3 class="text-white font-bold mb-4">Documentation</h3>
+          <ul class="space-y-2 text-sm">
+            <li><a href="/docs.html" class="hover:text-white">Framework Docs</a></li>
+            <li><a href="/implementer.html" class="hover:text-white">Implementation Guide</a></li>
+            <li><a href="/api-reference.html" class="hover:text-white">API Reference</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="text-white font-bold mb-4">Resources</h3>
+          <ul class="space-y-2 text-sm">
+            <li><a href="/demos/classification-demo.html" class="hover:text-white">Interactive Demos</a></li>
+            <li><a href="/admin/login.html" class="hover:text-white">Admin Portal</a></li>
+            <li><a href="/" class="hover:text-white">Home</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="mt-8 pt-8 border-t border-gray-800 text-center text-sm">
+        <p>© 2025 Tractatus Framework. Licensed under <a href="/LICENSE" class="text-blue-400 hover:text-blue-300 transition">Apache License 2.0</a>.</p>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,103 @@
+# Dependencies
+node_modules/
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# MongoDB data
+data/mongodb/*
+!data/mongodb/.gitkeep
+
+# Generated files
+public/downloads/*.pdf
+public/downloads/*.epub
+public/downloads/*.docx
+public/downloads/*.tar.gz
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Testing
+coverage/
+.nyc_output/
+
+# Build
+dist/
+build/
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+
+# ============================================
+# PUBLIC REPO: Additional Protections
+# ============================================
+
+# NEVER include internal documentation
+CLAUDE.md
+CLAUDE*.md
+*Maintenance_Guide.md
+SESSION-HANDOFF-*.md
+NEXT_SESSION*.md
+PHASE-*-PREPARATION*.md
+*.backup
+old*
+
+# NEVER include session state
+.claude/
+
+# NEVER include secrets
+*.key
+*.pem
+*.p12
+*.pfx
+secrets/
+credentials/
+
+# NEVER include database dumps
+dump/
+backups/
+*.sql
+*.sql.gz
+*.dump
+
+# NEVER include SSH keys
+*.ssh/
+id_rsa*
+id_ed25519*
+
+# NEVER include production configs with secrets
+deployment-config.json
+production.json
+
+# NEVER include internal planning docs
+docs/SESSION-*.md
+docs/FRAMEWORK_FAILURE_*.md
+docs/SECURITY_AUDIT_REPORT.md
+docs/governance/MONTHLY-REVIEW-SCHEDULE.md
+docs/governance/PRIVACY-PRESERVING-ANALYTICS-PLAN.md
+
+# NEVER include temporary audit files
+/tmp/*.md
+
+# NEVER include screenshots
+Screenshot*.png
+*.screenshot.png

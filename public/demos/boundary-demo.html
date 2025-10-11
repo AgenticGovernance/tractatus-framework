@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Boundary Enforcement Simulator - Tractatus Framework</title>
+  <link rel="stylesheet" href="/css/tailwind.css?v=1759833751">
+</head>
+<body class="bg-gray-50">
+
+  <!-- Navigation -->
+  <nav class="bg-white border-b border-gray-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between h-16">
+        <div class="flex items-center">
+          <a href="/" class="text-xl font-bold text-gray-900">Tractatus Framework</a>
+          <span class="ml-4 text-gray-400">|</span>
+          <span class="ml-4 text-gray-600">Boundary Enforcement</span>
+        </div>
+        <div class="flex items-center space-x-6">
+          <a href="/demos/classification-demo.html" class="text-gray-600 hover:text-gray-900">Classification Demo</a>
+          <a href="/demos/27027-demo.html" class="text-gray-600 hover:text-gray-900">27027 Demo</a>
+          <a href="/" class="text-gray-600 hover:text-gray-900">Home</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+
+    <!-- Header -->
+    <div class="text-center mb-12">
+      <h1 class="text-4xl font-bold text-gray-900 mb-4">
+        Boundary Enforcement Simulator
+      </h1>
+      <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+        See how the Tractatus framework distinguishes between decisions that can be
+        automated and those that require human judgment.
+      </p>
+    </div>
+
+    <!-- Main Content -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+
+      <!-- Scenarios -->
+      <div class="space-y-4">
+        <h2 class="text-2xl font-bold text-gray-900 mb-6">Test Scenarios</h2>
+
+        <div class="scenario-card bg-white rounded-lg shadow-lg p-6 cursor-pointer hover:shadow-xl transition"
+             data-decision="optimize_images"
+             data-domain="technical"
+             data-allowed="true">
+          <h3 class="text-lg font-semibold text-gray-900 mb-2">Optimize Image Loading</h3>
+          <p class="text-gray-600 mb-3">Implement lazy loading and compression for better performance</p>
+          <span class="inline-block px-3 py-1 bg-gray-100 text-gray-600 rounded-full text-sm">Technical Decision</span>
+        </div>
+
+        <div class="scenario-card bg-white rounded-lg shadow-lg p-6 cursor-pointer hover:shadow-xl transition"
+             data-decision="privacy_vs_analytics"
+             data-domain="values"
+             data-allowed="false">
+          <h3 class="text-lg font-semibold text-gray-900 mb-2">Enable Analytics Tracking</h3>
+          <p class="text-gray-600 mb-3">Add Google Analytics to track user behavior and improve UX</p>
+          <span class="inline-block px-3 py-1 bg-purple-100 text-purple-600 rounded-full text-sm">Values Decision</span>
+        </div>
+
+        <div class="scenario-card bg-white rounded-lg shadow-lg p-6 cursor-pointer hover:shadow-xl transition"
+             data-decision="auto_subscribe"
+             data-domain="user_agency"
+             data-allowed="false">
+          <h3 class="text-lg font-semibold text-gray-900 mb-2">Auto-Subscribe Users</h3>
+          <p class="text-gray-600 mb-3">Automatically subscribe new users to the newsletter (with opt-out)</p>
+          <span class="inline-block px-3 py-1 bg-purple-100 text-purple-600 rounded-full text-sm">User Agency</span>
+        </div>
+
+        <div class="scenario-card bg-white rounded-lg shadow-lg p-6 cursor-pointer hover:shadow-xl transition"
+             data-decision="delete_old_data"
+             data-domain="irreversible"
+             data-allowed="false">
+          <h3 class="text-lg font-semibold text-gray-900 mb-2">Delete Old User Data</h3>
+          <p class="text-gray-600 mb-3">Automatically delete user data older than 6 months to save storage</p>
+          <span class="inline-block px-3 py-1 bg-red-100 text-red-600 rounded-full text-sm">Irreversible</span>
+        </div>
+
+        <div class="scenario-card bg-white rounded-lg shadow-lg p-6 cursor-pointer hover:shadow-xl transition"
+             data-decision="cache_strategy"
+             data-domain="technical"
+             data-allowed="true">
+          <h3 class="text-lg font-semibold text-gray-900 mb-2">Implement Caching Strategy</h3>
+          <p class="text-gray-600 mb-3">Add Redis caching for frequently accessed data</p>
+          <span class="inline-block px-3 py-1 bg-gray-100 text-gray-600 rounded-full text-sm">Technical Decision</span>
+        </div>
+
+        <div class="scenario-card bg-white rounded-lg shadow-lg p-6 cursor-pointer hover:shadow-xl transition"
+             data-decision="content_moderation"
+             data-domain="values"
+             data-allowed="false">
+          <h3 class="text-lg font-semibold text-gray-900 mb-2">Automatic Content Moderation</h3>
+          <p class="text-gray-600 mb-3">AI automatically removes content deemed inappropriate</p>
+          <span class="inline-block px-3 py-1 bg-purple-100 text-purple-600 rounded-full text-sm">Values Decision</span>
+        </div>
+
+        <div class="scenario-card bg-white rounded-lg shadow-lg p-6 cursor-pointer hover:shadow-xl transition"
+             data-decision="api_rate_limiting"
+             data-domain="technical"
+             data-allowed="true">
+          <h3 class="text-lg font-semibold text-gray-900 mb-2">Implement API Rate Limiting</h3>
+          <p class="text-gray-600 mb-3">Add rate limiting to prevent API abuse (100 req/min per IP)</p>
+          <span class="inline-block px-3 py-1 bg-gray-100 text-gray-600 rounded-full text-sm">Technical Decision</span>
+        </div>
+
+        <div class="scenario-card bg-white rounded-lg shadow-lg p-6 cursor-pointer hover:shadow-xl transition"
+             data-decision="ml_training_data"
+             data-domain="values"
+             data-allowed="false">
+          <h3 class="text-lg font-semibold text-gray-900 mb-2">Collect Data for ML Training</h3>
+          <p class="text-gray-600 mb-3">Use user data to train machine learning models for feature improvements</p>
+          <span class="inline-block px-3 py-1 bg-purple-100 text-purple-600 rounded-full text-sm">Values Decision</span>
+        </div>
+
+        <div class="scenario-card bg-white rounded-lg shadow-lg p-6 cursor-pointer hover:shadow-xl transition"
+             data-decision="auto_password_reset"
+             data-domain="security"
+             data-allowed="false">
+          <h3 class="text-lg font-semibold text-gray-900 mb-2">Automated Password Reset</h3>
+          <p class="text-gray-600 mb-3">Automatically reset user password after 5 failed login attempts</p>
+          <span class="inline-block px-3 py-1 bg-orange-100 text-orange-600 rounded-full text-sm">Security</span>
+        </div>
+
+        <div class="scenario-card bg-white rounded-lg shadow-lg p-6 cursor-pointer hover:shadow-xl transition"
+             data-decision="database_indexing"
+             data-domain="technical"
+             data-allowed="true">
+          <h3 class="text-lg font-semibold text-gray-900 mb-2">Add Database Indexes</h3>
+          <p class="text-gray-600 mb-3">Create indexes on frequently queried columns to improve performance</p>
+          <span class="inline-block px-3 py-1 bg-gray-100 text-gray-600 rounded-full text-sm">Technical Decision</span>
+        </div>
+
+        <div class="scenario-card bg-white rounded-lg shadow-lg p-6 cursor-pointer hover:shadow-xl transition"
+             data-decision="default_public_sharing"
+             data-domain="user_agency"
+             data-allowed="false">
+          <h3 class="text-lg font-semibold text-gray-900 mb-2">Default Public Sharing</h3>
+          <p class="text-gray-600 mb-3">Make user posts public by default (users can change to private)</p>
+          <span class="inline-block px-3 py-1 bg-purple-100 text-purple-600 rounded-full text-sm">User Agency</span>
+        </div>
+
+        <div class="scenario-card bg-white rounded-lg shadow-lg p-6 cursor-pointer hover:shadow-xl transition"
+             data-decision="error_logging_pii"
+             data-domain="values"
+             data-allowed="false">
+          <h3 class="text-lg font-semibold text-gray-900 mb-2">Log All Error Details</h3>
+          <p class="text-gray-600 mb-3">Include full request data in error logs for debugging (may contain PII)</p>
+          <span class="inline-block px-3 py-1 bg-purple-100 text-purple-600 rounded-full text-sm">Values Decision</span>
+        </div>
+      </div>
+
+      <!-- Results Panel -->
+      <div class="sticky top-6">
+        <div id="results-panel" class="bg-white rounded-lg shadow-lg p-6 min-h-[400px]">
+          <h2 class="text-2xl font-bold text-gray-900 mb-4">Boundary Check Result</h2>
+
+          <div id="empty-state" class="text-center py-12">
+            <svg class="w-16 h-16 mx-auto mb-4 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+            </svg>
+            <p class="text-gray-400">Select a scenario to see boundary check</p>
+          </div>
+
+          <div id="result-content" class="hidden">
+            <!-- Decision Info -->
+            <div class="mb-6">
+              <h3 id="decision-title" class="text-xl font-semibold text-gray-900 mb-2"></h3>
+              <p id="decision-desc" class="text-gray-600"></p>
+            </div>
+
+            <!-- Verdict -->
+            <div id="verdict" class="rounded-lg p-6 mb-6">
+              <!-- Will be populated by JavaScript -->
+            </div>
+
+            <!-- Reasoning -->
+            <div class="mb-6">
+              <h4 class="text-sm font-semibold text-gray-700 mb-2">Reasoning:</h4>
+              <p id="reasoning" class="text-gray-600"></p>
+            </div>
+
+            <!-- AI Can Provide -->
+            <div id="ai-alternatives" class="hidden">
+              <h4 class="text-sm font-semibold text-gray-700 mb-2">AI Can Provide:</h4>
+              <ul id="alternatives-list" class="list-disc list-inside text-gray-600 space-y-1">
+                <!-- Will be populated -->
+              </ul>
+            </div>
+
+            <!-- Code Example -->
+            <div class="mt-6 border-t border-gray-200 pt-4">
+              <h4 class="text-sm font-semibold text-gray-700 mb-2">Code Check:</h4>
+              <pre id="code-example" class="bg-gray-900 text-gray-100 p-4 rounded-lg text-xs overflow-x-auto"></pre>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Explanation Section -->
+    <div class="mt-12 bg-blue-50 border-l-4 border-blue-500 p-6 rounded-r-lg">
+      <h3 class="text-lg font-semibold text-blue-900 mb-2">The Tractatus Boundary</h3>
+      <blockquote class="text-blue-800 italic mb-4 pl-4 border-l-2 border-blue-300">
+        "Whereof one cannot speak, thereof one must be silent."
+        <br>— Ludwig Wittgenstein
+      </blockquote>
+      <p class="text-blue-800 mb-4">
+        Applied to AI: <strong>"What cannot be systematized must not be automated."</strong>
+      </p>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4">
+        <div>
+          <h4 class="font-semibold text-blue-900 mb-2">✅ Can Be Automated:</h4>
+          <ul class="text-blue-800 text-sm space-y-1">
+            <li>• Calculations and logic</li>
+            <li>• Data transformations</li>
+            <li>• Pattern matching</li>
+            <li>• Technical optimizations</li>
+            <li>• Implementation of specifications</li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-semibold text-blue-900 mb-2">🚫 Requires Human Judgment:</h4>
+          <ul class="text-blue-800 text-sm space-y-1">
+            <li>• Values decisions (privacy, ethics)</li>
+            <li>• User agency choices</li>
+            <li>• Cultural context</li>
+            <li>• Irreversible consequences</li>
+            <li>• Unprecedented situations</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="/js/demos/boundary-demo.js?v=1759833751"></script>
+
+</body>
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equi?v="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equi?v="Pragma" content="no-cache">
+  <meta http-equi?v="Expires" content="0">
+  <title>Version Check</title>
+  <style>
+    body { font-family: sans-serif; padding: 2rem; background: #f9fafb; }
+    .box { background: white; border: 1px solid #e5e7eb; padding: 1.5rem; margin: 1rem 0; border-radius: 0.5rem; }
+    .good { background: #d1fae5; border-color: #10b981; }
+    .bad { background: #fee2e2; border-color: #ef4444; }
+    code { background: #1f2937; color: #f3f4f6; padding: 0.25rem 0.5rem; border-radius: 0.25rem; }
+    pre { background: #1f2937; color: #f3f4f6; padding: 1rem; border-radius: 0.5rem; overflow-x: auto; }
+  </style>
+</head>
+<body>
+  <h1>Download Fix - Version Check</h1>
+
+  <div class="box">
+    <h2>Expected Version</h2>
+    <p>JavaScript should be version: <code>1759828916</code></p>
+    <p>Onclick handler should include: <code>window.location.href</code></p>
+  </div>
+
+  <div id="results">
+    <div class="box">
+      <p>Loading test...</p>
+    </div>
+  </div>
+
+  <div class="box">
+    <h2>If Version is Wrong:</h2>
+    <ol>
+      <li>Close ALL browser tabs for agenticgovernance.digital</li>
+      <li>Clear browser cache completely (not just for this site)</li>
+      <li>Or use a different browser you haven't used for this site</li>
+      <li>Or use private/incognito window</li>
+    </ol>
+  </div>
+
+  <script>
+    // Get the version from the main docs page
+    fetch('/docs.html?' + Date.now())
+      .then(r => r.text())
+      .then(html => {
+        const match = html.match(/docs-app\.js\?v=(\d+)/);
+        const version = match ? match[1] : 'NOT FOUND';
+
+        const expected = '1759828916';
+        const correct = version === expected;
+
+        // Now fetch the actual JavaScript
+        return fetch('/js/docs-app.js?v=' + version + '&' + Date.now())
+          .then(r => r.text())
+          .then(js => {
+            const hasNewHandler = js.includes('window.location.href=');
+            const hasOldHandler = js.includes('event.stopPropagation()');
+
+            let html = '';
+
+            if (correct && hasNewHandler) {
+              html = `
+                <div class="box good">
+                  <h2>✅ Version is CORRECT</h2>
+                  <p>JavaScript version: <code>${version}</code></p>
+                  <p>Handler includes: <code>window.location.href</code></p>
+                  <p><strong>Downloads should work now!</strong></p>
+                </div>
+              `;
+            } else {
+              html = `
+                <div class="box bad">
+                  <h2>❌ Version is WRONG</h2>
+                  <p>JavaScript version loaded: <code>${version}</code></p>
+                  <p>Expected: <code>${expected}</code></p>
+                  <p>Has new handler: ${hasNewHandler ? '✅ YES' : '❌ NO'}</p>
+                  <p><strong>Your browser is serving cached files!</strong></p>
+                </div>
+                <div class="box">
+                  <h3>Cached JavaScript Snippet:</h3>
+                  <pre>${js.substring(js.indexOf('onclick='), js.indexOf('onclick=') + 200).replace(/</g, '&lt;').replace(/>/g, '&gt;')}</pre>
+                </div>
+              `;
+            }
+
+            document.getElementById('results').innerHTML = html;
+          });
+      })
+      .catch(err => {
+        document.getElementById('results').innerHTML = `
+          <div class="box bad">
+            <h2>Error</h2>
+            <p>${err.message}</p>
+          </div>
+        `;
+      });
+  </script>
+</body>
+</html>
