@@ -1,424 +1,309 @@
-# Contributing to Tractatus Framework
+# Contributing to Tractatus
 
-Thank you for your interest in contributing to the Tractatus Framework! This document provides guidelines for contributions.
+Thank you for your interest in contributing to the Tractatus AI Safety Framework! We welcome contributions that advance architectural AI safety through governance, transparency, and respect for human agency.
 
----
+## 🌏 Our Values
 
-## Table of Contents
+Tractatus is grounded in these core principles:
 
-1. [Code of Conduct](#code-of-conduct)
-2. [How to Contribute](#how-to-contribute)
-3. [Development Setup](#development-setup)
-4. [Coding Standards](#coding-standards)
-5. [Testing Requirements](#testing-requirements)
-6. [Submitting Changes](#submitting-changes)
-7. [Documentation](#documentation)
-8. [Community](#community)
+- **Human Agency**: Technology should enhance, not replace, human decision-making
+- **Transparency**: All governance mechanisms should be observable and understandable
+- **Values Pluralism**: We respect diverse moral perspectives and cultural contexts
+- **Safety First**: Architectural constraints take precedence over convenience
+- **Te Tiriti Partnership**: We honor indigenous wisdom and partnership principles
 
----
+All contributions should align with these values. If you're unsure whether your contribution fits, please open a discussion first.
 
-## Code of Conduct
+## 🤝 Ways to Contribute
 
-### Our Pledge
+Tractatus welcomes diverse forms of contribution:
 
-We are committed to providing a welcoming and inclusive environment for all contributors, regardless of background, identity, or experience level.
+### Research & Theory
+- Empirical validation of framework components
+- Organizational theory analysis
+- Comparative studies with other AI safety approaches
+- Case studies of framework implementation
+- Academic papers and citations
 
-### Expected Behavior
+### Code & Implementation
+- Bug fixes and performance improvements
+- New framework components or features
+- Testing and quality assurance
+- Documentation improvements
+- Example implementations
 
-- **Be respectful** - Treat all community members with respect and kindness
-- **Be constructive** - Provide helpful feedback and focus on improving the project
-- **Be collaborative** - Work together to solve problems and build better solutions
-- **Be transparent** - Share your reasoning and be open about limitations
+### Documentation
+- Improving clarity and accessibility
+- Translating documentation (especially Te Reo Māori)
+- Creating tutorials and guides
+- Adding code examples
+- Correcting errors or outdated information
 
-### Unacceptable Behavior
+### Community
+- Answering questions in discussions
+- Helping new contributors
+- Organizing meetups or study groups
+- Creating educational content
+- Sharing implementation experiences
 
-- Harassment, discrimination, or personal attacks
-- Trolling, insulting comments, or unconstructive criticism
-- Publishing others' private information without consent
-- Any conduct that would be inappropriate in a professional setting
-
----
-
-## How to Contribute
-
-There are many ways to contribute to Tractatus:
-
-### 1. Report Bugs
-
-If you find a bug, please open an issue with:
-- Clear description of the problem
-- Steps to reproduce
-- Expected vs. actual behavior
-- Your environment (OS, Node.js version, etc.)
-- Relevant logs or error messages
-
-### 2. Suggest Features
-
-Feature requests are welcome! Please include:
-- Clear use case and problem statement
-- Proposed solution or approach
-- Potential impact on existing functionality
-- Any alternative solutions considered
-
-### 3. Improve Documentation
-
-Documentation improvements are highly valued:
-- Fix typos or clarify explanations
-- Add examples or tutorials
-- Improve API documentation
-- Translate to other languages
-
-### 4. Submit Code
-
-Code contributions should:
-- Solve a specific problem or add clear value
-- Follow our coding standards (see below)
-- Include tests for new functionality
-- Update relevant documentation
-
-### 5. Share Case Studies
-
-Real-world examples help the community learn:
-- LLM failure modes you've encountered
-- Successful Tractatus implementations
-- Lessons learned from deployments
-- Framework limitations discovered
-
----
-
-## Development Setup
+## 🚀 Getting Started
 
 ### Prerequisites
 
-- **Node.js 18+** (tested on 18.x, 20.x)
-- **MongoDB 7.x** (for local development)
-- **Git** (version control)
+- Node.js 18.x or 20.x
+- MongoDB 5.0+
+- Git
+- Basic understanding of organizational theory (helpful but not required)
 
-### Initial Setup
+### Development Setup
 
-```bash
-# Clone the repository
-git clone https://github.com/AgenticGovernance/tractatus-framework.git
-cd tractatus-framework
+1. **Fork the repository**
+   ```bash
+   # Fork via GitHub UI, then clone your fork
+   git clone git@github.com:YOUR_USERNAME/tractatus-framework.git
+   cd tractatus-framework
+   ```
 
-# Install dependencies
-npm install
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
 
-# Copy environment template
-cp .env.example .env
+3. **Set up environment**
+   ```bash
+   cp .env.example .env
+   # Edit .env with your local MongoDB connection
+   ```
 
-# Initialize database
-npm run init:db
+4. **Initialize database**
+   ```bash
+   npm run init:db
+   ```
 
-# Start development server
-npm run dev
-```
+5. **Run tests**
+   ```bash
+   npm test
+   ```
 
-### Verify Installation
+6. **Start development server**
+   ```bash
+   npm start
+   # Server runs on http://localhost:9000
+   ```
 
-```bash
-# Run tests
-npm test
+### Understanding the Codebase
 
-# Check code style
-npm run lint
+Key directories:
+- `src/services/` - Six framework components (ContextPressureMonitor, etc.)
+- `src/routes/` - API endpoints
+- `src/models/` - MongoDB data models
+- `public/` - Frontend HTML/JS (CSP-compliant, no inline handlers)
+- `docs/` - Research papers and documentation
+- `tests/` - Unit and integration tests
 
-# Build project
-npm run build
-```
+## 📝 Contribution Workflow
 
----
+### 1. Create an Issue (Recommended)
 
-## Coding Standards
+Before starting work, create an issue to discuss your contribution:
+- **Bug reports**: Use the bug report template
+- **Features**: Use the feature request template
+- **Research**: Use the research question template
+- **Docs**: Use the documentation template
 
-### JavaScript Style
+This helps avoid duplicate work and ensures alignment with project goals.
 
-We follow **Standard JS** with minor modifications:
-
-```javascript
-// ✅ Good
-const result = await validator.validate(action, { explicit_instructions });
-
-// ❌ Bad
-const result=await validator.validate(action,{explicit_instructions})
-```
-
-**Key principles:**
-- Use semicolons consistently
-- 2-space indentation
-- camelCase for variables and functions
-- PascalCase for classes and constructors
-- UPPER_CASE for constants
-- Descriptive variable names (no single letters except in loops)
-
-### Service Architecture
-
-All Tractatus services follow this pattern:
-
-```javascript
-class ServiceName {
-  constructor(dependencies = {}) {
-    this.db = dependencies.db;
-    this.logger = dependencies.logger || console;
-  }
-
-  async performAction(input) {
-    // 1. Validate input
-    // 2. Core logic
-    // 3. Return structured result
-    return {
-      status: 'success',
-      data: result,
-      metadata: { timestamp, version }
-    };
-  }
-}
-
-module.exports = ServiceName;
-```
-
-### Error Handling
-
-```javascript
-// Use descriptive error classes
-class ValidationError extends Error {
-  constructor(message, details = {}) {
-    super(message);
-    this.name = 'ValidationError';
-    this.details = details;
-  }
-}
-
-// Always include context
-throw new ValidationError(
-  'Instruction conflicts with existing rule',
-  { ruleId: 'inst_005', conflictType: 'PORT_MISMATCH' }
-);
-```
-
-### Comments
-
-```javascript
-// ✅ Good - Explains WHY
-// Training patterns can override explicit instructions (27027 failure mode)
-// so we must validate against stored directives before proceeding
-const validation = await validator.check(action);
-
-// ❌ Bad - States WHAT (obvious from code)
-// Check the validation
-const validation = await validator.check(action);
-```
-
----
-
-## Testing Requirements
-
-### Test Coverage
-
-- **Unit tests**: All services must have 80%+ coverage
-- **Integration tests**: Critical workflows must be tested end-to-end
-- **Edge cases**: Test failure modes explicitly
-
-### Running Tests
+### 2. Create a Branch
 
 ```bash
-# All tests
-npm test
-
-# Unit tests only
-npm run test:unit
-
-# Integration tests only
-npm run test:integration
-
-# Watch mode (during development)
-npm run test:watch
-
-# Coverage report
-npm run test:coverage
+git checkout -b feature/your-feature-name
+# or
+git checkout -b fix/bug-description
+# or
+git checkout -b docs/documentation-update
 ```
 
-### Writing Tests
+Branch naming conventions:
+- `feature/` - New features
+- `fix/` - Bug fixes
+- `docs/` - Documentation only
+- `research/` - Research contributions
+- `refactor/` - Code refactoring
 
+### 3. Make Your Changes
+
+Follow these guidelines:
+
+**Code Style**:
+- JavaScript: Use ES6+ features, async/await preferred
+- Naming: camelCase for functions/variables, PascalCase for classes
+- Comments: Explain *why*, not *what*
+- No inline event handlers or styles (CSP compliance)
+
+**Commit Messages**:
+```
+type(scope): brief description
+
+Longer explanation if needed.
+
+- Bullet points for multiple changes
+- Reference issues with #123
+
+🤖 Generated with [Claude Code](https://claude.com/claude-code)
+
+Co-Authored-By: Your Name <your@email.com>
+```
+
+Types: `feat`, `fix`, `docs`, `refactor`, `test`, `chore`
+
+**Testing**:
+- Add unit tests for new functions
+- Add integration tests for API endpoints
+- Ensure all tests pass: `npm test`
+- Manual testing for UI changes
+
+**Documentation**:
+- Update relevant docs in `docs/`
+- Add inline code comments for complex logic
+- Update README if needed
+
+### 4. Ensure CSP Compliance
+
+All HTML/JS must follow Content Security Policy:
+- ❌ No `onclick`, `onload`, `onchange` inline handlers
+- ❌ No `<script>` tags without `src` attribute
+- ❌ No inline `style` attributes
+- ✅ Use `addEventListener` in external JS files
+- ✅ Use CSS classes instead of inline styles
+
+Check compliance:
+```bash
+node scripts/pre-action-check.js edit path/to/file.html "Description"
+```
+
+### 5. Submit Pull Request
+
+```bash
+git push origin feature/your-feature-name
+```
+
+Then open a PR on GitHub. The PR template will guide you through required information.
+
+**PR Checklist**:
+- [ ] Tests added and passing
+- [ ] Documentation updated
+- [ ] CSP compliance verified
+- [ ] Values alignment confirmed
+- [ ] No breaking changes (or clearly documented)
+- [ ] Commit messages follow conventions
+
+## 🧪 Testing Requirements
+
+### Unit Tests
+- Test individual functions in isolation
+- Mock external dependencies
+- Aim for >80% code coverage
+- Located in `tests/unit/`
+
+Example:
 ```javascript
-describe('CrossReferenceValidator', () => {
-  describe('validate()', () => {
-    it('should reject actions conflicting with HIGH persistence instructions', async () => {
-      // Arrange
-      const validator = new CrossReferenceValidator({ db });
-      await db.instructions.insert({
-        text: 'MongoDB MUST use port 27027',
-        persistence: 'HIGH'
-      });
-
-      // Act
-      const result = await validator.validate({
-        type: 'database_config',
-        port: 27017
-      });
-
-      // Assert
-      expect(result.status).toBe('REJECTED');
-      expect(result.reason).toContain('conflicts with instruction');
-    });
+describe('ContextPressureMonitor', () => {
+  it('should calculate pressure correctly', () => {
+    const monitor = new ContextPressureMonitor();
+    const result = monitor.calculatePressure(10000, 200000);
+    expect(result.level).toBe('NORMAL');
   });
 });
 ```
 
----
+### Integration Tests
+- Test API endpoints end-to-end
+- Use test database
+- Located in `tests/integration/`
 
-## Submitting Changes
-
-### Branch Naming
-
-- `feature/description` - New features
-- `fix/description` - Bug fixes
-- `docs/description` - Documentation updates
-- `refactor/description` - Code improvements
-- `test/description` - Test additions
-
-Examples:
-- `feature/media-triage-service`
-- `fix/context-pressure-calculation`
-- `docs/update-api-examples`
-
-### Commit Messages
-
-Follow the [Conventional Commits](https://www.conventionalcommits.org/) format:
-
-```
-<type>(<scope>): <description>
-
-[optional body]
-
-[optional footer]
+Run tests:
+```bash
+npm run test:unit          # Unit tests only
+npm run test:integration   # Integration tests only
+npm test                   # All tests
 ```
 
-**Types:**
-- `feat` - New feature
-- `fix` - Bug fix
-- `docs` - Documentation changes
-- `test` - Test additions or fixes
-- `refactor` - Code refactoring
-- `chore` - Maintenance tasks
+## 📚 Documentation Standards
 
-**Examples:**
+### Code Documentation
+- Use JSDoc for functions and classes
+- Explain complex algorithms
+- Document assumptions and edge cases
 
-```
-feat(validator): add scope creep detection to MetacognitiveVerifier
+### Markdown Documentation
+- Use clear headings and structure
+- Include code examples
+- Add links to related docs
+- Keep language accessible (avoid unnecessary jargon)
 
-Implements algorithm to detect when proposed actions exceed
-requested scope, triggering human review requirement.
+### Research Documentation
+- Cite sources properly
+- Include methodology
+- Provide data/evidence
+- Acknowledge limitations
 
-Closes #42
-```
+## ✅ Values Alignment Checklist
 
-```
-fix(monitor): correct token pressure calculation at 75% threshold
+Before submitting, verify your contribution:
 
-Previous calculation used integer division causing premature
-escalation warnings. Now uses float division for accuracy.
+- [ ] **Respects human agency**: Does not automate decisions that should involve humans
+- [ ] **Promotes transparency**: Mechanisms are observable and explainable
+- [ ] **Considers diverse perspectives**: Doesn't assume single "correct" viewpoint
+- [ ] **Enhances safety**: Adds constraints or validation, doesn't bypass them
+- [ ] **Maintains architectural integrity**: Follows established patterns
 
-Fixes #89
-```
+If unsure, ask in the PR or discussion!
 
-### Pull Request Process
+## 🚫 What We Don't Accept
 
-1. **Create a feature branch** from `main`
-2. **Make your changes** following coding standards
-3. **Add tests** for new functionality
-4. **Update documentation** if needed
-5. **Run tests** - ensure all pass
-6. **Commit changes** with descriptive messages
-7. **Push to your fork**
-8. **Open a pull request** with:
-   - Clear title and description
-   - Link to related issues
-   - Screenshots/examples if applicable
-   - Confirmation that tests pass
+- Contributions that bypass safety constraints
+- Features that reduce transparency
+- Code that violates CSP (inline handlers/scripts)
+- Undocumented breaking changes
+- Contributions without tests
+- Plagiarized research or code
+- Disrespectful or discriminatory content
 
-### Pull Request Review
+## 🏆 Recognition
 
-Your PR will be reviewed for:
-- **Correctness** - Does it solve the problem?
-- **Code quality** - Follows standards and best practices?
-- **Tests** - Adequate coverage of new code?
-- **Documentation** - Clear and complete?
-- **Security** - No vulnerabilities introduced?
+Contributors are recognized in:
+- Project README contributors section
+- Release notes for significant contributions
+- Research papers (for research contributions)
+- Annual community report
 
----
+Public acknowledgment (opt-in):
+- Koha transparency page for financial supporters
+- Contributors page (coming soon)
 
-## Documentation
+## 📞 Getting Help
 
-### Types of Documentation
+- **Questions**: Open a [Discussion](https://github.com/AgenticGovernance/tractatus-framework/discussions)
+- **Bugs**: Open an [Issue](https://github.com/AgenticGovernance/tractatus-framework/issues)
+- **Email**: support@agenticgovernance.digital
+- **Documentation**: https://agenticgovernance.digital/docs
 
-1. **API Documentation** - JSDoc comments in code
-2. **User Guides** - Markdown files in `docs/`
-3. **Examples** - Code samples in `examples/`
-4. **Case Studies** - Real-world scenarios in `docs/case-studies/`
+## 📜 Code of Conduct
 
-### Writing Documentation
+This project follows the [Contributor Covenant Code of Conduct](CODE_OF_CONDUCT.md). By participating, you agree to uphold this code.
 
-**Be clear and specific:**
+## 🎓 Learning Resources
 
-```markdown
-<!-- ✅ Good -->
-The `CrossReferenceValidator` prevents the "27027 failure mode" where
-AI training patterns override explicit user instructions. It validates
-proposed actions against stored directives and blocks conflicts.
+New to Tractatus? Start here:
+- [Introduction to Tractatus](https://agenticgovernance.digital/downloads/introduction-to-the-tractatus-framework.pdf)
+- [Core Concepts](https://agenticgovernance.digital/downloads/core-concepts-of-the-tractatus-framework.pdf)
+- [Implementation Guide](https://agenticgovernance.digital/downloads/implementation-guide.pdf)
+- [Organizational Theory Foundations](https://agenticgovernance.digital/downloads/organizational-theory-foundations-of-the-tractatus-framework.pdf)
 
-<!-- ❌ Bad -->
-The validator checks stuff and prevents problems.
-```
+## 📄 License
 
-**Include examples:**
-
-```markdown
-### Example Usage
-
-```javascript
-const validator = new CrossReferenceValidator({ db });
-const result = await validator.validate({
-  type: 'database_config',
-  port: 27017
-});
-
-if (result.status === 'REJECTED') {
-  console.error(`Action blocked: ${result.reason}`);
-}
-```
-```
+By contributing, you agree that your contributions will be licensed under the same license as the project (see LICENSE file).
 
 ---
 
-## Community
-
-### Getting Help
-
-- **GitHub Issues** - Technical problems and bugs
-- **GitHub Discussions** - Questions, ideas, and general discussion
-- **Email** - john.stroh.nz@pm.me for private inquiries
-
-### Staying Updated
-
-- **Watch the repository** - Get notified of new releases and discussions
-- **Follow announcements** - Check [agenticgovernance.digital](https://agenticgovernance.digital) for updates
-- **Read the changelog** - Stay informed about changes
-
----
-
-## License
-
-By contributing to Tractatus Framework, you agree that your contributions will be licensed under the Apache License 2.0.
-
----
-
-## Acknowledgments
-
-Thank you for taking the time to contribute! Every contribution, no matter how small, helps make Tractatus better for everyone.
-
-**Questions?** Don't hesitate to ask in GitHub Discussions or open an issue.
-
----
-
-*This contributing guide follows Tractatus values: transparency, human agency, and architectural integrity.*
+**Kia ora! Thank you for contributing to safer, more transparent AI systems.** 🌏
