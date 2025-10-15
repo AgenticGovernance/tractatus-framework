@@ -1,0 +1,85 @@
+name: Feature Request
+description: Suggest a new feature or enhancement for Tractatus
+title: "[Feature]: "
+labels: ["enhancement", "needs-triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for suggesting a new feature! Please provide as much detail as possible.
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem Statement
+      description: Is your feature request related to a problem? Please describe.
+      placeholder: I'm frustrated when...
+    validations:
+      required: true
+
+  - type: textarea
+    id: solution
+    attributes:
+      label: Proposed Solution
+      description: Describe the solution you'd like
+      placeholder: I would like to see...
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives Considered
+      description: Describe alternatives you've considered
+      placeholder: I also considered...
+    validations:
+      required: false
+
+  - type: dropdown
+    id: component
+    attributes:
+      label: Component Area
+      description: Which area does this feature relate to?
+      options:
+        - Framework Core (governance components)
+        - Web UI/UX
+        - API
+        - Documentation
+        - Research/Theory
+        - Community/Outreach
+        - Other
+    validations:
+      required: true
+
+  - type: dropdown
+    id: priority
+    attributes:
+      label: Priority Level
+      description: How important is this feature to you?
+      options:
+        - Critical - Blocking my use of Tractatus
+        - High - Would significantly improve my workflow
+        - Medium - Nice to have
+        - Low - Enhancement for future consideration
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: values_alignment
+    attributes:
+      label: Values Alignment
+      description: Does this feature align with Tractatus values?
+      options:
+        - label: This feature respects human agency and autonomy
+        - label: This feature promotes transparency
+        - label: This feature considers diverse perspectives
+        - label: This feature enhances safety
+
+  - type: textarea
+    id: additional
+    attributes:
+      label: Additional Context
+      description: Any other context, mockups, or examples
+      placeholder: Add any other context here...
+    validations:
+      required: false

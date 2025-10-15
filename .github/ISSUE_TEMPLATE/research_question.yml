@@ -1,0 +1,72 @@
+name: Research Question
+description: Ask about theoretical foundations or research aspects of the Tractatus framework
+title: "[Research]: "
+labels: ["research", "question"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for your interest in the research foundations of Tractatus! We welcome questions about organizational theory, governance, AI safety, and the theoretical basis of the framework.
+
+  - type: textarea
+    id: question
+    attributes:
+      label: Research Question
+      description: What would you like to know?
+      placeholder: I'm curious about...
+    validations:
+      required: true
+
+  - type: dropdown
+    id: topic
+    attributes:
+      label: Topic Area
+      description: Which research area does your question relate to?
+      options:
+        - Organizational Theory Foundations
+        - Values Pluralism & Moral Philosophy
+        - AI Safety & Alignment
+        - Governance Mechanisms
+        - Empirical Validation
+        - Implementation Patterns
+        - Comparative Analysis (vs other approaches)
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: context
+    attributes:
+      label: Context
+      description: What have you already read or tried?
+      placeholder: |
+        I've read the following documents:
+        - Introduction to Tractatus
+        - Core Concepts
+        
+        I'm still unclear about...
+    validations:
+      required: false
+
+  - type: textarea
+    id: motivation
+    attributes:
+      label: Motivation
+      description: Why is this question important to you?
+      placeholder: I'm asking because...
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: related_docs
+    attributes:
+      label: Related Documentation
+      description: Which documents have you reviewed? (Check all that apply)
+      options:
+        - label: Introduction to Tractatus Framework
+        - label: Core Concepts
+        - label: Organizational Theory Foundations
+        - label: Implementation Guide
+        - label: Case Studies
+        - label: Academic Research Foundations
+        - label: None - I'm just starting

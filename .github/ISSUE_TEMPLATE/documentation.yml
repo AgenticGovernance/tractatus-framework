@@ -1,0 +1,81 @@
+name: Documentation Improvement
+description: Suggest improvements or report issues with documentation
+title: "[Docs]: "
+labels: ["documentation", "needs-triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for helping improve Tractatus documentation! Clear, accurate docs are essential for the community.
+
+  - type: dropdown
+    id: type
+    attributes:
+      label: Issue Type
+      description: What kind of documentation issue is this?
+      options:
+        - Error/Inaccuracy - Something is wrong
+        - Clarity - Something is confusing
+        - Missing - Documentation doesn't exist
+        - Outdated - Documentation needs updating
+        - Example Needed - Code examples would help
+        - Typo/Grammar - Minor fix needed
+    validations:
+      required: true
+
+  - type: textarea
+    id: location
+    attributes:
+      label: Documentation Location
+      description: Where is the issue? (URL or file path)
+      placeholder: https://agenticgovernance.digital/docs/...
+    validations:
+      required: true
+
+  - type: textarea
+    id: current
+    attributes:
+      label: Current Documentation
+      description: What does the documentation currently say? (copy/paste if possible)
+      placeholder: The current text says...
+    validations:
+      required: true
+
+  - type: textarea
+    id: suggested
+    attributes:
+      label: Suggested Improvement
+      description: What should it say instead?
+      placeholder: It should say...
+    validations:
+      required: true
+
+  - type: textarea
+    id: why
+    attributes:
+      label: Why This Matters
+      description: Why is this change important?
+      placeholder: This is important because...
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: audience
+    attributes:
+      label: Audience Impact
+      description: Who would benefit from this improvement?
+      options:
+        - label: Researchers
+        - label: Implementers/Developers
+        - label: AI Safety Advocates
+        - label: Business Leaders
+        - label: General Public
+
+  - type: textarea
+    id: additional
+    attributes:
+      label: Additional Context
+      description: Any other context or examples
+      placeholder: Add any other context here...
+    validations:
+      required: false

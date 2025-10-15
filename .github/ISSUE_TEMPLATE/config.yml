@@ -1,0 +1,11 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Community Discussions
+    url: https://github.com/AgenticGovernance/tractatus/discussions
+    about: Ask questions and discuss ideas with the community
+  - name: Tractatus Website
+    url: https://agenticgovernance.digital
+    about: Visit the main Tractatus website for documentation and resources
+  - name: Email Support
+    url: mailto:support@agenticgovernance.digital
+    about: Contact us directly for sensitive issues or private inquiries

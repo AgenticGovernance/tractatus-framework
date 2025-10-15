@@ -1,0 +1,181 @@
+name: Sync Documentation to Public Repository
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'docs/case-studies/**/*.md'
+      - 'docs/research/**/*.md'
+      - 'README.md'
+  workflow_dispatch:
+    inputs:
+      skip_validation:
+        description: 'Skip security validation (USE WITH CAUTION)'
+        required: false
+        default: 'false'
+        type: choice
+        options:
+          - 'false'
+          - 'true'
+
+jobs:
+  validate-and-sync:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Private Repository
+        uses: actions/checkout@v4
+        with:
+          path: tractatus-private
+          fetch-depth: 0
+
+      - name: Checkout Public Repository
+        uses: actions/checkout@v4
+        with:
+          repository: AgenticGovernance/tractatus-framework
+          token: ${{ secrets.PUBLIC_REPO_TOKEN }}
+          path: tractatus-public
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install Dependencies
+        run: |
+          cd tractatus-private
+          npm ci
+
+      - name: Run Security Validation
+        if: github.event.inputs.skip_validation != 'true'
+        id: validation
+        run: |
+          cd tractatus-private
+          node scripts/validate-public-sync.js
+        env:
+          SYNC_MODE: github-actions
+
+      - name: Sync Case Studies
+        if: success()
+        run: |
+          # Create directory if it doesn't exist
+          mkdir -p tractatus-public/docs/case-studies
+
+          # Copy case studies (only if they exist and passed validation)
+          for file in tractatus-private/docs/case-studies/*.md; do
+            if [ -f "$file" ]; then
+              filename=$(basename "$file")
+              echo "Syncing case study: $filename"
+              cp "$file" "tractatus-public/docs/case-studies/$filename"
+            fi
+          done
+
+      - name: Sync Research Topics
+        if: success()
+        run: |
+          # Create directory if it doesn't exist
+          mkdir -p tractatus-public/docs/research
+
+          # Copy research topics (only if they exist and passed validation)
+          for file in tractatus-private/docs/research/*.md; do
+            if [ -f "$file" ]; then
+              filename=$(basename "$file")
+              echo "Syncing research topic: $filename"
+              cp "$file" "tractatus-public/docs/research/$filename"
+            fi
+          done
+
+      - name: Sync README (if sanitized)
+        if: success()
+        run: |
+          # Only sync README if it has been marked as sanitized
+          if grep -q "<!-- PUBLIC_REPO_SAFE -->" tractatus-private/README.md; then
+            echo "README marked as sanitized, syncing..."
+            cp tractatus-private/README.md tractatus-public/README.md
+          else
+            echo "README not marked as sanitized, skipping sync"
+          fi
+
+      - name: Configure Git
+        if: success()
+        run: |
+          cd tractatus-public
+          git config user.name "Tractatus Framework Bot"
+          git config user.email "noreply@agenticgovernance.org"
+
+      - name: Commit and Push Changes
+        if: success()
+        run: |
+          cd tractatus-public
+
+          # Check if there are changes
+          if [ -n "$(git status --porcelain)" ]; then
+            git add docs/case-studies/*.md docs/research/*.md README.md 2>/dev/null || true
+
+            # Get commit message from private repo
+            COMMIT_MSG=$(cd ../tractatus-private && git log -1 --pretty=%B)
+
+            git commit -m "docs: sync from private repo" -m "Original commit: $COMMIT_MSG" -m "Automated sync from private repository" -m "Validated by: scripts/validate-public-sync.js"
+
+            git push origin main
+            echo "✅ Changes synced successfully"
+          else
+            echo "ℹ️ No changes to sync"
+          fi
+
+      - name: Create Sync Report
+        if: always()
+        run: |
+          cd tractatus-private
+
+          # Set validation status
+          VALIDATION_STATUS="${{ steps.validation.outcome }}"
+          if [ -z "$VALIDATION_STATUS" ]; then
+            VALIDATION_STATUS="skipped"
+          fi
+
+          # Generate sync report
+          echo "# Sync Report - $(date -u +%Y-%m-%d)" > sync-report.md
+          echo "" >> sync-report.md
+          echo "## Validation Status" >> sync-report.md
+          echo "- Security Validation: $VALIDATION_STATUS" >> sync-report.md
+          echo "- Files Synced: $(cd ../tractatus-public && git diff --cached --name-only 2>/dev/null | wc -l)" >> sync-report.md
+          echo "" >> sync-report.md
+          echo "## Changed Files" >> sync-report.md
+          cd ../tractatus-public
+          git diff --cached --name-only >> ../tractatus-private/sync-report.md 2>/dev/null || echo "No changes" >> ../tractatus-private/sync-report.md
+
+      - name: Upload Sync Report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: sync-report
+          path: tractatus-private/sync-report.md
+          retention-days: 30
+
+  notify-failure:
+    runs-on: ubuntu-latest
+    needs: validate-and-sync
+    if: failure()
+    permissions:
+      issues: write
+    steps:
+      - name: Create Issue on Failure
+        uses: actions/github-script@v7
+        with:
+          script: |
+            github.rest.issues.create({
+              owner: 'AgenticGovernance',
+              repo: 'tractatus',
+              title: '🚨 Public Docs Sync Failed',
+              body: `The automated sync to public repository failed.
+
+              **Workflow Run:** ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+              **Commit:** ${{ github.sha }}
+              **Branch:** ${{ github.ref }}
+
+              Please review the workflow logs and validation report.`,
+              labels: ['automation', 'sync-failure']
+            })
