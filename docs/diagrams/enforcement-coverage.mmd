@@ -1,0 +1,24 @@
+%%{init: {'theme':'base', 'themeVariables': { 'primaryColor':'#e1f5ff','primaryTextColor':'#000','primaryBorderColor':'#000','lineColor':'#000','secondaryColor':'#e1ffe1','tertiaryColor':'#ffe1e1'}}}%%
+graph LR
+    subgraph "Wave Progression: 28% → 100%"
+        direction TB
+        W1["Wave 1<br/>11/39 (28%)<br/>Oct 25, 2025"]
+        W2["Wave 2<br/>18/39 (46%)<br/>+7 rules (+64%)"]
+        W3["Wave 3<br/>22/39 (56%)<br/>+4 rules (+22%)"]
+        W4["Wave 4<br/>31/39 (79%)<br/>+9 rules (+41%)"]
+        W5["Wave 5<br/>39/39 (100%)<br/>+8 rules (+27%)"]
+        CURRENT["Current<br/>40/40 (100%)<br/>+inst_083"]
+    end
+
+    W1 --> W2
+    W2 --> W3
+    W3 --> W4
+    W4 --> W5
+    W5 --> CURRENT
+
+    style W1 fill:#ffe1e1
+    style W2 fill:#ffe1cc
+    style W3 fill:#fff4cc
+    style W4 fill:#f4ffe1
+    style W5 fill:#e1ffe1
+    style CURRENT fill:#e1f5ff

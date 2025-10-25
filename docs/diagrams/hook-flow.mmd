@@ -1,0 +1,33 @@
+sequenceDiagram
+    participant User
+    participant AI as Claude Code AI
+    participant PreHook as PreToolUse Hook
+    participant RuleDB as Rule Database
+    participant Services as Framework Services
+    participant Action as Tool Execution
+    participant PostHook as PostToolUse Hook
+    participant Audit as Audit Log
+
+    User->>AI: Request action
+    AI->>AI: Generate intent
+    AI->>PreHook: Tool call (Edit/Write/Bash)
+    PreHook->>RuleDB: Query relevant rules
+    RuleDB-->>PreHook: Return applicable rules
+    PreHook->>Services: Validate against rules
+    Services->>Services: BoundaryEnforcer check
+    Services->>Services: CrossReferenceValidator check
+    Services->>Services: ContextPressureMonitor check
+    Services-->>PreHook: Validation result (Allow/Block)
+    
+    alt Validation BLOCKS
+        PreHook->>Audit: Log block decision
+        PreHook-->>AI: Block with reason
+        AI-->>User: Report block to user
+    else Validation ALLOWS
+        PreHook-->>Action: Allow execution
+        Action->>Action: Execute tool
+        Action-->>PostHook: Report result
+        PostHook->>Audit: Log success
+        PostHook-->>AI: Return result
+        AI-->>User: Display result
+    end

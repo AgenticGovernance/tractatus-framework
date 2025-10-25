@@ -1,0 +1,80 @@
+graph TB
+    subgraph "User Layer"
+        USER[User/Developer]
+    end
+
+    subgraph "AI Layer"
+        AI[Claude Code AI]
+        INTENT[AI Intent/Action]
+    end
+
+    subgraph "Interception Layer"
+        PRE[PreToolUse Hook]
+        POST[PostToolUse Hook]
+        SUBMIT[UserPromptSubmit Hook]
+    end
+
+    subgraph "Rule Database"
+        JSON[instruction-history.json]
+        MONGO[(MongoDB Rules Collection)]
+    end
+
+    subgraph "Framework Services"
+        BE[BoundaryEnforcer]
+        CPM[ContextPressureMonitor]
+        CRV[CrossReferenceValidator]
+        IPC[InstructionPersistenceClassifier]
+        MV[MetacognitiveVerifier]
+        PDO[PluralisticDeliberationOrchestrator]
+    end
+
+    subgraph "Enforcement Layer"
+        GIT[Git Hooks]
+        SCRIPTS[Validator Scripts]
+        MIDDLEWARE[Middleware]
+    end
+
+    subgraph "Audit Layer"
+        AUDIT[(Audit Logs)]
+        DASHBOARD[Analytics Dashboard]
+    end
+
+    USER --> AI
+    AI --> INTENT
+    INTENT --> PRE
+    PRE --> JSON
+    PRE --> MONGO
+    JSON <--> MONGO
+    MONGO --> BE
+    MONGO --> CPM
+    MONGO --> CRV
+    MONGO --> IPC
+    MONGO --> MV
+    MONGO --> PDO
+    BE --> PRE
+    CPM --> PRE
+    CRV --> PRE
+    IPC --> SUBMIT
+    MV --> PRE
+    PDO --> PRE
+    PRE --> |Allow/Block| INTENT
+    INTENT --> POST
+    POST --> AUDIT
+    GIT --> AUDIT
+    SCRIPTS --> AUDIT
+    MIDDLEWARE --> AUDIT
+    AUDIT --> DASHBOARD
+
+    style USER fill:#e1f5ff
+    style AI fill:#fff4e1
+    style PRE fill:#ffe1e1
+    style POST fill:#ffe1e1
+    style SUBMIT fill:#ffe1e1
+    style BE fill:#e1ffe1
+    style CPM fill:#e1ffe1
+    style CRV fill:#e1ffe1
+    style IPC fill:#e1ffe1
+    style MV fill:#e1ffe1
+    style PDO fill:#e1ffe1
+    style AUDIT fill:#f0e1ff
+    style DASHBOARD fill:#f0e1ff

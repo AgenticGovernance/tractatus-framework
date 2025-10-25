@@ -1,0 +1,138 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Governance Rule Schema",
+  "description": "Generic schema for persistent governance rules with classification metadata",
+  "type": "object",
+  "required": ["id", "text", "timestamp", "quadrant", "persistence", "temporal_scope", "verification_required", "explicitness", "source", "active"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique identifier for the rule (e.g., inst_001)",
+      "pattern": "^inst_[0-9]+$"
+    },
+    "text": {
+      "type": "string",
+      "description": "Full text of the governance rule",
+      "minLength": 10
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When the rule was created or last updated"
+    },
+    "quadrant": {
+      "type": "string",
+      "enum": ["SYSTEM", "PRIVACY", "VALUES", "RULES"],
+      "description": "Domain categorization of the rule"
+    },
+    "persistence": {
+      "type": "string",
+      "enum": ["HIGH", "MEDIUM", "LOW"],
+      "description": "Likelihood of future relevance"
+    },
+    "temporal_scope": {
+      "type": "string",
+      "enum": ["PERMANENT", "SESSION", "TEMPORARY"],
+      "description": "Duration of applicability"
+    },
+    "verification_required": {
+      "type": "string",
+      "enum": ["MANDATORY", "RECOMMENDED", "NONE"],
+      "description": "Whether framework must verify compliance"
+    },
+    "explicitness": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1,
+      "description": "How explicitly stated (0.0 = implicit, 1.0 = explicit)"
+    },
+    "source": {
+      "type": "string",
+      "enum": ["user", "framework", "derived"],
+      "description": "Origin of the rule"
+    },
+    "parameters": {
+      "type": "object",
+      "description": "Additional context-specific parameters",
+      "properties": {
+        "enforcement": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "List of enforcement mechanisms (hooks, scripts, validators)"
+        },
+        "triggers": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Conditions that trigger this rule"
+        },
+        "exemptions": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Cases where rule does not apply"
+        }
+      }
+    },
+    "active": {
+      "type": "boolean",
+      "description": "Whether rule is currently active"
+    },
+    "notes": {
+      "type": "string",
+      "description": "Additional context or rationale"
+    }
+  },
+  "examples": [
+    {
+      "id": "inst_001",
+      "text": "Background processes MUST be tracked and killed during session closedown to prevent resource leaks",
+      "timestamp": "2025-10-25T00:00:00.000Z",
+      "quadrant": "SYSTEM",
+      "persistence": "HIGH",
+      "temporal_scope": "PERMANENT",
+      "verification_required": "MANDATORY",
+      "explicitness": 0.95,
+      "source": "framework",
+      "parameters": {
+        "enforcement": [
+          "scripts/track-background-process.js",
+          "scripts/session-closedown.js"
+        ],
+        "triggers": [
+          "session_closedown",
+          "background_process_start"
+        ]
+      },
+      "active": true,
+      "notes": "Prevents resource leaks from forgotten background processes"
+    },
+    {
+      "id": "inst_002",
+      "text": "Statistical claims MUST include source citations or be marked [NEEDS VERIFICATION]",
+      "timestamp": "2025-10-25T00:00:00.000Z",
+      "quadrant": "VALUES",
+      "persistence": "HIGH",
+      "temporal_scope": "PERMANENT",
+      "verification_required": "MANDATORY",
+      "explicitness": 1.0,
+      "source": "user",
+      "parameters": {
+        "enforcement": [
+          "hooks/pre-commit",
+          "scripts/check-prohibited-terms.js"
+        ],
+        "triggers": [
+          "commit",
+          "document_write"
+        ]
+      },
+      "active": true,
+      "notes": "Prevents unsubstantiated claims in documentation"
+    }
+  ]
+}

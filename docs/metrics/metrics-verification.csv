@@ -1,0 +1,34 @@
+Metric,Value,Source File,Query/Command,Verified By,Date Verified,Status
+Enforcement Coverage - Total Instructions,40,docs/research-data/metrics/enforcement-coverage.md,node scripts/audit-enforcement.js,Claude Code,2025-10-25,✅
+Enforcement Coverage - Enforced,40 (100%),docs/research-data/metrics/enforcement-coverage.md,node scripts/audit-enforcement.js,Claude Code,2025-10-25,✅
+Enforcement Coverage - Unenforced,0,docs/research-data/metrics/enforcement-coverage.md,node scripts/audit-enforcement.js,Claude Code,2025-10-25,✅
+Wave 1 Coverage,11/39 (28%),docs/research-data/metrics/enforcement-coverage.md,git show 08cbb4f,Claude Code,2025-10-25,✅
+Wave 2 Coverage,18/39 (46%),docs/research-data/metrics/enforcement-coverage.md,git show 4fa9404,Claude Code,2025-10-25,✅
+Wave 3 Coverage,22/39 (56%),docs/research-data/metrics/enforcement-coverage.md,git show 3edf466,Claude Code,2025-10-25,✅
+Wave 4 Coverage,31/39 (79%),docs/research-data/metrics/enforcement-coverage.md,git show 4a30e63,Claude Code,2025-10-25,✅
+Wave 5 Coverage,39/39 (100%),docs/research-data/metrics/enforcement-coverage.md,git show 696d452,Claude Code,2025-10-25,✅
+Total Audit Log Decisions,1266+,docs/research-data/metrics/service-activity.md,mongosh tractatus_dev --eval "db.auditLogs.countDocuments()",Claude Code,2025-10-25,✅
+BoundaryEnforcer Logs,623,docs/research-data/metrics/service-activity.md,mongosh query by service,Claude Code,2025-10-25,✅
+ContextPressureMonitor Logs,623,docs/research-data/metrics/service-activity.md,mongosh query by service,Claude Code,2025-10-25,✅
+InstructionPersistenceClassifier Logs,8,docs/research-data/metrics/service-activity.md,mongosh query by service,Claude Code,2025-10-25,✅
+CrossReferenceValidator Logs,6,docs/research-data/metrics/service-activity.md,mongosh query by service,Claude Code,2025-10-25,✅
+MetacognitiveVerifier Logs,5,docs/research-data/metrics/service-activity.md,mongosh query by service,Claude Code,2025-10-25,✅
+PluralisticDeliberationOrchestrator Logs,1,docs/research-data/metrics/service-activity.md,mongosh query by service,Claude Code,2025-10-25,✅
+CrossReferenceValidator Total Validations,1896+,docs/research-data/metrics/service-activity.md,node scripts/framework-stats.js,Claude Code,2025-10-25,✅
+BashCommandValidator Total Validations,1332+,docs/research-data/metrics/service-activity.md,node scripts/framework-stats.js,Claude Code,2025-10-25,✅
+BashCommandValidator Blocks,162,docs/research-data/metrics/real-world-blocks.md,node scripts/framework-stats.js,Claude Code,2025-10-25,✅
+BashCommandValidator Block Rate,12.2%,docs/research-data/metrics/real-world-blocks.md,Calculated: 162/1332,Claude Code,2025-10-25,✅
+Prohibited Terms Blocks (This Session),1,docs/research-data/metrics/real-world-blocks.md,Pre-commit hook output,Claude Code,2025-10-25,✅
+Dev Server Kill Prevented,1,docs/research-data/metrics/real-world-blocks.md,Manual observation + fix,Claude Code,2025-10-25,✅
+Defense-in-Depth Layers Complete,5/5 (100%),docs/research-data/metrics/BASELINE_SUMMARY.md,node scripts/audit-defense-in-depth.js,Claude Code,2025-10-25,✅
+Project Start Date,2025-10-06,docs/research-data/metrics/development-timeline.md,git log --all --reverse --oneline | head -1,Claude Code,2025-10-25,✅
+Framework Core Development Start,2025-10-07,docs/research-data/metrics/development-timeline.md,git log --all --grep="framework",Claude Code,2025-10-25,✅
+Wave Deployment Date,2025-10-25,docs/research-data/metrics/development-timeline.md,git log --all --grep="wave" -i,Claude Code,2025-10-25,✅
+Total Development Timeline,19 days,docs/research-data/metrics/development-timeline.md,Calculated: Oct 6-25,Claude Code,2025-10-25,✅
+Session Handoff Documents Count,8,docs/research-data/metrics/session-lifecycle.md,ls SESSION_*.md | wc -l,Claude Code,2025-10-25,✅
+Token Budget,200000,docs/research-data/metrics/session-lifecycle.md,.claude/token-checkpoints.json,Claude Code,2025-10-25,✅
+Token Checkpoint 25%,50000,docs/research-data/metrics/session-lifecycle.md,.claude/token-checkpoints.json,Claude Code,2025-10-25,✅
+Token Checkpoint 50%,100000,docs/research-data/metrics/session-lifecycle.md,.claude/token-checkpoints.json,Claude Code,2025-10-25,✅
+Token Checkpoint 75%,150000,docs/research-data/metrics/session-lifecycle.md,.claude/token-checkpoints.json,Claude Code,2025-10-25,✅
+Framework Unit Tests Total,238,docs/research-data/metrics/session-lifecycle.md,npm test,Claude Code,2025-10-25,✅
+Framework Services Count,6,docs/research-data/metrics/session-lifecycle.md,Manual count from codebase,Claude Code,2025-10-25,✅

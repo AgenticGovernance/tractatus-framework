@@ -1,0 +1,48 @@
+stateDiagram-v2
+    [*] --> SessionInit: User: "Warmup"
+    
+    SessionInit --> HandoffCheck: Check for SESSION_CLOSEDOWN_*.md
+    HandoffCheck --> DisplayHandoff: Handoff found (inst_083)
+    HandoffCheck --> FreshStart: No handoff
+    DisplayHandoff --> LoadRules: Auto-inject priorities
+    FreshStart --> LoadRules: New session
+    
+    LoadRules --> InitServices: Sync MongoDB
+    InitServices --> PressureCheck: Start 6 services
+    PressureCheck --> Ready: Pressure: NORMAL
+    
+    Ready --> Working: Begin development
+    
+    state Working {
+        [*] --> ToolUse
+        ToolUse --> PreHook: Every tool call
+        PreHook --> Validate: Check rules
+        Validate --> Allow: Pass
+        Validate --> Block: Fail
+        Allow --> Execute
+        Block --> AuditLog
+        Execute --> PostHook
+        PostHook --> AuditLog
+        AuditLog --> ToolUse
+    }
+    
+    Working --> Checkpoint25: 50k tokens (25%)
+    Checkpoint25 --> ReportPressure1: Monitor pressure
+    ReportPressure1 --> Working: Continue
+    
+    Working --> Checkpoint50: 100k tokens (50%)
+    Checkpoint50 --> ReportPressure2: Monitor pressure
+    ReportPressure2 --> Working: Continue
+    
+    Working --> Checkpoint75: 150k tokens (75%)
+    Checkpoint75 --> ReportPressure3: High pressure warning
+    ReportPressure3 --> Working: Continue
+    
+    Working --> SessionClosedown: User: "wrap up"
+    
+    SessionClosedown --> Cleanup: Kill background processes
+    Cleanup --> AnalyzeFramework: Performance analysis
+    AnalyzeFramework --> GitStatus: Document changes
+    GitStatus --> CreateHandoff: Generate SESSION_CLOSEDOWN_*.md
+    CreateHandoff --> CompactionMarker: Create .marker file
+    CompactionMarker --> [*]: Session complete
